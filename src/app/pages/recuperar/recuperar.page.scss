@@ -1,7 +1,7 @@
 
-.login{
+.recuperacion{
   height: 100vh;
-  background-image: url("../../../assets/img/fondo.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url("../../../assets/img/campus-arauco4-960x529.jpg");
   background-size: cover;
   text-align: center;
   font-family: 'Montserrat';
@@ -15,7 +15,7 @@ ion-card {
   width: 50vw;
   display: flex;
   flex-direction: column;
-
+  align-items: center;
   justify-content: space-around;
 
 }
