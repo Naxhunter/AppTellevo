@@ -1,21 +1,53 @@
-.color_empresa {
-    background-color: #345dff; // black
-    box-shadow: none;
-  }
-
-.posicion_titulo {
-    position: 50%;
+ion-content {
+  --background: url(../../../assets/img/concepcion-vista.jpg) no-repeat center/cover fixed;
 }
 
+ion-card{
+  display: flex;
+  flex-direction: column;
+  border-radius: 5%;
+  text-align: center;
+  height: 90vh;
+  margin: 0 auto;
+  top: 5vh;
+  width: 80vw;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.color_empresa {
+    background-color: #4b6fff; // black
+    box-shadow: none;
+    background: transparentize($color: #4b6fff, $amount: 0.3);
+    height: 50%;
+  }
+
 .fuente{
-    font-size: xx-large;
-    color: #ffe9af;
-    font-weight: 300;
+    color: #000000;
+    font-weight: Bold;
+    font-size: 3rem;
+    font-family: Merriweather;
     font-style: inherit;
   }
+
+.fuente_titulo{
+  color: #ffe9af;
+  font-style: inherit;
+  font-size: 3.5rem;
+  font-family: "Lobster";
+}
+
 .fuente_letra1{
-        font-size: large;
-        color: #ffbe4d;
-        font-weight: 300;
-        font-style: inherit;
+  color: #ffbe4d;
+  font-style: inherit;
+  font-size: 1.75rem;
+  font-family: "Montserrat";
+}
+
+.color_bar{
+  --ion-toolbar-background: rgb(50, 118, 182);
+}
+
+.color_letra{
+  --ion-text-color-rgb: rgb(255, 255, 255);
 }

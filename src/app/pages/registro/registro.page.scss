@@ -1,0 +1,49 @@
+@use '../../../global.scss';
+
+.registro{
+    height: 100vh;
+    background-image: url("../../../assets/img/fondo.jpg");
+    background-size: cover;
+    text-align: center;
+    font-family: 'Montserrat';
+}
+form{
+    background: linear-gradient(#dfa474, #9912 ); 
+    margin: 0 auto;
+    top: 5vh;
+    height: 90vh;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: space-around;
+
+    ion-item {
+        --background: none;
+    }
+    ion-label {
+        font-size: large;
+        font-weight: bold;
+        --color: rgb(65, 45, 9);
+        font-family: 'Lobster';
+        background: none;
+    }
+    ion-input{
+        font-family: 'Lobster';
+        color: rgba(4, 4, 43, 0.904);
+    }
+}
+
+ion-button{
+    color: rgba(4, 4, 43, 0.904);
+    margin-top: 60px;
+    font-family: 'Montserrat';
+    --background: transparentize($color: #249b8bcb, $amount: 0.5);
+    font-weight: bold;    
+}
+
+.enlace{
+    background: transparentize($color: #dd9d69, $amount: 0.4); 
+    width: 50vw;
+    padding: 15px 15px 15px 15px;
+}

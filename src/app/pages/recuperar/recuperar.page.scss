@@ -1,27 +1,80 @@
-.colorFondo {
-  background-color: #345dff; // black
-  box-shadow: none;
+
+.login{
+  height: 100vh;
+  background-image: url("../../../assets/img/Duoc.png");
+  background-size: cover;
+  text-align: center;
+  font-family: 'Montserrat';
 }
 
-.posicion_t {
-  position: 50%;
-}
+ion-card {
+  background: linear-gradient(#4068be3a, #9912 ); 
+  margin: 0 auto;
+  top: 5vh;
+  height: 60vh;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
 
-.font{
-  font-size: xx-large;
-  color: #ffe9af;
-  font-weight: 300;
-  font-style: inherit;
-}
-
-.titulo{
-text-align: center;
-  font-size: xx-large;
-  color: #ffe9af;
-  font-weight: 300;
-  font-style: inherit;
+  justify-content: space-around;
 
 }
-/* .tamano{
-  text-decoration: ;
-} */
+ion-item {
+  --background: none;
+
+  ion-label {
+      font-size: xx-large;   
+      --color:rgb(83, 82, 82);
+      font-family: 'Lobster';
+  }
+  ion-input{
+    font-size:xx-large;
+      font-family: 'Lobster';
+      color: rgb(26, 64, 187);
+      text-align: center;
+  }
+  
+}
+ion-button{
+  color: rgba(4, 4, 43, 0.904);
+  margin-top: 60px;
+  font-family: 'Montserrat';
+  --background: transparentize($color: #1e7065cb, $amount: 0.3);
+  font-weight: bold;
+  
+}
+.color_boton{
+  background-color: #dfa474;
+  font-weight: bold;
+}
+a {
+  text-decoration: none;
+  font-size: large;
+  font-family: 'Lobster';
+  font-weight: bold;
+  color: rgba(4, 4, 43, 0.904);
+  
+}
+.enlace{
+  background: transparentize($color: #dfa474, $amount: 0.5); 
+  width: 100vw;
+  padding: 15px 15px 15px 15px;
+}
+
+
+form{
+  background: linear-gradient(rgba(240, 255, 29, 0.603), #9912 ); 
+  margin: 0 auto;
+  top: 5vh;
+  height: 90vh;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+ 
+  justify-content: space-around;
+}
+
+ion-toolbar{
+  background: rgb(255,214,0);
+  background: linear-gradient(90deg, rgba(255,214,0,1) 0%, rgba(73,28,205,1) 100%);
+}
