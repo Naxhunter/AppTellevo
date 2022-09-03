@@ -37,8 +37,6 @@ export class RegistroPage implements OnInit {
     this.usuarioService.agregarUsuario(this.alumno.value);
     this.alumno.reset();
     alert('USUARIO REGISTRADO!');
-
     this.router.navigate(['/login']);
   }
-  
 }

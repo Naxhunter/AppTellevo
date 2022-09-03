@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { NavController } from '@ionic/angular';
 
 
 @Component({
@@ -15,19 +16,18 @@ export class LoginPage implements OnInit {
   password: string;
 
   constructor(private toastController: ToastController, private router: Router,
-                      private usuarioService: UsuarioService) { }
+                      private usuarioService: UsuarioService, private route: ActivatedRoute, private navCtrl: NavController) { }
 
   ngOnInit() {
   }
 
   login(){
     var usuarioLogin = this.usuarioService.validarLogin(this.rut, this.password);
-    
     if (usuarioLogin != undefined) {
       if (usuarioLogin.tipo_usuario == 'administrador') {
-        this.router.navigate(['/administrar']);
+        this.navCtrl.navigateForward(['/administrar', this.rut]);
       }else{
-        this.router.navigate(['/home']);
+        this.navCtrl.navigateForward(['/home', this.rut]);
       }
     } else {
         this.toastError();

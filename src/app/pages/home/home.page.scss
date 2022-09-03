@@ -1,32 +1,30 @@
-ion-content {
-  --background: url(../../../assets/img/concepcion-vista.jpg) no-repeat center/cover fixed;
-}
 
-ion-card{
-  display: flex;
-  flex-direction: column;
-  border-radius: 5%;
-  text-align: center;
-  height: 90vh;
-  margin: 0 auto;
-  top: 5vh;
-  width: 80vw;
-  align-items: center;
-  justify-content: space-around;
-}
 
-.color_empresa {
-    background-color: #4b6fff; // black
+
+.color_empresa{
     box-shadow: none;
-    background: transparentize($color: #4b6fff, $amount: 0.3);
-    height: 50%;
+    height: 100vh;
+    background: transparentize($color: #f0e658bd, $amount: 0.3);
+    background: url(../../../assets/img/concepcion-vista.jpg) no-repeat center/cover fixed;
   }
-
+  ion-card{
+    background: linear-gradient(#04313f, #9912 );  // black
+    display: flex;
+    flex-direction: column;
+    border-radius: 3px;
+    text-align: center;
+    height: 80vh;
+    margin: 0 auto;
+    top: 5vh;
+    width: 80vw;
+    align-items: center;
+    justify-content: space-around;
+  }
 .fuente{
     color: #000000;
     font-weight: Bold;
-    font-size: 3rem;
-    font-family: Merriweather;
+    font-size: 30px;
+    font-family: Montserrat;
     font-style: inherit;
   }
 
@@ -38,10 +36,11 @@ ion-card{
 }
 
 .fuente_letra1{
-  color: #ffbe4d;
+  color: #000000;
   font-style: inherit;
   font-size: 1.75rem;
   font-family: "Montserrat";
+  font-weight: bold;
 }
 
 .color_bar{

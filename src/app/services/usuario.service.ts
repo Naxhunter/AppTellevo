@@ -10,17 +10,21 @@ export class UsuarioService {
 
     {
       rut: '11.009.200-1',
-      nom_completo: 'Gemela',
+      nombre: 'Gemela',
+      apellido: 'Gutierrez',
+      correo: 'jorsh@gmail.com',
       fecha_nac : '1966-08-05',
-      semestre: 6,
+      auto: 'no',
       password: 'admin',
       tipo_usuario: 'administrador'
     },
     {
-      rut: '20.000.200-1',
-      nom_completo: 'Same',
-      fecha_nac : '2000-10-05',
-      semestre: 2,
+      rut: '20.009.200-1',
+      nombre: 'Carlos',
+      apellido: 'Prado',
+      correo: 'Carlitosprado@gmail.com',
+      fecha_nac : '1967-08-05',
+      auto: 'no',
       password: 'default',
       tipo_usuario: 'alumno'
     },
@@ -32,21 +36,30 @@ export class UsuarioService {
 /* METODOS PARA EL CRUD */
   
   agregarUsuario(usuario){
-    this.usuarios.push(usuario);
+    if(this.obtenerUsuario(usuario.rut) == undefined){
+      this.usuarios.push(usuario);
+      return true;
+    }
+    return false;
   }
 
   eliminarUsuario(rut){
-
+    this.usuarios.forEach((usu, index) => {
+      if (usu.rut == rut) {
+        this.usuarios.splice(index, 1);
+      }
+    });
   }
 
 
   actualizarUsuario(usuario){
-
+    var index = this.usuarios.findIndex(usu => usu.rut == usuario.rut);
+    this.usuarios[index] = usuario;
   }
 
   
-  obtenerUsuario(){
-
+  obtenerUsuario(rut){
+    return this.usuarios.find(usuario => usuario.rut == rut);
   }
 
   obtenerUsuarios(){
@@ -54,20 +67,15 @@ export class UsuarioService {
   }
 
  /// METODOS CUSTOMER:
-validarRecuperar(rut,correo){
-
+validarRecuperar(rut,correo): any{
   return this.usuarios.find(usu => usu.rut == rut && usu.correo == correo);
-  
-
 }
 
-validarLogin(rut,password){
-
+validarLogin(rut,password): any{
   return this.usuarios.find(usu => usu.rut == rut && usu.password == password);
-  
-
 }
-  
+
+
 
 
   
