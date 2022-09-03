@@ -1,38 +1,30 @@
-<ion-header>
-  
-    
-    <ion-navbar>
-      
-  
-      <ion-title class="fuente" slot="start"> {{sesion.nombre}}
-      </ion-title>
-  
-     
-    </ion-navbar>
-  
-  
-
-
-</ion-header>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
 <ion-content [fullscreen]="true" class="ion-text-center">
-  <div class="color_empresa">
-  <ion-card>
-
-    <ion-card-header>
-      <ion-card-title class="fuente_titulo">Te llevo <b>APP</b></ion-card-title>
-    </ion-card-header>
-    <ion-card-content class="fuente_letra1">
-      <div *ngIf="sesion.auto == 'si'">
-        Tienes auto
+  <div class="fondo">
+    <ion-header>
+      <div class="flexibles">
+        <div class="separar">Perfil</div>
+        <div class="separar">Nuevo viaje</div>
+        <div class="separar" *ngIf="sesion.auto == 'si'">Solicitudes</div>
+        <div class="separar" *ngIf="sesion.tipo_usuario == 'administrador'">Administración</div>
+        <div class="separar" *ngIf="sesion.rut != undefined">Cerrar Sesión</div>
       </div>
-      <span><b>TeLlevoApp</b> es una aplicación pensada por 
-        estudiantes y para estudiantes de la institución <b>DUOC UC</b>
-        con el fin de reducir los problemas de viaje de los estudiantes
-        de nuestra querida institución.
-        ¡ESPERAMOS DISFRUTES TU VIAJE!</span>
-      
-    </ion-card-content>
-  </ion-card>
-</div>
+    </ion-header>
+    <ion-card>
+      <ion-card-content class="contenido_home">
+        <div class="titulo">
+          <span class="color_azul"><b>Te llevo</b> <b class="color_naranja">APP</b></span>
+        </div>
+        <span class="parrafo">
+          <b class="color_azul">TeLlevo<span class="color_naranja">App</span></b> es una aplicación pensada por
+          estudiantes y para estudiantes de la institución <b>DUOC UC</b>
+          con el fin de reducir los problemas de viaje de los estudiantes
+          de nuestra querida institución.
+          ¡ESPERAMOS DISFRUTES TU VIAJE!
+        </span>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

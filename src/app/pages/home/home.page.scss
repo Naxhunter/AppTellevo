@@ -1,52 +1,99 @@
 
 
 
-.color_empresa{
+.fondo{
     box-shadow: none;
     height: 100vh;
     background: transparentize($color: #f0e658bd, $amount: 0.3);
-    background: url(../../../assets/img/concepcion-vista.jpg) no-repeat center/cover fixed;
+    background: url("../../../assets/img/fondo.jpg");
+    height: 100vh;
+    background-size: cover;
+    text-align: center;
+    font-family: 'Montserrat';
+    .flexibles{
+      display: flex;
+      flex-direction: row;
+      background: rgb(14,0,255);
+      background: linear-gradient(90deg, rgba(14,0,255,1) 0%, rgba(255,165,0,1) 83%, rgba(255,195,0,1) 100%);
+      height: 10vh;
+      font-size: 2.5vh;
+      font-weight: bold;
+      font-family: 'Lobster';
+      color: white;
+      .separar{
+        padding-left: 5vh;
+        padding-top: 3vh;
+      }
+    }
+    
   }
-  ion-card{
+  
+  
+
+  
+ion-card{
     background: linear-gradient(#04313f, #9912 );  // black
     display: flex;
     flex-direction: column;
     border-radius: 3px;
     text-align: center;
-    height: 80vh;
+    height: 50vh;
     margin: 0 auto;
     top: 5vh;
-    width: 80vw;
+    width: 50vw;
     align-items: center;
     justify-content: space-around;
-  }
-.fuente{
-    color: #000000;
-    font-weight: Bold;
-    font-size: 30px;
-    font-family: Montserrat;
+    
+
+
+  .contenido_home{
+    color:rgba(4, 4, 43, 0.904);
     font-style: inherit;
+    font-size: 16px;
+    font-family: "Roboto";
+    font-weight: bold;
+      .color_naranja{
+        color: orange;
+      }
+      .color_azul{
+        color:rgba(4, 4, 43, 0.904);
+      }
+      .titulo{
+          color: #ffe9af;
+          font-style: inherit;
+          font-size: 10vh;
+          font-family: "Lobster";
+      .color_naranja{
+          color: orange;
+        }
+      .color_azul{
+          color:rgba(4, 4, 43, 0.904);
+        }
+      }
+      .parrafo{
+        font-size: 2.5vh;
+        }
+      }
   }
+  @media (max-width: 600px) {
+    .fondo{
+        ion-card {
+            width: 90vw;
+            height: 80vh;
+            .contenido_home{
+              .parrafo{
+                font-size: 2vh;
+              }
+              .titulo{
+                font-size: 8vh;
+              }
 
-.fuente_titulo{
-  color: #ffe9af;
-  font-style: inherit;
-  font-size: 3.5rem;
-  font-family: "Lobster";
+            }
+            
+        }
+    }
 }
 
-.fuente_letra1{
-  color: #000000;
-  font-style: inherit;
-  font-size: 1.75rem;
-  font-family: "Montserrat";
-  font-weight: bold;
-}
 
-.color_bar{
-  --ion-toolbar-background: rgb(50, 118, 182);
-}
 
-.color_letra{
-  --ion-text-color-rgb: rgb(255, 255, 255);
-}
+
