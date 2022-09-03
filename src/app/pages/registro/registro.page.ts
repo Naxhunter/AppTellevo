@@ -14,12 +14,13 @@ export class RegistroPage implements OnInit {
     rut: new FormControl('', [Validators.required, Validators.pattern('[0-9]{1,2}.[0-9]{3}.[0-9]{3}-[0-9kK]{1}')]),
     nombre: new FormControl('', [Validators.required, Validators.minLength(3)]),
     apellido: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    correo: new FormControl('',Validators.email),
     fecha_nac: new FormControl('', Validators.required),
-   correo: new FormControl('',Validators.email),
+    auto: new FormControl(''),
     password: new FormControl('', [Validators.required, 
                                    Validators.minLength(6),
                                    Validators.maxLength(18)]),
-    tipo_usuario: new FormControl('')
+    tipo_usuario: new FormControl('alumno')
   });
 
   verificar_password: string;
@@ -27,6 +28,7 @@ export class RegistroPage implements OnInit {
 
   ngOnInit() {
   }
+  
   registrar(){
     if (this.alumno.controls.password.value != this.verificar_password) {
       alert('CONTRASEÑAS NO COINCIDEN!');
@@ -38,4 +40,5 @@ export class RegistroPage implements OnInit {
 
     this.router.navigate(['/login']);
   }
+  
 }
