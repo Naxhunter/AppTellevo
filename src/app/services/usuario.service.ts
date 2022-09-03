@@ -6,7 +6,26 @@ import { Injectable } from '@angular/core';
 export class UsuarioService {
 
 /* aca  van las variables  */
-  usuarios :any[] = [];
+  usuarios :any[] = [
+
+    {
+      rut: '11.009.200-1',
+      nom_completo: 'Gemela',
+      fecha_nac : '1966-08-05',
+      semestre: 6,
+      password: 'admin',
+      tipo_usuario: 'administrador'
+    },
+    {
+      rut: '20.000.200-1',
+      nom_completo: 'Same',
+      fecha_nac : '2000-10-05',
+      semestre: 2,
+      password: 'default',
+      tipo_usuario: 'alumno'
+    },
+
+  ];
 
   constructor() {  }
 
@@ -38,6 +57,13 @@ export class UsuarioService {
 validarRecuperar(rut,correo){
 
   return this.usuarios.find(usu => usu.rut == rut && usu.correo == correo);
+  
+
+}
+
+validarLogin(rut,password){
+
+  return this.usuarios.find(usu => usu.rut == rut && usu.password == password);
   
 
 }
