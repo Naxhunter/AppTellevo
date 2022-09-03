@@ -1,0 +1,39 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+<ion-content>
+  <div class="login">
+    <ion-card>
+
+      <h1><b class="duoc">DUOC</b><b class="uc">UC</b><br><br>TeLlevo<b class="app">App</b>
+        <hr> <b class="iniciar">Iniciar Sesión</b>
+      </h1>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Rut :</ion-label>
+          <ion-input type="text" placeholder="Ingrese rut" [(ngModel)]="rut"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Contraseña :</ion-label>
+          <ion-input type="password" placeholder="Ingrese contraseña" [(ngModel)]="password"></ion-input>
+        </ion-item>
+        <ion-button (click)="login()" class="">Ingresar</ion-button>
+
+
+
+
+      </ion-card-content>
+      <div class="enlace">
+        <a routerLink='/recuperar'>¿Olvidaste tu contraseña?</a>
+        <br>
+        <br>
+        <a routerLink='/recuperar'>¿No tienes cuenta?</a>
+      </div>
+
+
+    </ion-card>
+  </div>
+</ion-content>

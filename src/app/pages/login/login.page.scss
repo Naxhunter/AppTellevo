@@ -1,0 +1,124 @@
+@use '../../../global.scss';
+
+.login{
+    height: 100vh;
+    background-image: url("../../../assets/img/fondo.jpg");
+    background-size: cover;
+    text-align: center;
+    font-family: 'Montserrat';
+}
+
+ion-card {
+    background: linear-gradient(#dfa474, #9912 ); 
+    margin: 0 auto;
+    top: 5vh;
+    height: 90vh;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    h1{
+        color: rgba(4, 4, 43, 0.904);
+        font-weight: bold;
+        font-family: 'Lobster';
+        b{
+            color: rgb(65, 45, 9);
+            font-weight: bold;
+        }
+        .duoc{
+            color: rgba(4, 4, 43, 0.904);
+            font-size: 50px;
+        }
+        .uc{
+            color: orange;
+            font-size: 50px;
+        }
+        .app{
+            color: orange;
+        }
+        .iniciar{
+            font-family: 'Lobster';
+        }
+    }
+
+    
+
+    ion-item {
+        --background: none;
+
+        ion-label {
+            font-size: large;
+            font-weight: bold;
+            --color: rgb(65, 45, 9);
+            font-family: 'Lobster';
+        }
+        ion-input{
+            font-family: 'Lobster';
+            color: rgba(4, 4, 43, 0.904);
+        }
+        
+    }
+    ion-button{
+        color: rgba(4, 4, 43, 0.904);
+        margin-top: 60px;
+        font-family: 'Montserrat';
+        --background: transparentize($color: #1e7065cb, $amount: 0.3);
+        font-weight: bold;
+        
+    }
+    .color_boton{
+        background-color: #dfa474;
+        font-weight: bold;
+    }
+    a {
+        text-decoration: none;
+        font-size: large;
+        font-family: 'Lobster';
+        font-weight: bold;
+        color: rgba(4, 4, 43, 0.904);
+        
+    }
+    .enlace{
+        background: transparentize($color: #dfa474, $amount: 0.5); 
+        width: 100vw;
+        padding: 15px 15px 15px 15px;
+    }
+}
+@media (max-width: 400px) {
+    .login {
+        ion-card {
+            width: 90vw;
+        }
+    }
+}
+
+/*
+.fondo{
+    height: 100vh ;
+    background-image: url(../../../assets/img/R.jpg);
+    text-align: center;
+    background-size: cover;
+
+    ion-card{
+        background: linear-gradient(#e66465, /* #9912  #9198e5); 
+        margin: 0 auto;
+        top: 5vh;
+        height:90hv;
+        width: 50vw;
+
+        display: block;
+        flex-direction: column ;
+        justify-content: space-around;
+        align-items: center;
+    }
+    img{
+        width: 100px;
+        height: 100;
+    }
+    ion-item{
+        --background: none;
+    }
+}
+*/
