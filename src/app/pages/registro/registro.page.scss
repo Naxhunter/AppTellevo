@@ -10,18 +10,43 @@
 ion-card{
     background: linear-gradient(#dfa474, #9912 ); 
     margin: 0 auto;
-    top: 5vh;
+    top: 3vh;
     height: 90vh;
-    width: 50vw;
+    width: 60vw;
     display: flex;
     flex-direction: column;
-    
+    align-items: center;
     justify-content: space-around;
+    
+    h1{
+        color: rgba(4, 4, 43, 0.904);
+        font-weight: bold;
+        font-family: 'Lobster';
+        b{
+            color: rgb(65, 45, 9);
+            font-weight: bold;
+        }
+        .duoc{
+            color: rgba(4, 4, 43, 0.904);
+            font-size: 30px;
+        }
+        .uc{
+            color: orange;
+            font-size: 30px;
+        }
+        .app{
+            color: orange;
+        }
+        .iniciar{
+            font-family: 'Lobster';
+        }
 
-    ion-item {
-        --background: none;
     }
-    ion-label {
+}
+ion-item{
+    --background: none;
+    width: 40vw;
+    ion-label{
         font-size: large;
         font-weight: bold;
         --color: rgb(65, 45, 9);
@@ -33,17 +58,24 @@ ion-card{
         color: rgba(4, 4, 43, 0.904);
     }
 }
-
 ion-button{
     color: rgba(4, 4, 43, 0.904);
-    margin-top: 60px;
+    margin-top: 10px;
     font-family: 'Montserrat';
     --background: transparentize($color: #249b8bcb, $amount: 0.5);
     font-weight: bold;    
 }
 
+a {
+    text-decoration: none;
+    font-size: large;
+    font-family: 'Lobster';
+    font-weight: bold;
+    color: rgba(4, 4, 43, 0.904);
+}
 .enlace{
-    background: transparentize($color: #dd9d69, $amount: 0.4); 
-    width: 50vw;
-    padding: 15px 15px 15px 15px;
+    background: transparentize($color: #dfa474, $amount: 0.5); 
+    width: 100vw;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
