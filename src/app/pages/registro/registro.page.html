@@ -2,7 +2,7 @@
   <div class="registro">
     <ion-card>
       <ion-card-content>
-        <form [formGroup]="alumno">
+        <form [formGroup]="alumno"  (ngSubmit)="registrar()">
           <ion-item>
             <ion-label position="stacked">Rut</ion-label>
             <ion-input type="text" placeholder="Ingrese rut" formControlName="rut"></ion-input>
@@ -17,7 +17,7 @@
           </ion-item>
           <ion-item>
             <ion-label position="stacked">Correo</ion-label>
-            <ion-input type="date" placeholder="Ingrese correo" formControlName="correo"></ion-input>
+            <ion-input type="email" placeholder="Ingrese correo" formControlName="correo"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label position="stacked">Fecha nacimiento</ion-label>
@@ -33,44 +33,11 @@
           </ion-item>
           <ion-item>
             <ion-label position="stacked">Repita Contraseña</ion-label>
-            <ion-input type="password" placeholder="Ingrese nuevamente contraseña"></ion-input>
+            <ion-input type="password" placeholder="Ingrese nuevamente contraseña" [(ngModel)]="verificar_password" [ngModelOptions]="{standalone: 'true'}"></ion-input>
           </ion-item>
+          <ion-button type="submit" >REGISTRAR</ion-button>
         </form>
       </ion-card-content>
     </ion-card>
-    
   </div>
 </ion-content>
-<!-- <ion-item>
-        <ion-label position="stacked">Rut</ion-label>
-        <ion-input type="text" placeholder="Ingrese rut" formControlName="rut"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="stacked">Nombre</ion-label>
-        <ion-input type="text" placeholder="Ingrese nombre" formControlName="nombre"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="stacked">Apellido</ion-label>
-        <ion-input type="text" placeholder="Ingrese nombre" formControlName="apellido"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="stacked">Correo</ion-label>
-        <ion-input type="date" placeholder="Ingrese correo" formControlName="correo"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="stacked">Fecha nacimiento</ion-label>
-        <ion-input type="date" placeholder="Ingrese fecha nacimiento" formControlName="fecha_nac"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>¿Cuenta con auto?</ion-label>
-        <ion-checkbox color="primary" checked slot="start" formControlName="auto"></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label position="stacked">Contraseña</ion-label>
-        <ion-input type="password" placeholder="Ingrese contraseña" formControlName="password"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="stacked">Repita Contraseña</ion-label>
-        <ion-input type="password" placeholder="Ingrese nuevamente contraseña"></ion-input>
-      </ion-item>
-      <ion-button type="submit" >REGISTRAR</ion-button> -->
