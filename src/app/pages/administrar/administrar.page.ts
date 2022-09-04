@@ -15,6 +15,8 @@ export class AdministrarPage implements OnInit {
   variable: string = "Administrar";
   listado: any = [];
   registrar: any = undefined;
+  modificar: any = undefined;
+  eliminar: any = undefined;
   constructor(private navCtrl:NavController, private route: ActivatedRoute, private usuarioService: UsuarioService) { }
 
   ngOnInit() {
@@ -24,6 +26,8 @@ export class AdministrarPage implements OnInit {
   irRegistrar(){
     this.variable = "Registrar Usuario";
     this.listado = undefined;
+    this.modificar = undefined;
+    this.eliminar = undefined;
     this.registrar = 1;
   }
   irListar(){
@@ -33,8 +37,16 @@ export class AdministrarPage implements OnInit {
   }
   irModificar(){
     this.variable = "Modificar Usuario";
+    this.listado = undefined;
+    this.modificar = 1;
+    this.eliminar = undefined;
+    this.registrar = undefined;
   }
   irEliminar(){
     this.variable = "Eliminar Usuario";
+    this.listado = undefined;
+    this.modificar = undefined;
+    this.eliminar = 1;
+    this.registrar = undefined;
   }
 }
