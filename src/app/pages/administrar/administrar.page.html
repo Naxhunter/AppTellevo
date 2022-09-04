@@ -69,6 +69,26 @@
                   <ion-button type="submit">REGISTRAR</ion-button>
                 </form>
               </div>
+              <div class="modificar_usuarios" *ngIf="modificar != undefined">
+                <form [formGroup]="alumno" (ngSubmit)="buscar()">
+                  <ion-item>
+                    <ion-label>Rut :</ion-label>
+                    <ion-input type="text" placeholder="Ingrese rut" formControlName="rut"></ion-input>
+                  </ion-item>
+                  
+                  <ion-button type="submit">Buscar</ion-button>
+                </form>
+              </div>
+              <div class="eliminar_usuarios" *ngIf="eliminar != undefined">
+                <form [formGroup]="alumno" (ngSubmit)="buscar()">
+                  <ion-item>
+                    <ion-label>Rut :</ion-label>
+                    <ion-input type="text" placeholder="Ingrese rut" formControlName="rut"></ion-input>
+                  </ion-item>
+                  
+                  <ion-button type="submit">Eliminar</ion-button>
+                </form>
+              </div>
             </div>
           </ion-col>
         </ion-row>
