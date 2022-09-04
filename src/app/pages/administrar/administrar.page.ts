@@ -13,7 +13,7 @@ export class AdministrarPage implements OnInit {
   rut: any;
   sesion: any = [];
   variable: string = "Administrar";
-  listado: any = [];
+  listado: any = undefined;
   registrar: any = undefined;
   modificar: any = undefined;
   eliminar: any = undefined;
@@ -33,6 +33,8 @@ export class AdministrarPage implements OnInit {
   irListar(){
     this.variable = "Listar Usuarios";
     this.registrar = undefined;
+    this.eliminar = undefined;
+    this.modificar = undefined;
     this.listado = this.usuarioService.obtenerUsuarios();
   }
   irModificar(){

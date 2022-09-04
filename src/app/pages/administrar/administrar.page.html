@@ -18,14 +18,17 @@
             <div class="opciones" (click)="irEliminar()">ELIMINAR USUARIO</div>
           </ion-col>
           <ion-col size="9">
+
             <div class="contenedor_principal">
-              <h1>{{variable}}</h1>
+              <div class="titulo">
+                <h1>{{variable}}</h1>
+              </div>
               <div class="listar_usuarios" *ngIf="listado != undefined">
-                <ion-card>
-                  <ion-item *ngFor="let usuario of listado">
-                    {{usuario.rut}} : {{usuario.nombre}}
-                  </ion-item>
-                </ion-card>
+                <div class="lista" *ngFor="let usuario of listado">
+                    <div>
+                      {{usuario.rut}} : {{usuario.nombre}} {{usuario.apellido}} | {{usuario.tipo_usuario}}
+                    </div>
+                </div>
               </div>
               <div class="registrar_usuarios" *ngIf="registrar != undefined">
                 <form [formGroup]="alumno" (ngSubmit)="registrar()">
@@ -39,7 +42,7 @@
                   </ion-item>
                   <ion-item>
                     <ion-label>Apellido :</ion-label>
-                    <ion-input type="text" placeholder="Ingrese nombre" formControlName="apellido"></ion-input>
+                    <ion-input type="text" placeholder="Ingrese apellido" formControlName="apellido"></ion-input>
                   </ion-item>
                   <ion-item>
                     <ion-label>Correo :</ion-label>
@@ -55,6 +58,13 @@
                     <ion-select placeholder="Seleccione" formControlName="auto">
                       <ion-select-option value="si">Tengo auto</ion-select-option>
                       <ion-select-option value="no">No tengo auto</ion-select-option>
+                    </ion-select>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>¿Tipo usuario? </ion-label>
+                    <ion-select placeholder="Seleccione" formControlName="auto">
+                      <ion-select-option value="administrador">Administrador</ion-select-option>
+                      <ion-select-option value="alumno">Alumno</ion-select-option>
                     </ion-select>
                   </ion-item>
                   <ion-item>
@@ -75,7 +85,7 @@
                     <ion-label>Rut :</ion-label>
                     <ion-input type="text" placeholder="Ingrese rut" formControlName="rut"></ion-input>
                   </ion-item>
-                  
+
                   <ion-button type="submit">Buscar</ion-button>
                 </form>
               </div>
@@ -85,7 +95,7 @@
                     <ion-label>Rut :</ion-label>
                     <ion-input type="text" placeholder="Ingrese rut" formControlName="rut"></ion-input>
                   </ion-item>
-                  
+
                   <ion-button type="submit">Eliminar</ion-button>
                 </form>
               </div>
