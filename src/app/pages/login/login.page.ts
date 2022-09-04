@@ -25,7 +25,7 @@ export class LoginPage implements OnInit {
     var usuarioLogin = this.usuarioService.validarLogin(this.rut, this.password);
     if (usuarioLogin != undefined) {
       if (usuarioLogin.tipo_usuario == 'administrador') {
-        this.navCtrl.navigateForward(['/administrar', this.rut]);
+        this.navCtrl.navigateForward(['/home', this.rut]);
       }else{
         this.navCtrl.navigateForward(['/home', this.rut]);
       }

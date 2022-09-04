@@ -23,7 +23,17 @@ export class HomePage implements OnInit {
   perfil(rut){
     this.navCtrl.navigateForward(['/perfil',rut]);
   }
+  administrar(rut){
+    this.navCtrl.navigateForward(['/administrar',rut]);
+  }
   cerrarSesion(){
     this.router.navigate(['/login']);
   }
+  irCrearViaje(){
+    this.router.navigate(['/nuevoviaje']);
+  }
+  irSolicitudViaje(){
+    this.router.navigate(['/solicitud']);
+  }
+
 }
