@@ -77,8 +77,14 @@ export class AdministrarPage implements OnInit {
     alert('¡USUARIO REGISTRADO!');
   }
   eliminarAdmin(){
-    this.usuarioService.eliminarUsuario(this.alumno.controls.rut.value);
-    alert('¡USUARIO ELIMINADO!');
+    if(this.sesion.rut == this.alumno.controls.rut.value){
+      alert('¡NO TE PUEDES ELIMINAR A TI MISMO!')
+    }
+    else{
+      this.usuarioService.eliminarUsuario(this.alumno.controls.rut.value);
+      alert('¡USUARIO ELIMINADO!');
+    }
+    
   }
   buscarAdmin(){
     this.usuario_buscado = this.usuarioService.obtenerUsuario(this.alumno.controls.rut.value);
