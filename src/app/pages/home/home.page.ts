@@ -12,6 +12,7 @@ import { NavController } from '@ionic/angular';
 export class HomePage implements OnInit {
   rut: any;
   sesion: any = [];
+  
   constructor(private router: Router, private route: ActivatedRoute, private usuarioService: UsuarioService,
     private navCtrl: NavController) { }
 

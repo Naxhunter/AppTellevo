@@ -1,185 +1,33 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>bienvenido administrador {{sesion.nombre}}</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-<ion-grid>
-  <ion-row>
-    <ion-col>
-      ion-col
-    </ion-col>
-    <ion-col>
-      ion-col
-    </ion-col>
-    <ion-col>
-      ion-col
-    </ion-col>
-    <ion-col>
-      ion-col
-    </ion-col>
-  </ion-row>
+  <div class="fondo">
+    <ion-header>
+      <div class="flexibles">
+        <div class="separar" (click)="perfil(sesion.rut)">Perfil</div>
+        <div class="separar" (click)="irCrearViaje()">Nuevo viaje</div>
+        <div class="separar" *ngIf="sesion.auto == 'si'" (click)="irSolicitudViaje()">Solicitudes viajes</div>
+        <div class="separar" *ngIf="sesion.tipo_usuario == 'administrador'" (click)="administrar(sesion.rut)">
+          Administración</div>
+        <div class="separar" *ngIf="sesion.rut != undefined" (click)="cerrarSesion()">Cerrar Sesión</div>
+      </div>
+    </ion-header>
+    <div class="opcion">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="3" class="columna_opciones">
+            <div class="opciones">USUARIOS EXISTENTES</div>
+            <div class="opciones">REGISTRAR USUARIO</div>
+            <div class="opciones">MODIFICAR USUARIO</div>
+            <div class="opciones">ELIMINAR USUARIO</div>
+          </ion-col>
+          <ion-col size="9" >
+            <div>
+              <h1>{{variable}}</h1>
+              
 
-  <ion-row>
-    <ion-col size="6">
-      ion-col [size="6"]
-    </ion-col>
-    <ion-col>
-      ion-col
-    </ion-col>
-    <ion-col>
-      ion-col
-    </ion-col>
-  </ion-row>
-
-  <ion-row>
-    <ion-col size="3">
-      ion-col [size="3"]
-    </ion-col>
-    <ion-col>
-      ion-col
-    </ion-col>
-    <ion-col size="3">
-      ion-col [size="3"]
-    </ion-col>
-  </ion-row>
-
-  <ion-row>
-    <ion-col size="3">
-      ion-col [size="3"]
-    </ion-col>
-    <ion-col size="3" offset="3">
-      ion-col [size="3"] [offset="3"]
-    </ion-col>
-  </ion-row>
-
-  <ion-row>
-    <ion-col>
-      ion-col
-    </ion-col>
-    <ion-col>
-      ion-col
-      <br>#
-    </ion-col>
-    <ion-col>
-      ion-col
-      <br>#
-      <br>#
-    </ion-col>
-    <ion-col>
-      ion-col
-      <br>#
-      <br>#
-      <br>#
-    </ion-col>
-  </ion-row>
-
-  <ion-row>
-    <ion-col class="ion-align-self-start">
-      ion-col [start]
-    </ion-col>
-    <ion-col class="ion-align-self-center">
-      ion-col [center]
-    </ion-col>
-    <ion-col class="ion-align-self-end">
-      ion-col [end]
-    </ion-col>
-    <ion-col>
-      ion-col
-      <br>#
-      <br>#
-    </ion-col>
-  </ion-row>
-
-  <ion-row class="ion-align-items-start">
-    <ion-col>
-      [start] ion-col
-    </ion-col>
-    <ion-col>
-      [start] ion-col
-    </ion-col>
-    <ion-col class="ion-align-self-end">
-      [start] ion-col [end]
-    </ion-col>
-    <ion-col>
-      ion-col
-      <br>#
-      <br>#
-    </ion-col>
-  </ion-row>
-
-  <ion-row class="ion-align-items-center">
-    <ion-col>
-      [center] ion-col
-    </ion-col>
-    <ion-col>
-      [center] ion-col
-    </ion-col>
-    <ion-col>
-      [center] ion-col
-    </ion-col>
-    <ion-col>
-      ion-col
-      <br>#
-      <br>#
-    </ion-col>
-  </ion-row>
-
-  <ion-row class="ion-align-items-end">
-    <ion-col>
-      [end] ion-col
-    </ion-col>
-    <ion-col class="ion-align-self-start">
-      [end] ion-col [start]
-    </ion-col>
-    <ion-col>
-      [end] ion-col
-    </ion-col>
-    <ion-col>
-      ion-col
-      <br>#
-      <br>#
-    </ion-col>
-  </ion-row>
-
-  <ion-row>
-    <ion-col size="12" size-sm>
-      ion-col [size="12"] [size-sm]
-    </ion-col>
-    <ion-col size="12" size-sm>
-      ion-col [size="12"] [size-sm]
-    </ion-col>
-    <ion-col size="12" size-sm>
-      ion-col [size="12"] [size-sm]
-    </ion-col>
-    <ion-col size="12" size-sm>
-      ion-col [size="12"] [size-sm]
-    </ion-col>
-  </ion-row>
-
-  <ion-row>
-    <ion-col size="12" size-md>
-      ion-col [size="12"] [size-md]
-    </ion-col>
-    <ion-col size="12" size-md>
-      ion-col [size="12"] [size-md]
-    </ion-col>
-    <ion-col size="12" size-md>
-      ion-col [size="12"] [size-md]
-    </ion-col>
-    <ion-col size="12" size-md>
-      ion-col [size="12"] [size-md]
-    </ion-col>
-  </ion-row>
-
-  <ion-row>
-    <ion-col size="6" size-lg offset="3">
-      ion-col [size="6"] [size-lg] [offset="3"]
-    </ion-col>
-    <ion-col size="3" size-lg>
-      ion-col [size="3"] [size-lg]
-    </ion-col>
-  </ion-row>
-</ion-grid>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
 </ion-content>

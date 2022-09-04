@@ -11,6 +11,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class AdministrarPage implements OnInit {
   rut: any;
   sesion: any = [];
+  variable: string = "titulo";
   constructor(private navCtrl:NavController, private route: ActivatedRoute, private usuarioService: UsuarioService) { }
 
   ngOnInit() {

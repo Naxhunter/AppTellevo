@@ -1,0 +1,53 @@
+.rojo{
+    background-color: red;
+}
+.azul{
+    background-color: rgb(0, 26, 255);
+}
+.fondo{
+    box-shadow: none;
+    height: 100vh;
+    background: transparentize($color: #f0e658bd, $amount: 0.3);
+    background: url("../../../assets/img/fondo.jpg");
+    height: 100vh;
+    background-size: cover;
+    text-align: center;
+    font-family: 'Montserrat';
+    .flexibles{
+      display: flex;
+      flex-direction: row;
+      background: rgb(14,0,255);
+      background: linear-gradient(90deg, rgba(14,0,255,1) 0%, rgba(255,165,0,1) 83%, rgba(255,195,0,1) 100%);
+      height: 10vh;
+      font-size: 2.5vh;
+      font-weight: bold;
+      font-family: 'Lobster';
+      color: white;
+      .separar{
+        padding-left: 5vh;
+        padding-top: 3vh;
+      }
+    }
+    .opcion{
+        padding-top: 0vh;
+        height: 100vh;
+        background: linear-gradient(#dfa474, #9912 ); 
+        ion-row{
+            width: 100vw;
+            height: 100vh;
+            .columna_opciones{
+                background: transparentize($color: #dfa474, $amount: 0.5); 
+                .opciones{
+                    padding-top: 5vh;
+                    padding-bottom: 5vh;
+                    background: transparentize($color: #332113, $amount: 0.9);
+                    font-weight: bold;
+                    
+                }   
+            }
+            
+        }
+        
+    }
+  }
+  
