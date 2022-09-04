@@ -31,7 +31,15 @@ const routes: Routes = [
   {
     path: 'perfil/:rut',
     loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },  {
+    path: 'solicitud',
+    loadChildren: () => import('./pages/solicitud/solicitud.module').then( m => m.SolicitudPageModule)
   },
+  {
+    path: 'nuevoviaje',
+    loadChildren: () => import('./pages/nuevoviaje/nuevoviaje.module').then( m => m.NuevoviajePageModule)
+  },
+
 
 ];
 
