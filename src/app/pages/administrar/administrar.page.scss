@@ -72,8 +72,11 @@
                 .listar_usuarios{
                     width: 50vw;
                     .lista{
+                        background: transparentize($color: #332113, $amount: 0.9);
+                        border-radius: 3px;
+                        .elemento{
 
-                        
+                        }
                     }
                     
                 }

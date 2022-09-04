@@ -25,13 +25,19 @@
               </div>
               <div class="listar_usuarios" *ngIf="listado != undefined">
                 <div class="lista" *ngFor="let usuario of listado">
-                    <div>
-                      {{usuario.rut}} : {{usuario.nombre}} {{usuario.apellido}} | {{usuario.tipo_usuario}}
-                    </div>
+                  <div class="elemento">
+                    <hr>
+                    <div><b>Rut</b>: {{usuario.rut}}</div>
+                    <div><b>Nombre</b>: {{usuario.nombre}} {{usuario.apellido}}</div>
+                    <div><b>Rol</b>: {{usuario.tipo_usuario}}</div>
+                    <div><b>Conductor</b>: {{usuario.auto}}</div>
+                    <hr>
+
+                  </div>
                 </div>
               </div>
               <div class="registrar_usuarios" *ngIf="registrar != undefined">
-                <form [formGroup]="alumno" (ngSubmit)="registrar()">
+                <form [formGroup]="alumno" (ngSubmit)="registrarAdmin()">
                   <ion-item>
                     <ion-label>Rut :</ion-label>
                     <ion-input type="text" placeholder="Ingrese rut" formControlName="rut"></ion-input>
@@ -62,7 +68,7 @@
                   </ion-item>
                   <ion-item>
                     <ion-label>¿Tipo usuario? </ion-label>
-                    <ion-select placeholder="Seleccione" formControlName="auto">
+                    <ion-select placeholder="Seleccione" formControlName="tipo_usuario">
                       <ion-select-option value="administrador">Administrador</ion-select-option>
                       <ion-select-option value="alumno">Alumno</ion-select-option>
                     </ion-select>
@@ -80,23 +86,75 @@
                 </form>
               </div>
               <div class="modificar_usuarios" *ngIf="modificar != undefined">
-                <form [formGroup]="alumno" (ngSubmit)="buscar()">
-                  <ion-item>
-                    <ion-label>Rut :</ion-label>
-                    <ion-input type="text" placeholder="Ingrese rut" formControlName="rut"></ion-input>
-                  </ion-item>
+                <div *ngIf="modificar == 1">
+                  <form [formGroup]="alumno">
+                    <ion-item>
+                      <ion-label>Rut :</ion-label>
+                      <ion-input type="text" placeholder="Ingrese rut" formControlName="rut"></ion-input>
+                    </ion-item>
 
-                  <ion-button type="submit">Buscar</ion-button>
-                </form>
+                    <ion-button (click)="buscarAdmin()">Buscar</ion-button>
+                  </form>
+                </div>
+                <div *ngIf="modificar == 2">
+                  <form [formGroup]="alumno" (ngSubmit)="modificarAdmin()">
+                    <ion-item>
+                      <ion-label>Rut :</ion-label>
+                      <ion-input type="text" placeholder="{{usuario_buscado.rut}}" formControlName="rut" value="{{usuario_buscado.rut}}" readonly></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Nombre :</ion-label>
+                      <ion-input type="text" placeholder="{{usuario_buscado.nombre}}" formControlName="nombre" ></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Apellido :</ion-label>
+                      <ion-input type="text" placeholder="{{usuario_buscado.apellido}}" formControlName="apellido" ></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Correo :</ion-label>
+                      <ion-input type="email" placeholder="{{usuario_buscado.correo}}" formControlName="correo" ></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>{{usuario_buscado.fecha_nac}} : </ion-label>
+                      <ion-input type="date" placeholder="" formControlName="fecha_nac" >
+                      </ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>¿Cuenta con auto? </ion-label>
+                      <ion-select placeholder="{{usuario_buscado.auto}}" formControlName="auto">
+                        <ion-select-option value="si">Tengo auto</ion-select-option>
+                        <ion-select-option value="no">No tengo auto</ion-select-option>
+                      </ion-select>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>¿Tipo usuario? </ion-label>
+                      <ion-select placeholder="{{usuario_buscado.tipo_usuario}}" formControlName="tipo_usuario">
+                        <ion-select-option value="administrador">Administrador</ion-select-option>
+                        <ion-select-option value="alumno">Alumno</ion-select-option>
+                      </ion-select>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Contraseña :</ion-label>
+                      <ion-input type="password" placeholder="{{usuario_buscado.password}}" formControlName="password" ></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Repita Contraseña :</ion-label>
+                      <ion-input type="password" placeholder="Ingrese nuevamente contraseña"
+                        [(ngModel)]="verificar_password" [ngModelOptions]="{standalone: 'true'}"></ion-input>
+                    </ion-item>
+                    <ion-button type="submit">MODIFICAR</ion-button>
+                  </form>
+                </div>
+
               </div>
               <div class="eliminar_usuarios" *ngIf="eliminar != undefined">
-                <form [formGroup]="alumno" (ngSubmit)="buscar()">
+                <form [formGroup]="alumno">
                   <ion-item>
                     <ion-label>Rut :</ion-label>
                     <ion-input type="text" placeholder="Ingrese rut" formControlName="rut"></ion-input>
                   </ion-item>
 
-                  <ion-button type="submit">Eliminar</ion-button>
+                  <ion-button (click)="eliminarAdmin()">Eliminar</ion-button>
                 </form>
               </div>
             </div>
