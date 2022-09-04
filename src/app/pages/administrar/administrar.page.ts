@@ -12,6 +12,7 @@ export class AdministrarPage implements OnInit {
   rut: any;
   sesion: any = [];
   variable: string = "Administrar";
+  listado: any = [];
   constructor(private navCtrl:NavController, private route: ActivatedRoute, private usuarioService: UsuarioService) { }
 
   ngOnInit() {
@@ -23,6 +24,7 @@ export class AdministrarPage implements OnInit {
   }
   irListar(){
     this.variable = "Listar Usuarios";
+    this.listado = this.usuarioService.obtenerUsuarios();
   }
   irModificar(){
     this.variable = "Modificar Usuario";

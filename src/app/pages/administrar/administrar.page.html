@@ -18,10 +18,15 @@
             <div class="opciones" (click)="irEliminar()">ELIMINAR USUARIO</div>
           </ion-col>
           <ion-col size="9" >
-            <div>
+            <div class="contenedor_principal">
               <h1>{{variable}}</h1>
-              
-
+              <div class="listar_usuarios" *ngIf="listado != undefined">
+                <ion-card>
+                  <ion-item *ngFor="let usuario of listado">
+                    {{usuario.rut}} : {{usuario.nombre}}
+                  </ion-item>
+                </ion-card>
+              </div>
             </div>
           </ion-col>
         </ion-row>
