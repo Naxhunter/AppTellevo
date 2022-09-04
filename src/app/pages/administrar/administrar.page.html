@@ -12,10 +12,10 @@
       <ion-grid>
         <ion-row>
           <ion-col size="3" class="columna_opciones">
-            <div class="opciones">USUARIOS EXISTENTES</div>
-            <div class="opciones">REGISTRAR USUARIO</div>
-            <div class="opciones">MODIFICAR USUARIO</div>
-            <div class="opciones">ELIMINAR USUARIO</div>
+            <div class="opciones" (click)="Listar()">USUARIOS EXISTENTES</div>
+            <div class="opciones" (click)="irRegistrar()">REGISTRAR USUARIO</div>
+            <div class="opciones" (click)="irModificar()">MODIFICAR USUARIO</div>
+            <div class="opciones" (click)="irEliminar()">ELIMINAR USUARIO</div>
           </ion-col>
           <ion-col size="9" >
             <div>
