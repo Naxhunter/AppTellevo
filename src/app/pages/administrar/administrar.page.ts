@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-administrar',
@@ -13,6 +14,7 @@ export class AdministrarPage implements OnInit {
   sesion: any = [];
   variable: string = "Administrar";
   listado: any = [];
+  registrar: any = undefined;
   constructor(private navCtrl:NavController, private route: ActivatedRoute, private usuarioService: UsuarioService) { }
 
   ngOnInit() {
@@ -21,9 +23,12 @@ export class AdministrarPage implements OnInit {
   }
   irRegistrar(){
     this.variable = "Registrar Usuario";
+    this.listado = undefined;
+    this.registrar = 1;
   }
   irListar(){
     this.variable = "Listar Usuarios";
+    this.registrar = undefined;
     this.listado = this.usuarioService.obtenerUsuarios();
   }
   irModificar(){
