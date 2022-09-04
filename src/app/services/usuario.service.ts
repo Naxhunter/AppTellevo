@@ -28,6 +28,16 @@ export class UsuarioService {
       password: 'default',
       tipo_usuario: 'alumno'
     },
+    {
+      rut: '21.239.230-5',
+      nombre: 'Andrea',
+      apellido: 'Cespedes',
+      correo: 'AndreaCesp@gmail.com',
+      fecha_nac : '1997-02-01',
+      auto: 'si',
+      password: 'default',
+      tipo_usuario: 'alumno'
+    },
 
   ];
 
