@@ -9,7 +9,6 @@
     height: 100vh;
     background: transparentize($color: #f0e658bd, $amount: 0.3);
     background: url("../../../assets/img/fondo.jpg");
-    height: 100vh;
     background-size: cover;
     text-align: center;
     font-family: 'Montserrat';
@@ -30,13 +29,16 @@
     }
     .opcion{
         padding-top: 0vh;
-        height: 100vh;
+        height: 90vh;
         background: linear-gradient(#dfa474, #9912 ); 
         ion-row{
             width: 100vw;
-            height: 100vh;
+            height: 88.65vh;
             .columna_opciones{
                 background: transparentize($color: #dfa474, $amount: 0.5); 
+                border-right: solid;
+                border-bottom: solid;
+                border-color: rgb(65, 45, 9);
                 .opciones{
                     padding-top: 5vh;
                     padding-bottom: 5vh;
