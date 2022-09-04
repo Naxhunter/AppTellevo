@@ -28,6 +28,11 @@ const routes: Routes = [
     path: 'administrar/:rut',
     loadChildren: () => import('./pages/administrar/administrar.module').then( m => m.AdministrarPageModule)
   },
+  {
+    path: 'perfil/:rut',
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+
 ];
 
 @NgModule({
