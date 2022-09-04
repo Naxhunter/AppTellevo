@@ -11,12 +11,23 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class AdministrarPage implements OnInit {
   rut: any;
   sesion: any = [];
-  variable: string = "titulo";
+  variable: string = "Administrar";
   constructor(private navCtrl:NavController, private route: ActivatedRoute, private usuarioService: UsuarioService) { }
 
   ngOnInit() {
     let rut = this.route.snapshot.paramMap.get('rut');
     this.sesion = this.usuarioService.obtenerUsuario(rut);
   }
-
+  irRegistrar(){
+    this.variable = "Registrar Usuario";
+  }
+  irListar(){
+    this.variable = "Listar Usuarios";
+  }
+  irModificar(){
+    this.variable = "Modificar Usuario";
+  }
+  irEliminar(){
+    this.variable = "Eliminar Usuario";
+  }
 }
