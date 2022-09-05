@@ -10,7 +10,7 @@
         <form [formGroup]="alumno"  (ngSubmit)="registrar()">
           <ion-item>
             <ion-label>Rut :</ion-label>
-            <ion-input type="text" placeholder="Ingrese rut" formControlName="rut"></ion-input>
+            <ion-input type="text" placeholder="Ingrese rut sin puntos y con guion. Ejemplo(1234567-8)" formControlName="rut"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label>Nombre :</ion-label>
@@ -18,7 +18,7 @@
           </ion-item>
           <ion-item>
             <ion-label>Apellido :</ion-label>
-            <ion-input type="text" placeholder="Ingrese nombre" formControlName="apellido"></ion-input>
+            <ion-input type="text" placeholder="Ingrese apellido" formControlName="apellido"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label>Correo :</ion-label>
@@ -43,7 +43,7 @@
             <ion-label>Repita Contraseña :</ion-label>
             <ion-input type="password" placeholder="Ingrese nuevamente contraseña" [(ngModel)]="verificar_password" [ngModelOptions]="{standalone: 'true'}"></ion-input>
           </ion-item>
-          <ion-button type="submit" >REGISTRAR</ion-button>
+          <ion-button type="submit" [disabled]="!alumno.valid" >REGISTRAR</ion-button>
         </form>
       </ion-card-content>
       <div class="enlace">
