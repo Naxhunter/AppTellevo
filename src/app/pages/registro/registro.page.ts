@@ -23,6 +23,8 @@ export class RegistroPage implements OnInit {
                                   ]),
     tipo_usuario: new FormControl('alumno')
   });
+/*   validarPass= this.alumno.reset();
+ */ 
   validar_correo: any
   verificar_password: string;
   constructor(private usuarioService: UsuarioService, private router: Router) { }
@@ -46,9 +48,9 @@ export class RegistroPage implements OnInit {
       return;
     }
     if(this.usuarioService.agregarUsuario(this.alumno.value)==true){
-/*        correo = this.usuarioService.obtenerUsuario(this.alumno.controls.rut.value); Para otra version uwu
-      if()) */
+/*        correo = this.usuarioService.obtenerUsuario(this.alumno.controls.rut.value); Para otra version */
       this.alumno.reset();
+      /* this.verificar_password ='' ; */
       alert('¡USUARIO REGISTRADO!');
       this.router.navigate(['/login']);
 

@@ -82,7 +82,7 @@
                     <ion-input type="password" placeholder="Ingrese nuevamente contraseña"
                       [(ngModel)]="verificar_password" [ngModelOptions]="{standalone: 'true'}"></ion-input>
                   </ion-item>
-                  <ion-button type="submit">REGISTRAR</ion-button>
+                  <ion-button type="submit" [disabled]="!alumno.valid">REGISTRAR</ion-button>
                 </form>
               </div>
               <div class="modificar_usuarios" *ngIf="modificar != undefined">
@@ -142,7 +142,7 @@
                       <ion-input type="password" placeholder="Ingrese nuevamente contraseña"
                         [(ngModel)]="verificar_password" [ngModelOptions]="{standalone: 'true'}"></ion-input>
                     </ion-item>
-                    <ion-button type="submit">MODIFICAR</ion-button>
+                    <ion-button type="submit" [disabled]="!alumno.valid">MODIFICAR</ion-button>
                   </form>
                 </div>
 
@@ -153,7 +153,7 @@
                     <ion-label>Rut :</ion-label>
                     <ion-input type="text" placeholder="Ingrese rut" formControlName="rut"></ion-input>
                   </ion-item>
-
+                <!-- [disabled]="!alumnoGroupBusAndEli.valid" -->
                   <ion-button (click)="eliminarAdmin()">Eliminar</ion-button>
                 </form>
               </div>

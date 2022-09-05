@@ -17,14 +17,13 @@ export class RecuperarPage implements OnInit {
   ngOnInit() {
   }
 
- recuperar(){
-  var usuarioRecuperar = this.usuarioService.validarRecuperar(this.rut, this.correo)
+ usuarioRecuperar(){
+  let usuarioRecuperado = this.usuarioService.validarRecuperar(this.rut, this.correo);
 
-  if (usuarioRecuperar == true ) {
-    this.router.navigate(['/CambioContrasena'])
-    
+  if (usuarioRecuperado == true ) {
+    this.router.navigate(['/login']);
   }else{
-    this.toastError
+    this.toastError();
   }
  }
  async toastError() {

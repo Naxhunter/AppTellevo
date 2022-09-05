@@ -77,8 +77,11 @@ export class UsuarioService {
   }
 
  /// METODOS CUSTOMER:
-validarRecuperar(rut,correo): any{
-  return this.usuarios.find(usu => usu.rut == rut && usu.correo == correo);
+validarRecuperar(rut,correo): boolean{
+  if(this.usuarios.find(usu => usu.rut == rut && usu.correo == correo) != undefined){
+    return true;
+  }
+  return false;
 }
 
 validarLogin(rut,password): any{

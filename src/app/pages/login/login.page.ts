@@ -14,7 +14,7 @@ export class LoginPage implements OnInit {
 
   rut: string;
   password: string;
-
+  nuevorut: string;
   constructor(private toastController: ToastController, private router: Router,
                       private usuarioService: UsuarioService, private route: ActivatedRoute, private navCtrl: NavController) { }
 
@@ -25,9 +25,16 @@ export class LoginPage implements OnInit {
     var usuarioLogin = this.usuarioService.validarLogin(this.rut, this.password);
     if (usuarioLogin != undefined) {
       if (usuarioLogin.tipo_usuario == 'administrador') {
-        this.navCtrl.navigateForward(['/home', this.rut]);
+        this.nuevorut = this.rut;
+        this.password = '';
+        this.rut = '';
+        this.navCtrl.navigateForward(['/home', this.nuevorut]);
+        
       }else{
-        this.navCtrl.navigateForward(['/home', this.rut]);
+        this.nuevorut = this.rut;
+        this.password = '';
+        this.rut = '';
+        this.navCtrl.navigateForward(['/home', this.nuevorut]);
       }
     } else {
         this.toastError();

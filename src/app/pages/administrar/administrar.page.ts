@@ -11,10 +11,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AdministrarPage implements OnInit {
   alumno = new FormGroup({
-    rut: new FormControl('', [Validators.required, Validators.pattern('[0-9]{1,2}.[0-9]{3}.[0-9]{3}-[0-9kK]{1}')]),
+    rut: new FormControl('', [Validators.required, Validators.pattern('[0-9]{7,8}-[0-9kK]{1}')]),
     nombre: new FormControl('', [Validators.required, Validators.minLength(3)]),
     apellido: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    correo: new FormControl('',[Validators.email,Validators.required]),
+    correo: new FormControl('',[Validators.email,Validators.required, Validators.pattern('[0-9a-zA-Z](\.[_a-z0-9-]+)+@duocuc.cl')]),  
     fecha_nac: new FormControl('', Validators.required),
     auto: new FormControl('',Validators.required),
     password: new FormControl('', [Validators.required, 
@@ -39,6 +39,8 @@ export class AdministrarPage implements OnInit {
     this.sesion = this.usuarioService.obtenerUsuario(rut);
   }
   irRegistrar(){
+
+    
     this.variable = "Registrar Usuario";
     this.listado = undefined;
     this.modificar = undefined;
@@ -68,6 +70,16 @@ export class AdministrarPage implements OnInit {
   }
   
   registrarAdmin(){
+    const now = new Date();
+    let anioActual = now.getFullYear();
+    const nacUsuario = new Date(this.alumno.controls.fecha_nac.value);
+    let edadUsuario = nacUsuario.getFullYear();
+    let resta = anioActual-edadUsuario;
+    
+    if(resta<17){
+      alert('¡MAYOR DE 17 AÑOS!');
+      return;
+    } 
     if (this.alumno.controls.password.value != this.verificar_password) {
       alert('¡CONTRASEÑAS NO COINCIDEN!');
       return;
@@ -92,6 +104,17 @@ export class AdministrarPage implements OnInit {
     return this.usuario_buscado;
   }
   modificarAdmin(){
+    
+    const now = new Date();
+    let anioActual = now.getFullYear();
+    const nacUsuario = new Date(this.alumno.controls.fecha_nac.value);
+    let edadUsuario = nacUsuario.getFullYear();
+    let resta = anioActual-edadUsuario;
+    
+    if(resta<17){
+      alert('¡MAYOR DE 17 AÑOS!');
+      return;
+    } 
     if (this.alumno.controls.password.value != this.verificar_password) {
       alert('¡CONTRASEÑAS NO COINCIDEN!');
       return;
