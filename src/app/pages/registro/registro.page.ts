@@ -14,15 +14,16 @@ export class RegistroPage implements OnInit {
     rut: new FormControl('', [Validators.required, Validators.pattern('[0-9]{7,8}-[0-9kK]{1}')]),
     nombre: new FormControl('', [Validators.required, Validators.minLength(3)]),
     apellido: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    correo: new FormControl('',[Validators.email,Validators.required, Validators.pattern('[0-9a-zA-Z](\.[_a-z0-9-]+)+@duocuc.cl')]),
+    correo: new FormControl('',[Validators.email,Validators.required, Validators.pattern('[0-9a-zA-Z](\.[_a-z0-9-]+)+@duocuc.cl')]),  
     fecha_nac: new FormControl('', Validators.required),
     auto: new FormControl('',Validators.required),
     password: new FormControl('', [Validators.required, 
                                    Validators.minLength(6),
-                                   Validators.maxLength(18)]),
+                                   Validators.maxLength(18)/* ,Validators.pattern('^?=.(*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{6,18}$') */
+                                  ]),
     tipo_usuario: new FormControl('alumno')
   });
-
+  validar_correo: any
   verificar_password: string;
   constructor(private usuarioService: UsuarioService, private router: Router) { }
 
@@ -30,14 +31,33 @@ export class RegistroPage implements OnInit {
   }
   
   registrar(){
-    if (this.alumno.controls.password.value != this.verificar_password) {
-      alert('CONTRASEÑAS NO COINCIDEN!');
+    const now = new Date();
+    let anioActual = now.getFullYear();
+    const nacUsuario = new Date(this.alumno.controls.fecha_nac.value);
+    let edadUsuario = nacUsuario.getFullYear();
+    let resta = anioActual-edadUsuario;
+    /*alert(anioActual);*/
+    if(resta<17){
+      alert('¡MAYOR DE 17 AÑOS!');
       return;
     }
-    this.usuarioService.agregarUsuario(this.alumno.value);
-    this.alumno.reset();
-    alert('USUARIO REGISTRADO!');
-    this.router.navigate(['/login']);
+    if (this.alumno.controls.password.value != this.verificar_password) {
+      alert('¡CONTRASEÑAS NO COINCIDEN!');
+      return;
+    }
+    if(this.usuarioService.agregarUsuario(this.alumno.value)==true){
+/*        correo = this.usuarioService.obtenerUsuario(this.alumno.controls.rut.value); Para otra version uwu
+      if()) */
+      this.alumno.reset();
+      alert('¡USUARIO REGISTRADO!');
+      this.router.navigate(['/login']);
+
+    }
+    else{
+      alert('¡USUARIO YA EXISTE!');
+      this.router.navigate(['/registrar']);
+    }
+    
   }
 
   

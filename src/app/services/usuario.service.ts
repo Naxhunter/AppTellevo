@@ -9,7 +9,7 @@ export class UsuarioService {
   usuarios :any[] = [
 
     {
-      rut: '11.009.200-1',
+      rut: '11009200-1',
       nombre: 'Gemela',
       apellido: 'Gutierrez',
       correo: 'jorsh@gmail.com',
@@ -19,7 +19,7 @@ export class UsuarioService {
       tipo_usuario: 'administrador'
     },
     {
-      rut: '20.009.200-1',
+      rut: '20009200-1',
       nombre: 'Carlos',
       apellido: 'Prado',
       correo: 'Carlitosprado@gmail.com',
@@ -29,7 +29,7 @@ export class UsuarioService {
       tipo_usuario: 'alumno'
     },
     {
-      rut: '21.239.230-5',
+      rut: '21239230-5',
       nombre: 'Andrea',
       apellido: 'Cespedes',
       correo: 'AndreaCesp@gmail.com',
@@ -84,6 +84,7 @@ validarRecuperar(rut,correo): any{
 validarLogin(rut,password): any{
   return this.usuarios.find(usu => usu.rut == rut && usu.password == password);
 }
+
 
 
 
