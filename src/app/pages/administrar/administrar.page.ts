@@ -39,8 +39,6 @@ export class AdministrarPage implements OnInit {
     this.sesion = this.usuarioService.obtenerUsuario(rut);
   }
   irRegistrar(){
-
-    
     this.variable = "Registrar Usuario";
     this.listado = undefined;
     this.modificar = undefined;
