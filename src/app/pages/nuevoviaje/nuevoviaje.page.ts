@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-nuevoviaje',
   templateUrl: './nuevoviaje.page.html',
@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NuevoviajePage implements OnInit {
 
-  constructor() { }
-
+  constructor(private router: Router, private route: ActivatedRoute) { }
+  usuario: any = [];
   ngOnInit() {
+    this.usuario = this.router.getCurrentNavigation().extras.state.usuario;
   }
 
 }

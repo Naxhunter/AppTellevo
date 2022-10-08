@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
-import { Router, ActivatedRoute } from '@angular/router';
+import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { NavController } from '@ionic/angular';
 
@@ -16,32 +16,24 @@ export class LoginPage implements OnInit {
   password: string;
   nuevorut: string;
   constructor(private toastController: ToastController, private router: Router,
-                      private usuarioService: UsuarioService, private route: ActivatedRoute, private navCtrl: NavController) { }
+    private usuarioService: UsuarioService, private route: ActivatedRoute, private navCtrl: NavController) { }
 
   ngOnInit() {
   }
 
-  login(){
+  login() {
     var usuarioLogin = this.usuarioService.validarLogin(this.rut, this.password);
     if (usuarioLogin != undefined) {
-      if (usuarioLogin.tipo_usuario == 'administrador') {
-        this.nuevorut = this.rut;
-        this.password = '';
-        this.rut = '';
-        this.navCtrl.navigateForward(['/home', this.nuevorut]);
-        
-      }else{
-        this.nuevorut = this.rut;
-        this.password = '';
-        this.rut = '';
-        this.navCtrl.navigateForward(['/home', this.nuevorut]);
-      }
+      this.nuevorut = this.rut;
+      this.password = '';
+      this.rut = '';
+      this.navCtrl.navigateForward(['/home', this.nuevorut]);
     } else {
-        this.toastError();
-      }
+      this.toastError();
+    }
   }
 
-  async toastError(){
+  async toastError() {
     const toast = await this.toastController.create(
       {
         message: ' Usuario o contraseña incorrectos! ',

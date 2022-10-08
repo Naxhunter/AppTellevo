@@ -92,7 +92,6 @@ validarRut(rut): boolean {
   var rutSimple = rut.replace('-', '');
   rutSimple = rutSimple.substring(0, rutSimple.length - 1);
   var rutArreglo: any[] = rutSimple.split('').reverse();
-
   var acumulador: number = 0;
   var multiplo: number = 2;
   for (let digito of rutArreglo) {
@@ -109,7 +108,6 @@ validarRut(rut): boolean {
   } else if (dvCalculado == 10) {
     dvCalculado = 'K';
   }
-
   var dvRut: string = rut.substring(rut.length - 1).toUpperCase();
   if (dvRut == dvCalculado.toString()) {
     return true;
