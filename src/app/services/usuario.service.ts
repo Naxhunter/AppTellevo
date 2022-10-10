@@ -90,11 +90,11 @@ export class UsuarioService {
     this.usuarios.find(usu => usu.rut == rut && usu.password == password);
     if (this.usuarios != undefined) {
       this.isAuthenticated.next(true);
-      return this.usuarios
     }
     else {
-      return this.usuarios.find(usu => usu.rut == rut && usu.password == password);
+      return undefined;
     }
+    return this.usuarios.find(usu => usu.rut == rut && usu.password == password);
   }
 
   validarRut(rut): boolean {
