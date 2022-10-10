@@ -135,12 +135,4 @@ export class UsuarioService {
     this.router.navigate(['/login']);
   }
 
-
-
-
-
-
-
-
-
 }

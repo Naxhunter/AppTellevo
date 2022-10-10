@@ -28,7 +28,7 @@ export class HomePage implements OnInit {
     this.navCtrl.navigateForward(['/administrar',rut]);
   }
   cerrarSesion(){
-    this.router.navigate(['/login']);
+    this.usuarioService.logout();
   }
 
   irCrearViaje(){
