@@ -14,7 +14,7 @@ const routes: Routes = [
       },
       {
         path: 'perfil/:rut',
-        loadChildren: () => import('../perfil/perfil.module').then( m => m.PerfilPageModule)
+        loadChildren: () => import('../perfil/perfil.module').then(m => m.PerfilPageModule)
       },
       {
         path: 'solicitud/:rut',
@@ -25,6 +25,11 @@ const routes: Routes = [
         loadChildren: () => import('../nuevoviaje/nuevoviaje.module').then(m => m.NuevoviajePageModule)
       },
 
+      {
+        path: 'disponible/:rut',
+        loadChildren: () => import('../disponible/disponible.module').then(m => m.DisponiblePageModule)
+      },
+
     ]
   }
 ];
@@ -33,4 +38,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class HomePageRoutingModule {}
+export class HomePageRoutingModule { }

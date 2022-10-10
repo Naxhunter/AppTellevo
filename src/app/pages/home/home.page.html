@@ -40,7 +40,7 @@
     </ion-card>
   </div>
   <ion-tabs>
-    <ion-tab-bar slot="bottom">
+    <ion-tab-bar slot="bottom" class="">
       <!--
       <ion-tab-button tab="" (click)="cargarHome(sesion.rut)">
         <ion-icon name="home-outline"></ion-icon>
@@ -48,22 +48,23 @@
 
       </ion-tab-button>-->
       <ion-tab-button tab="administrar/{{sesion.rut}}" *ngIf="sesion.tipo_usuario == 'administrador'">
-        <ion-icon name="attach-outline"></ion-icon>
+        <ion-icon name="close-circle-outline"></ion-icon>
+
         <ion-label>Admin</ion-label>
       </ion-tab-button>
       <ion-tab-button tab="perfil/{{sesion.rut}}">
         <ion-icon name="person-circle-outline"></ion-icon>
         <ion-label>Perfil</ion-label>
       </ion-tab-button>
-      <ion-tab-button tab="disponible/{{sesion.rut}}">
+      <ion-tab-button tab="disponible/{{sesion.rut}}" *ngIf="sesion.auto == 'no' && sesion.tipo_usuario != 'administrador'">
         <ion-icon name="airplane-outline"></ion-icon>
         <ion-label>Buscar</ion-label>
       </ion-tab-button>
-      <ion-tab-button tab="nuevoviaje/{{sesion.rut}}" >
+      <ion-tab-button tab="nuevoviaje/{{sesion.rut}}" *ngIf="sesion.auto == 'si'">
         <ion-icon name="location-outline"></ion-icon>
         <ion-label>Crear Viaje</ion-label>
       </ion-tab-button>
-      <ion-tab-button tab="solicitud/{{sesion.rut}}">
+      <ion-tab-button tab="solicitud/{{sesion.rut}}" *ngIf="sesion.auto == 'si'">
         <ion-icon name="notifications-outline"></ion-icon>
         <ion-label>Solicitudes</ion-label>
         <ion-badge>6</ion-badge>
