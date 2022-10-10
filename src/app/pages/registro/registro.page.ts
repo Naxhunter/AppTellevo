@@ -14,7 +14,7 @@ export class RegistroPage implements OnInit {
     rut: new FormControl('', [Validators.required, Validators.pattern('[0-9]{7,8}-[0-9kK]{1}')]),
     nombre: new FormControl('', [Validators.required, Validators.minLength(3)]),
     apellido: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    correo: new FormControl('',[Validators.email,Validators.required, Validators.pattern('[0-9a-zA-Z](\.[_a-z0-9-]+)+@duocuc.cl')]),  
+    correo: new FormControl('',[Validators.email,Validators.required, Validators.pattern('[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@(duoc|duocuc|profesor.duoc).(cl)')]),  
     fecha_nac: new FormControl('', Validators.required),
     auto: new FormControl('',Validators.required),
     password: new FormControl('', [Validators.required, 
