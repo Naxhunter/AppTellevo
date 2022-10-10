@@ -5,11 +5,22 @@
   <div class="fondo">
     <ion-header>
       <div class="flexibles">
-        <div class="separar" (click)="perfil(sesion.rut)">Perfil</div>
+        <!--<div class="separar" (click)="perfil(sesion.rut)">Perfil</div>
         <div class="separar" (click)="irCrearViaje()">Nuevo viaje</div>
         <div class="separar" *ngIf="sesion.auto == 'si'" (click)="irSolicitudViaje()">Solicitudes viajes</div>
-        <div class="separar" *ngIf="sesion.tipo_usuario == 'administrador'" (click)="administrar(sesion.rut)">Administración</div>
-        <div class="separar" *ngIf="sesion.rut != undefined" (click)="cerrarSesion()">Cerrar Sesión</div>
+        <div class="separar" *ngIf="sesion.tipo_usuario == 'administrador'" (click)="administrar(sesion.rut)">
+        Administración</div>-->
+        <!--<div (click)="irCrearViaje()">
+          sksks
+        </div>-->
+        <div class="separar" *ngIf="sesion.rut != undefined" (click)="cerrarSesion()">
+          <span style="margin-right: 5px;">
+            Cerrar Sesión
+          </span>
+          <img src="https://cdn.icon-icons.com/icons2/2751/PNG/512/logout_exit_icon_176185.png" alt="" height="20px" width="20px">
+          
+        </div>
+
       </div>
     </ion-header>
     <ion-card>
@@ -23,8 +34,41 @@
           con el fin de reducir los problemas de viaje de los estudiantes
           de nuestra querida institución.
           ¡ESPERAMOS DISFRUTES TU VIAJE!
+          
         </span>
       </ion-card-content>
     </ion-card>
   </div>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <!--
+      <ion-tab-button tab="" (click)="cargarHome(sesion.rut)">
+        <ion-icon name="home-outline"></ion-icon>
+        <ion-label>Home</ion-label>
+
+      </ion-tab-button>-->
+      <ion-tab-button tab="administrar/{{sesion.rut}}" *ngIf="sesion.tipo_usuario == 'administrador'">
+        <ion-icon name="attach-outline"></ion-icon>
+        <ion-label>Admin</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="perfil/{{sesion.rut}}">
+        <ion-icon name="person-circle-outline"></ion-icon>
+        <ion-label>Perfil</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="disponible/{{sesion.rut}}">
+        <ion-icon name="airplane-outline"></ion-icon>
+        <ion-label>Buscar</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="nuevoviaje/{{sesion.rut}}" >
+        <ion-icon name="location-outline"></ion-icon>
+        <ion-label>Crear Viaje</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="solicitud/{{sesion.rut}}">
+        <ion-icon name="notifications-outline"></ion-icon>
+        <ion-label>Solicitudes</ion-label>
+        <ion-badge>6</ion-badge>
+      </ion-tab-button>
+
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-content>

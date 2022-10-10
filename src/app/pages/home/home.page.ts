@@ -40,7 +40,7 @@ export class HomePage implements OnInit {
     };
     //funciona
     console.log(navExtras.state.usuario.rut);
-    this.router.navigate(['/nuevoviaje'], navExtras);
+    this.router.navigate(['/recorrido'], navExtras);
   }
 
   irSolicitudViaje(){

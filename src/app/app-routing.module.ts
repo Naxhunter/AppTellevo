@@ -27,6 +27,24 @@ const routes: Routes = [
     loadChildren: () => import('./pages/recuperar/recuperar.module').then(m => m.RecuperarPageModule)
   },
   {
+    path: 'disponible',
+    loadChildren: () => import('./pages/disponible/disponible.module').then( m => m.DisponiblePageModule)
+  },
+  {
+    path: 'detalle',
+    loadChildren: () => import('./pages/detalle/detalle.module').then( m => m.DetallePageModule)
+  },  {
+    path: 'nuevoauto',
+    loadChildren: () => import('./pages/nuevoauto/nuevoauto.module').then( m => m.NuevoautoPageModule)
+  },
+  {
+    path: 'recorrido',
+    loadChildren: () => import('./pages/recorrido/recorrido.module').then( m => m.RecorridoPageModule)
+  },
+
+
+  /*
+  {
     path: 'administrar/:rut',
     loadChildren: () => import('./pages/administrar/administrar.module').then(m => m.AdministrarPageModule),
     canActivate: [AuthGuard]
@@ -46,7 +64,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/nuevoviaje/nuevoviaje.module').then(m => m.NuevoviajePageModule),
     canActivate: [AuthGuard]
   },
-
+  */
 
 ];
 
