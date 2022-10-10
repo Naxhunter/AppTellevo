@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
+import { BehaviorSubject } from 'rxjs';
+import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +9,9 @@ import { Storage } from '@ionic/storage-angular';
 export class StorageService {
 
   datos: any[] = [];
+  isAuthenticated = new BehaviorSubject(false);
 
-  constructor(private storage: Storage) {
+  constructor(private storage: Storage, private router: Router) {
     storage.create();
   }
 
@@ -57,6 +60,15 @@ export class StorageService {
     this.datos[index] = dato;
 
     await this.storage.set(key, this.datos);
+  }
+
+  getAuth() {
+    return this.isAuthenticated.value;
+  }
+
+  logout() {
+    this.isAuthenticated.next(false);
+    this.router.navigate(['/login']);
   }
 
 
