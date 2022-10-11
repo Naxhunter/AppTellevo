@@ -73,7 +73,10 @@ export class AdministrarPage implements OnInit {
     const nacUsuario = new Date(this.alumno.controls.fecha_nac.value);
     let edadUsuario = nacUsuario.getFullYear();
     let resta = anioActual-edadUsuario;
-    
+    if (!this.usuarioService.validarRut(this.alumno.controls.rut.value)) {
+      alert('¡RUT INCORRECTO!');
+      return;
+    }
     if(resta<17){
       alert('¡MAYOR DE 17 AÑOS!');
       return;
