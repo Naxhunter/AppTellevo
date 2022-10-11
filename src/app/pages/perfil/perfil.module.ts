@@ -15,6 +15,7 @@ import { PerfilPage } from './perfil.page';
     FormsModule,
     IonicModule,
     PerfilPageRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [PerfilPage]
 })

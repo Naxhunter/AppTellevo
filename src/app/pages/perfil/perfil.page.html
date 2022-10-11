@@ -1,9 +1,181 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>perfil de {{sesion.nombre}}</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div class="fondo">
+    <div class="opcion">
+      <ion-grid>
+        <ion-row>
 
+          <ion-col size="12">
+
+            <div class="contenedor_principal">
+              <br>
+              <div class="titulo">
+                <h1>Perfil</h1>
+                <hr>
+
+              </div>
+              <div>
+                <div class="cabeceraOpciones">
+                  <div class="misDatos" (click)="valorPerfil(0)">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3076/3076404.png" alt=""
+                      style="height: 5vh; width: 10vw;">
+                  </div>
+                  <div class="modificarDatos" (click)="valorPerfil(1)">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5212/5212384.png" alt=""
+                      style="height: 5vh; width: 10vw;">
+                  </div>
+                  <div class="agregarAuto" (click)="valorPerfil(2)">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3886/3886667.png" alt=""
+                      style="height: 5vh; width: 10vw;">
+                  </div>
+                  <div class="misViajes" (click)="valorPerfil(3)">
+                    <img src="https://cdn-icons-png.flaticon.com/512/826/826070.png" alt=""
+                      style="height: 5vh; width: 10vw;">
+                  </div>
+                </div>
+                <div class="contenidoActualizar">
+
+                  <div class="datos" *ngIf="default == undefined">
+                    <ion-card>
+                      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135810.png" style="height:30vh;">
+                      <ion-card-header>
+                        <ion-card-subtitle>{{sesion.nombre}} {{sesion.apellido}}</ion-card-subtitle>
+                        <ion-card-title>Mis datos</ion-card-title>
+                      </ion-card-header>
+                      <ion-card-content>
+                        <p>Rut: {{sesion.rut}}</p>
+                        <p>Email: {{sesion.correo}}</p>
+                        <p>Auto: {{sesion.auto}}</p>
+                      </ion-card-content>
+                    </ion-card>
+                  </div>
+                  <div class="modificar" *ngIf="default == 1">
+                    <ion-card>
+                      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135810.png" style="height:30vh;">
+                      <ion-card-header>
+                        <ion-card-subtitle>Formulario</ion-card-subtitle>
+                        <ion-card-title>Tus datos</ion-card-title>
+                      </ion-card-header>
+                      <ion-card-content>
+                        <form [formGroup]="alumno" (ngSubmit)="modificar()">
+                          <ion-item>
+                            <ion-label>Rut :</ion-label>
+                            <ion-input type="text" placeholder="{{sesion.rut}}" formControlName="rut"
+                              value="{{sesion.rut}}" readonly></ion-input>
+                          </ion-item>
+                          <ion-item>
+                            <ion-label>Nombre :</ion-label>
+                            <ion-input type="text" placeholder="{{sesion.nombre}}" formControlName="nombre">
+                            </ion-input>
+                          </ion-item>
+                          <ion-item>
+                            <ion-label>Apellido :</ion-label>
+                            <ion-input type="text" placeholder="{{sesion.apellido}}"
+                              formControlName="apellido"></ion-input>
+                          </ion-item>
+                          <ion-item>
+                            <ion-label>Correo :</ion-label>
+                            <ion-input type="email" placeholder="{{sesion.correo}}" formControlName="correo">
+                            </ion-input>
+                          </ion-item>
+                          <ion-item>
+                            <ion-label>{{sesion.fecha_nac}} : </ion-label>
+                            <ion-input type="date" placeholder="" formControlName="fecha_nac">
+                            </ion-input>
+                          </ion-item>
+                          <ion-item>
+                            <ion-label>¿Cuenta con auto? </ion-label>
+                            <ion-select placeholder="{{sesion.auto}}" formControlName="auto">
+                              <ion-select-option value="si">Tengo auto</ion-select-option>
+                              <ion-select-option value="no">No tengo auto</ion-select-option>
+                            </ion-select>
+                          </ion-item>
+                          <ion-item>
+                            <ion-label>¿Tipo usuario? </ion-label>
+                            <ion-select placeholder="{{sesion.tipo_usuario}}" formControlName="tipo_usuario">
+                              <ion-select-option value="{{sesion.tipo_usuario}}">{{sesion.tipo_usuario}}</ion-select-option> 
+                            </ion-select>
+                          </ion-item>
+                          <ion-item>
+                            <ion-label>Contraseña :</ion-label>
+                            <ion-input type="password" placeholder="{{sesion.password}}"
+                              formControlName="password"></ion-input>
+                          </ion-item>
+                          <ion-item>
+                            <ion-label>Repita Contraseña :</ion-label>
+                            <ion-input type="password" placeholder="Ingrese nuevamente contraseña"
+                              [(ngModel)]="verificar_password" [ngModelOptions]="{standalone: 'true'}"></ion-input>
+                          </ion-item>
+                          <ion-button type="submit" [disabled]="!alumno.valid">MODIFICAR</ion-button>
+                        </form>
+                      </ion-card-content>
+                    </ion-card>
+                  </div>
+                  <div class="auto" *ngIf="default == 2">
+                    <ion-card>
+                      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135810.png" style="height:30vh;">
+                      <ion-card-header>
+                        <ion-card-subtitle>Formulario</ion-card-subtitle>
+                        <ion-card-title>Agregar Auto</ion-card-title>
+                      </ion-card-header>
+                      <ion-card-content>
+                        <form [formGroup]="carro" (ngSubmit)="modificar()">
+                          <ion-item>
+                            <ion-label>Patente :</ion-label>
+                            <ion-input type="text" placeholder="Ingrese Patente" formControlName="patente"
+                              value="{{sesion.rut}}" readonly></ion-input>
+                          </ion-item>
+                          <ion-item>
+                            <ion-label>Pasajeros :</ion-label>
+                            <ion-input type="number" placeholder="Pasajeros Máximos" formControlName="pasajeros">
+                            </ion-input>
+                          </ion-item>
+                          <ion-item>
+                            <ion-label>Modelo :</ion-label>
+                            <ion-input type="text" placeholder="Ingrese Modelo"
+                              formControlName="modelo"></ion-input>
+                          </ion-item>
+                          <ion-item>
+                            <ion-label>Marca :</ion-label>
+                            <ion-input type="text" placeholder="Ingrese Marca" formControlName="marca">
+                            </ion-input>
+                          </ion-item>
+                          <ion-item>
+                            <ion-label>Url imagen :</ion-label>
+                            <ion-input type="text" placeholder="Ingrese url imagen" formControlName="imagen">
+                            </ion-input>
+                          </ion-item>
+                          <ion-item>
+                            <ion-label>Año :</ion-label>
+                            <ion-input placeholder="Ingrese año del vehículo" formControlName="anio" type="text">
+                            </ion-input>
+                          </ion-item>
+                          <ion-button type="submit" [disabled]="!carro.valid">AGREGAR</ion-button>
+                        </form>
+                      </ion-card-content>
+                    </ion-card>
+                  </div>
+                  <div class="viaje" *ngIf="default == 3">
+                    <ion-card>
+                      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135810.png" style="height:30vh;">
+                      <ion-card-header>
+                        <ion-card-subtitle>{{sesion.nombre}} {{sesion.apellido}}</ion-card-subtitle>
+                        <ion-card-title>Cantidad viajes</ion-card-title>
+                      </ion-card-header>
+                      <ion-card-content>
+                        <p>Cantidad viajes tomados: 5</p>
+                        <p>Fecha último viaje: 09/09/2009</p>
+                      </ion-card-content>
+                    </ion-card>
+                  </div>
+
+
+                </div>
+
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
 </ion-content>

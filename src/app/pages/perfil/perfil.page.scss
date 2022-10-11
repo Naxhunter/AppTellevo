@@ -1,0 +1,123 @@
+.rojo{
+    background-color: red;
+}
+.azul{
+    background-color: rgb(0, 26, 255);
+}
+.fondo{
+    box-shadow: none;
+    height: 100vh;
+    background: transparentize($color: #f0e658bd, $amount: 0.3);
+    background: url("../../../assets/img/fondo.jpg");
+    background-size: cover;
+    text-align: center;
+    font-family: 'Montserrat';
+    .flexibles{
+      display: flex;
+      flex-direction: row;
+      background: rgb(14,0,255);
+      background: linear-gradient(90deg, rgba(14,0,255,1) 0%, rgba(255,165,0,1) 83%, rgba(255,195,0,1) 100%);
+      height: 10vh;
+      font-size: 2.5vh;
+      font-weight: bold;
+      font-family: 'Lobster';
+      color: white;
+      .separar{
+        padding-left: 5vh;
+        padding-top: 3vh;
+      }
+    }
+    .opcion{
+        padding-top: 10vh;
+        height: 30vh;
+        background: linear-gradient(#dfa474, #9912 ); 
+        ion-row{
+            width: 100vw;
+            height: 88.65vh;
+            .columna_opciones{
+                background: transparentize($color: #dfa474, $amount: 0.5); 
+                border-right: solid;
+                border-bottom: solid;
+                border-color: rgb(65, 45, 9);
+                .opciones{
+                    padding-top: 5vh;
+                    padding-bottom: 5vh;
+                    background: transparentize($color: #332113, $amount: 0.9);
+                    font-weight: bold;
+                    color: rgb(65, 45, 9);
+                    
+                }   
+            }
+            .contenedor_principal{
+                background: linear-gradient(#dfa474, #9912 );
+                color: rgb(65, 45, 9);
+                margin: 0 auto;
+                top: 5vh;
+                height: 87vh;
+                width: 75vw;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-family: 'Lobster';
+                .titulo{
+                    font-weight: bold;
+                }
+                .cabeceraOpciones{
+                    display: flex;
+                    flex-direction: row;
+                    top: 3vh;
+                    padding-left: 5vw;
+                    padding-right: 5vw;
+                    align-items: center;
+                }
+                .contenidoActualizar{
+                    margin-top: 5vh;
+                    ion-card{
+                        --background: linear-gradient(#000000, rgba(121, 121, 121, 0.133) ); 
+                        color: white;
+                    }
+                }
+                /*
+                .registrar_usuarios{
+                    width: 50vw;
+                    ion-item{
+                        --background: none;
+                        
+                    }
+                }
+                .listar_usuarios{
+                    width: 50vw;
+                    .lista{
+                        background: transparentize($color: #332113, $amount: 0.9);
+                        border-radius: 3px;
+                        .elemento{
+
+                        }
+                    }
+                    
+                }
+                .eliminar_usuarios{
+                    width: 50vw;
+                    ion-item{
+                        --background: none;
+                    }
+                }
+                .modificar_usuarios{
+                    width: 50vw;
+                    ion-item{
+                        --background: none;
+                    }*/
+                }
+            }
+        }
+        
+    }
+  
+  ion-button{
+    color: rgba(4, 4, 43, 0.904);
+    margin-top: 60px;
+    font-family: 'Montserrat';
+    --background: transparentize($color: #1e7065cb, $amount: 0.3);
+    font-weight: bold;
+}
+  
