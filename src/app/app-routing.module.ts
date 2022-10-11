@@ -43,7 +43,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/recorrido/recorrido.module').then( m => m.RecorridoPageModule)
   },
 
-  {
+ /*  {
     path: 'administrar/:rut',
     loadChildren: () => import('./pages/administrar/administrar.module').then(m => m.AdministrarPageModule),
     canActivate: [AuthGuard]
@@ -64,7 +64,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
  
-
+ */
 ];
 
 @NgModule({
