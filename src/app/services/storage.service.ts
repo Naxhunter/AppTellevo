@@ -18,16 +18,12 @@ export class StorageService {
   //MÉTODOS DEL CRUD DEL STORAGE:
   async agregar(key, dato) {
     this.datos = await this.storage.get(key) || [];
-
-    //VAMOS A VER SI EL DATO QUE VIENE COMO PARÁMETRO TIENE id:
-    //si tiene id, buscamos si existe, si NO tiene id, agregamos:
-    if (dato.id == '') {
-      var id = this.datos.length + 1;
-      dato.id = id;
-      this.datos.push(dato);
-      await this.storage.set(key, this.datos);
-      return true;
-    }
+    var existe = this.datos.find(usuario => usuario.rut == dato.rut);
+    if (existe == undefined) {
+        this.datos.push(dato);
+        await this.storage.set(key, this.datos);
+        return true;
+      }
     return false;
   }
 

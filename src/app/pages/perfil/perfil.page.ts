@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { StorageService } from 'src/app/services/storage.service';
+import { v4 } from 'uuid';
 
 @Component({
   selector: 'app-perfil',
@@ -10,18 +12,20 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class PerfilPage implements OnInit {
 
-  constructor(private route: ActivatedRoute, private usuarioService:UsuarioService) { }
+  constructor(private route: ActivatedRoute, private usuarioService:UsuarioService, private storage: StorageService) { }
   rut: any;
   sesion: any = [];
   default: any = undefined;
   verificar_password: any;
   alumno = new FormGroup({
+    id: new FormControl(''),
     rut: new FormControl('', [Validators.required, Validators.pattern('[0-9]{7,8}-[0-9kK]{1}')]),
     nombre: new FormControl('', [Validators.required, Validators.minLength(3)]),
     apellido: new FormControl('', [Validators.required, Validators.minLength(3)]),
     correo: new FormControl('',[Validators.email,Validators.required, Validators.pattern('[0-9a-zA-Z](\.[_a-z0-9-]+)+@duocuc.cl')]),  
     fecha_nac: new FormControl('', Validators.required),
     auto: new FormControl('',Validators.required),
+    vehiculo: new FormControl('undefined'),
     password: new FormControl('', [Validators.required, 
                                    Validators.minLength(6),
                                    Validators.maxLength(18)]),
@@ -39,9 +43,11 @@ export class PerfilPage implements OnInit {
       anio: new FormControl('')
     }
   );
-  ngOnInit() {
+  KEY = "personas";
+  async ngOnInit() {
     let rut = this.route.snapshot.paramMap.get('rut');
     this.sesion = this.usuarioService.obtenerUsuario(rut);
+   /*  await this.sesion = this.storage.getDato(this.KEY, 'rut'); */
   }
 
   valorPerfil(num){
@@ -59,7 +65,15 @@ export class PerfilPage implements OnInit {
       this.default= undefined;
     }
   }
-  modificar(){
+  modificar(num){
+    if(num==1){
+      return true;
+    }
+    else if(num==2){
+        this.sesion.vehiculo = this.carro.value;
+        console.log(this.sesion.vehiculo);
+        console.log(this.sesion.carro);
+    }
     
   }
 }
