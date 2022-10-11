@@ -11,7 +11,7 @@ export class UsuarioService {
   usuarios: any[] = [
 
     {
-      rut: '11009200-1',
+      rut: '1111111-1',
       nombre: 'Gemela',
       apellido: 'Gutierrez',
       correo: 'jorsh@gmail.com',
@@ -21,7 +21,7 @@ export class UsuarioService {
       tipo_usuario: 'administrador'
     },
     {
-      rut: '20009200-1',
+      rut: '22222222-2',
       nombre: 'Carlos',
       apellido: 'Prado',
       correo: 'Carlitosprado@gmail.com',
@@ -31,7 +31,7 @@ export class UsuarioService {
       tipo_usuario: 'alumno'
     },
     {
-      rut: '21239230-5',
+      rut: '33333333-3',
       nombre: 'Andrea',
       apellido: 'Cespedes',
       correo: 'AndreaCesp@gmail.com',

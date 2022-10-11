@@ -33,7 +33,8 @@ const routes: Routes = [
   {
     path: 'detalle',
     loadChildren: () => import('./pages/detalle/detalle.module').then( m => m.DetallePageModule)
-  },  {
+  },
+  {
     path: 'nuevoauto',
     loadChildren: () => import('./pages/nuevoauto/nuevoauto.module').then( m => m.NuevoautoPageModule)
   },
@@ -42,8 +43,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/recorrido/recorrido.module').then( m => m.RecorridoPageModule)
   },
 
-
-  /*
   {
     path: 'administrar/:rut',
     loadChildren: () => import('./pages/administrar/administrar.module').then(m => m.AdministrarPageModule),
@@ -64,7 +63,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/nuevoviaje/nuevoviaje.module').then(m => m.NuevoviajePageModule),
     canActivate: [AuthGuard]
   },
-  */
+ 
 
 ];
 
