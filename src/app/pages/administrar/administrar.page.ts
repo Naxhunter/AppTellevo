@@ -104,7 +104,7 @@ export class AdministrarPage implements OnInit {
       alert('¡NO TE PUEDES ELIMINAR A TI MISMO!')
     }
     else{
-      await this.usuarioService.eliminarUsuario(this.alumno.controls.rut.value);
+      await this.storage.eliminar(this.KEY,this.alumno.controls.rut.value);
       alert('¡USUARIO ELIMINADO!');
     }
     
