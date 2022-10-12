@@ -1,13 +1,6 @@
 <ion-content>
   <div class="fondo">
-    <ion-header>
-      <div class="flexibles">
-        <div class="separar" (click)="perfil(sesion.rut)">Perfil</div>
-        <div class="separar" (click)="irCrearViaje()">Nuevo viaje</div>
-        <div class="separar" *ngIf="sesion.auto == 'si'" (click)="irSolicitudViaje()">Solicitudes viajes</div>
-        <div class="separar" *ngIf="sesion.rut != undefined" (click)="cerrarSesion()">Cerrar Sesión</div>
-      </div>
-    </ion-header>
+    
     <div class="opcion">
       <ion-grid>
         <ion-row>

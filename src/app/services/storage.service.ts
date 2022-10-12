@@ -53,7 +53,7 @@ export class StorageService {
     this.datos = await this.storage.get(key) || [];
 
     this.datos.forEach((value, index) => {
-      if (value.id == identificador) {
+      if (value.rut == identificador) {
         this.datos.splice(index, 1);
       }
     });
