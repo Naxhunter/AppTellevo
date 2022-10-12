@@ -72,9 +72,9 @@ export class PerfilPage implements OnInit {
     else if(num==2){
         this.sesion.vehiculo = this.carro.value;
         await this.storage.actualizar(this.KEY, this.sesion);
-
-        var actualizado = await this.storage.getDato(this.KEY, this.sesion.rut);
-        console.log(actualizado);
+        var cambio = this.sesion.rut;
+        this.sesion = await this.storage.getDato(this.KEY, cambio);
+        this.default = 4;
     }
     
   }

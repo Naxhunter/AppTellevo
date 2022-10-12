@@ -30,8 +30,8 @@ export class HomePage implements OnInit {
   administrar(rut){
     this.navCtrl.navigateForward(['/administrar',rut]);
   }
-  cerrarSesion(){
-    this.usuarioService.logout();
+  async cerrarSesion(){
+    await this.storage.logout();
   }
 
   irCrearViaje(){

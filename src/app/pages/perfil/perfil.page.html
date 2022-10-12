@@ -23,7 +23,8 @@
                     <img src="https://cdn-icons-png.flaticon.com/512/5212/5212384.png" alt=""
                       style="height: 5vh; width: 10vw;">
                   </div>
-                  <div class="agregarAuto" (click)="valorPerfil(2)" *ngIf="sesion.auto=='si' && sesion.vehiculo == 'undefined'">
+                  <div class="agregarAuto" (click)="valorPerfil(2)"
+                    *ngIf="sesion.auto=='si' && sesion.vehiculo == 'undefined'">
                     <img src="https://cdn-icons-png.flaticon.com/512/3886/3886667.png" alt=""
                       style="height: 5vh; width: 10vw;">
                   </div>
@@ -34,7 +35,7 @@
                 </div>
                 <div class="contenidoActualizar">
 
-                  <div class="datos" *ngIf="default == undefined">
+                  <div class="datos" *ngIf="default == undefined || default == 4">
                     <ion-card>
                       <img src="https://cdn-icons-png.flaticon.com/512/3135/3135810.png" style="height:30vh;">
                       <ion-card-header>
@@ -69,8 +70,8 @@
                           </ion-item>
                           <ion-item>
                             <ion-label>Apellido :</ion-label>
-                            <ion-input type="text" placeholder="{{sesion.apellido}}"
-                              formControlName="apellido"></ion-input>
+                            <ion-input type="text" placeholder="{{sesion.apellido}}" formControlName="apellido">
+                            </ion-input>
                           </ion-item>
                           <ion-item>
                             <ion-label>Correo :</ion-label>
@@ -92,13 +93,14 @@
                           <ion-item>
                             <ion-label>¿Tipo usuario? </ion-label>
                             <ion-select placeholder="{{sesion.tipo_usuario}}" formControlName="tipo_usuario">
-                              <ion-select-option value="{{sesion.tipo_usuario}}">{{sesion.tipo_usuario}}</ion-select-option> 
+                              <ion-select-option value="{{sesion.tipo_usuario}}">{{sesion.tipo_usuario}}
+                              </ion-select-option>
                             </ion-select>
                           </ion-item>
                           <ion-item>
                             <ion-label>Contraseña :</ion-label>
-                            <ion-input type="password" placeholder="{{sesion.password}}"
-                              formControlName="password"></ion-input>
+                            <ion-input type="password" placeholder="{{sesion.password}}" formControlName="password">
+                            </ion-input>
                           </ion-item>
                           <ion-item>
                             <ion-label>Repita Contraseña :</ion-label>
@@ -130,8 +132,7 @@
                           </ion-item>
                           <ion-item>
                             <ion-label>Modelo :</ion-label>
-                            <ion-input type="text" placeholder="Ingrese Modelo"
-                              formControlName="modelo"></ion-input>
+                            <ion-input type="text" placeholder="Ingrese Modelo" formControlName="modelo"></ion-input>
                           </ion-item>
                           <ion-item>
                             <ion-label>Marca :</ion-label>
