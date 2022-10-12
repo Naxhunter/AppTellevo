@@ -54,7 +54,7 @@ export class NuevoviajePage implements OnInit {
     this.dibujarMapa();
     //this.agregarMarcador();
     this.buscarDireccion(this.mapa, this.marker);
-    this.getInicio(this.mapa, this.marker);
+    //this.getInicio(this.mapa, this.marker);
 
   }
 
@@ -81,10 +81,6 @@ export class NuevoviajePage implements OnInit {
 
   //agregar un nuevo marcador al mapa:
   agregarMarcador() {
-    /* new google.maps.Marker({
-      position: this.ubicacionMcDonald,
-      map: this.mapa
-    }); */
     this.marker.setPosition(this.ubicacionMcDonald);
     this.marker.setMap(this.mapa);
   }
@@ -123,8 +119,8 @@ export class NuevoviajePage implements OnInit {
   }
 
   //mi ubicacion actual:
-  getUbicacionActual(): Promise<any> {
-    return new Promise(
+  async getUbicacionActual(): Promise<any> {
+    return await new Promise(
       (resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject);
       }
