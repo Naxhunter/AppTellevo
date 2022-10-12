@@ -20,7 +20,7 @@
     align-items: center;
     justify-content: space-around;
     font-family: "Montserrat";
-    .formularioViaje{
+    .formularioViaje {
         text-align: center;
         padding-top: 30vh;
         height: 80vh;
@@ -30,6 +30,14 @@
             width: 85vw;
             --background: none;
             color: rgb(65, 45, 9);
+        }
+        #inicio {
+            color: rgb(65, 45, 9);
+            background: none;
+        }
+        #autocomplete {
+            color: rgb(65, 45, 9);
+            background: none;
         }
     }
 }

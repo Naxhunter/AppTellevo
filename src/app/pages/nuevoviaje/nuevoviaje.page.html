@@ -2,8 +2,8 @@
   <div class="fondo">
     <div class="formularioViaje">
       <form [formGroup]="viaje" (ngSubmit)="nuevoViaje()">
+
         
-        <input type="text" id="autocomplete">
         <ion-button expand="block" (click)="calcularRuta()">Ir</ion-button>
         <!--aca debe ir un ngFor con la información de el localStorage para que el evento click pueda sacar la ruta -->
         <div>
@@ -20,11 +20,11 @@
         </ion-item>
         <ion-item>
           <ion-label>Origen :</ion-label>
-          <ion-input type="text" placeholder="Ingrese origen" formControlName="origen"></ion-input>
+          <input type="text" id="inicio">
         </ion-item>
         <ion-item>
           <ion-label>Destino :</ion-label>
-          <ion-input type="text" placeholder="Ingrese destino" formControlName="destino">
+          <input type="text" id="autocomplete">
           </ion-input>
         </ion-item>
         <ion-item>
