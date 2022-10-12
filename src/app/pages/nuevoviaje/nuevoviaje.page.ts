@@ -44,6 +44,11 @@ export class NuevoviajePage implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private usuarioService: UsuarioService, private storage: StorageService) { }
 
   async ngOnInit() {
+    console.log("Entro")
+    let rut = this.route.snapshot.paramMap.get('rut');
+    console.log(rut)
+    this.usuario = this.storage.getDato(this.KEY, rut);
+    console.log(this.usuario);
     var geo = await this.getUbicacionActual();
     this.ubicacionDuoc.lat = geo.coords.latitude;
     this.ubicacionDuoc.lng = geo.coords.longitude;
@@ -53,8 +58,6 @@ export class NuevoviajePage implements OnInit {
     this.buscarDireccion(this.mapa, this.marker);
     this.getInicio(this.mapa, this.marker)
 
-    let rut = this.route.snapshot.paramMap.get('rut');
-    this.usuario = this.storage.getDato(this.KEY, rut);
   }
 
   //3. VAMOS A CREAR LOS MÉTODOS NECESARIOS PARA EL MAPA:

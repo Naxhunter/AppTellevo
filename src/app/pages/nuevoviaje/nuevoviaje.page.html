@@ -1,9 +1,10 @@
 <ion-content>
-    <div class="fondo">
+  <div class="fondo">
+    <div class="formularioViaje">
       <form [formGroup]="viaje" (ngSubmit)="nuevoViaje()">
         <ion-item>
           <ion-label>Conductor :</ion-label>
-          <ion-input type="text" value="{{usuario.rut}}" formControlName="rut_conductor" readonly></ion-input>
+          <ion-input type="text" placeholder="{{usuario.rut}}" value="{{usuario.rut}}" formControlName="rut_conductor" readonly></ion-input>
         </ion-item>
         <ion-item>
           <ion-label>Origen :</ion-label>
@@ -30,7 +31,8 @@
         </ion-item>
         <ion-button type="submit" [disabled]="!viaje.valid">CREAR VIAJE</ion-button>
       </form>
-      <!--
+    </div>
+    <!--
       <h1><a href=""></a></h1>
       <h1></h1>
       <div><input type="text" id="autocomplete">
@@ -44,5 +46,5 @@
       <div id="map"></div>
   
       <div id="indicaciones"></div>-->
-    </div>
+  </div>
 </ion-content>
