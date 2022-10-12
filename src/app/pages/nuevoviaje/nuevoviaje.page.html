@@ -2,8 +2,23 @@
   <ion-toolbar>
     <ion-title>{{usuario.rut}}</ion-title>
   </ion-toolbar>
+  <ion-card-title></ion-card-title>
 </ion-header>
 
 <ion-content>
-  {{usuario.rut}}
+  <ion-content>
+    <h1><a href=""></a></h1>
+    <h1></h1>
+    <div><input type="text" id="autocomplete">
+      
+      <ion-button expand="block" (click)="calcularRuta()">Ir</ion-button>
+      <!-- aca debe ir un ngFor con la información de  el localStorage para que el evento click pueda sacar  la ruta -->
+   </div>
+   <div>
+    <input type="text" id ="inicio" >
+   </div>
+    <div id="map"></div>
+  
+    <div id="indicaciones"></div>
+  </ion-content>
 </ion-content>
