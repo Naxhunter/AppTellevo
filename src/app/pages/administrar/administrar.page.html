@@ -1,14 +1,21 @@
 <ion-content>
   <div class="fondo">
-    
+
     <div class="opcion">
       <ion-grid>
         <ion-row>
           <ion-col size="3" class="columna_opciones">
-            <div class="opciones" (click)="irListar()">USUARIOS EXISTENTES</div>
-            <div class="opciones" (click)="irRegistrar()">REGISTRAR USUARIO</div>
-            <div class="opciones" (click)="irModificar()">MODIFICAR USUARIO</div>
-            <div class="opciones" (click)="irEliminar()">ELIMINAR USUARIO</div>
+            <div class="opciones" (click)="irListar()">
+              <img src="https://cdn-icons-png.flaticon.com/512/5812/5812183.png" height="30px" width="30px">
+            </div>
+            <div class="opciones" (click)="irRegistrar()">
+              <img src="https://cdn-icons-png.flaticon.com/512/117/117885.png" height="30px" width="30px">
+            </div>
+            <div class="opciones" (click)="irModificar()">
+              <img src="https://cdn-icons-png.flaticon.com/512/1159/1159876.png" height="30px" width="30px">
+            </div>
+            <div class="opciones" (click)="irEliminar()"><img
+                src="https://cdn-icons-png.flaticon.com/512/1345/1345874.png" height="30px" width="30px"></div>
           </ion-col>
           <ion-col size="9">
 
@@ -93,23 +100,27 @@
                   <form [formGroup]="alumno" (ngSubmit)="modificarAdmin()">
                     <ion-item>
                       <ion-label>Rut :</ion-label>
-                      <ion-input type="text" placeholder="{{usuario_buscado.rut}}" formControlName="rut" value="{{usuario_buscado.rut}}" readonly></ion-input>
+                      <ion-input type="text" placeholder="{{usuario_buscado.rut}}" formControlName="rut"
+                        value="{{usuario_buscado.rut}}" readonly></ion-input>
                     </ion-item>
                     <ion-item>
                       <ion-label>Nombre :</ion-label>
-                      <ion-input type="text" placeholder="{{usuario_buscado.nombre}}" formControlName="nombre" ></ion-input>
+                      <ion-input type="text" placeholder="{{usuario_buscado.nombre}}" formControlName="nombre">
+                      </ion-input>
                     </ion-item>
                     <ion-item>
                       <ion-label>Apellido :</ion-label>
-                      <ion-input type="text" placeholder="{{usuario_buscado.apellido}}" formControlName="apellido" ></ion-input>
+                      <ion-input type="text" placeholder="{{usuario_buscado.apellido}}" formControlName="apellido">
+                      </ion-input>
                     </ion-item>
                     <ion-item>
                       <ion-label>Correo :</ion-label>
-                      <ion-input type="email" placeholder="{{usuario_buscado.correo}}" formControlName="correo" ></ion-input>
+                      <ion-input type="email" placeholder="{{usuario_buscado.correo}}" formControlName="correo">
+                      </ion-input>
                     </ion-item>
                     <ion-item>
                       <ion-label>{{usuario_buscado.fecha_nac}} : </ion-label>
-                      <ion-input type="date" placeholder="" formControlName="fecha_nac" >
+                      <ion-input type="date" placeholder="" formControlName="fecha_nac">
                       </ion-input>
                     </ion-item>
                     <ion-item>
@@ -128,7 +139,8 @@
                     </ion-item>
                     <ion-item>
                       <ion-label>Contraseña :</ion-label>
-                      <ion-input type="password" placeholder="{{usuario_buscado.password}}" formControlName="password" ></ion-input>
+                      <ion-input type="password" placeholder="{{usuario_buscado.password}}" formControlName="password">
+                      </ion-input>
                     </ion-item>
                     <ion-item>
                       <ion-label>Repita Contraseña :</ion-label>
@@ -146,7 +158,7 @@
                     <ion-label>Rut :</ion-label>
                     <ion-input type="text" placeholder="Ingrese rut" formControlName="rut"></ion-input>
                   </ion-item>
-                <!-- [disabled]="!alumnoGroupBusAndEli.valid" -->
+                  <!-- [disabled]="!alumnoGroupBusAndEli.valid" -->
                   <ion-button (click)="eliminarAdmin()">Eliminar</ion-button>
                 </form>
               </div>
