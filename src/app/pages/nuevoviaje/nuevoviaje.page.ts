@@ -44,11 +44,9 @@ export class NuevoviajePage implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private usuarioService: UsuarioService, private storage: StorageService) { }
 
   async ngOnInit() {
-    console.log("Entro")
     let rut = this.route.snapshot.paramMap.get('rut');
-    console.log(rut)
-    this.usuario = this.storage.getDato(this.KEY, rut);
-    console.log(this.usuario);
+    this.usuario = await this.storage.getDato(this.KEY, rut);
+    /*
     var geo = await this.getUbicacionActual();
     this.ubicacionDuoc.lat = geo.coords.latitude;
     this.ubicacionDuoc.lng = geo.coords.longitude;
@@ -56,7 +54,7 @@ export class NuevoviajePage implements OnInit {
     this.dibujarMapa();
     //this.agregarMarcador();
     this.buscarDireccion(this.mapa, this.marker);
-    this.getInicio(this.mapa, this.marker)
+    this.getInicio(this.mapa, this.marker)*/
 
   }
 

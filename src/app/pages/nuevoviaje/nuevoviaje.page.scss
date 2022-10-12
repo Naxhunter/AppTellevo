@@ -26,5 +26,10 @@
         height: 80vh;
         background: linear-gradient(#dfa474, #9912);
         border-radius: 5px;
+        ion-item {
+            width: 85vw;
+            --background: none;
+            color: rgb(65, 45, 9);
+        }
     }
 }
