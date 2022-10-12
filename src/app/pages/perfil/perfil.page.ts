@@ -45,8 +45,8 @@ export class PerfilPage implements OnInit {
   );
   KEY = "usuarios";
   async ngOnInit() {
-    let rut = this.route.snapshot.paramMap.get('rut');
-    this.sesion = this.usuarioService.obtenerUsuario(rut);
+    let rut = await this.route.snapshot.paramMap.get('rut');
+    this.sesion = await this.storage.getDato(this.KEY, rut);
    /*  await this.sesion = this.storage.getDato(this.KEY, 'rut'); */
   }
 
