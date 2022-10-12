@@ -1,24 +1,48 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>{{usuario.rut}}</ion-title>
-  </ion-toolbar>
-  <ion-card-title></ion-card-title>
-</ion-header>
-
 <ion-content>
-  <ion-content>
-    <h1><a href=""></a></h1>
-    <h1></h1>
-    <div><input type="text" id="autocomplete">
+    <div class="fondo">
+      <form [formGroup]="viaje" (ngSubmit)="nuevoViaje()">
+        <ion-item>
+          <ion-label>Conductor :</ion-label>
+          <ion-input type="text" value="{{usuario.rut}}" formControlName="rut_conductor" readonly></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Origen :</ion-label>
+          <ion-input type="text" placeholder="Ingrese origen" formControlName="origen"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Destino :</ion-label>
+          <ion-input type="text" placeholder="Ingrese destino" formControlName="destino">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Precio :</ion-label>
+          <ion-input type="number" placeholder="Ingrese precio." formControlName="precio">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Salida :</ion-label>
+          <ion-input type="text" placeholder="DD/MM/YYYY-hh/mm" formControlName="salida">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Capacidad :</ion-label>
+          <ion-input type="text" value="usuario.vehiculo.pasajeros" formControlName="capacidad" readonly></ion-input>
+        </ion-item>
+        <ion-button type="submit" [disabled]="!viaje.valid">CREAR VIAJE</ion-button>
+      </form>
+      <!--
+      <h1><a href=""></a></h1>
+      <h1></h1>
+      <div><input type="text" id="autocomplete">
       
       <ion-button expand="block" (click)="calcularRuta()">Ir</ion-button>
-      <!-- aca debe ir un ngFor con la información de  el localStorage para que el evento click pueda sacar  la ruta -->
-   </div>
-   <div>
-    <input type="text" id ="inicio" >
-   </div>
-    <div id="map"></div>
+       --aca debe ir un ngFor con la información de  el localStorage para que el evento click pueda sacar  la ruta --
+      </div>
+      <div>
+      <input type="text" id ="inicio" >
+      </div>
+      <div id="map"></div>
   
-    <div id="indicaciones"></div>
-  </ion-content>
+      <div id="indicaciones"></div>-->
+    </div>
 </ion-content>
