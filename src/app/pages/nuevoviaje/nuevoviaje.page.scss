@@ -10,3 +10,12 @@
     overflow-y: auto;
     display: block;
 }
+.fondo{
+    box-shadow: none;
+    height: 100vh;
+    background: transparentize($color: #f0e658bd, $amount: 0.3);
+    background: url("../../../assets/img/fondo.jpg");
+    background-size: cover;
+    text-align: center;
+    font-family: "Montserrat";
+}
