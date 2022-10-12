@@ -8,7 +8,18 @@ import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 })
 export class StorageService {
 
-  datos: any[] = [];
+  datos: any[] = [{
+    id:'29dj3ksknnuf3',
+    rut: '21080544-3',
+    nombre: 'Gemela',
+    apellido: 'Gutierrez',
+    correo: 'GemelaAdmin@duocuc.cl',
+    fecha_nac: '2003-08-05',
+    auto: 'no',
+    vehiculo: 'undefined',
+    password: 'admin',
+    tipo_usuario: 'administrador'
+  },];
   isAuthenticated = new BehaviorSubject(false);
 
   constructor(private storage: Storage, private router: Router) {
@@ -20,12 +31,13 @@ export class StorageService {
     this.datos = await this.storage.get(key) || [];
     var existe = this.datos.find(usuario => usuario.rut == dato.rut);
     if (existe == undefined) {
-        this.datos.push(dato);
-        await this.storage.set(key, this.datos);
-        return true;
-      }
+      this.datos.push(dato);
+      await this.storage.set(key, this.datos);
+      return true;
+    }
     return false;
   }
+
 
   async getDato(key, identificador) {
     this.datos = await this.storage.get(key) || [];

@@ -23,7 +23,7 @@
                     <img src="https://cdn-icons-png.flaticon.com/512/5212/5212384.png" alt=""
                       style="height: 5vh; width: 10vw;">
                   </div>
-                  <div class="agregarAuto" (click)="valorPerfil(2)">
+                  <div class="agregarAuto" (click)="valorPerfil(2)" *ngIf="sesion.auto=='si' && sesion.vehiculo == 'undefined'">
                     <img src="https://cdn-icons-png.flaticon.com/512/3886/3886667.png" alt=""
                       style="height: 5vh; width: 10vw;">
                   </div>
@@ -56,7 +56,7 @@
                         <ion-card-title>Tus datos</ion-card-title>
                       </ion-card-header>
                       <ion-card-content>
-                        <form [formGroup]="alumno" (ngSubmit)="modificar()">
+                        <form [formGroup]="alumno" (ngSubmit)="modificar(1)">
                           <ion-item>
                             <ion-label>Rut :</ion-label>
                             <ion-input type="text" placeholder="{{sesion.rut}}" formControlName="rut"
@@ -118,11 +118,10 @@
                         <ion-card-title>Agregar Auto</ion-card-title>
                       </ion-card-header>
                       <ion-card-content>
-                        <form [formGroup]="carro" (ngSubmit)="modificar()">
+                        <form [formGroup]="carro" (ngSubmit)="modificar(2)">
                           <ion-item>
                             <ion-label>Patente :</ion-label>
-                            <ion-input type="text" placeholder="Ingrese Patente" formControlName="patente"
-                              value="{{sesion.rut}}" readonly></ion-input>
+                            <ion-input type="text" placeholder="Ingrese Patente" formControlName="patente"></ion-input>
                           </ion-item>
                           <ion-item>
                             <ion-label>Pasajeros :</ion-label>

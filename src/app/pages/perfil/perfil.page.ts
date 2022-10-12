@@ -65,14 +65,16 @@ export class PerfilPage implements OnInit {
       this.default= undefined;
     }
   }
-  modificar(num){
+  async modificar(num){
     if(num==1){
       return true;
     }
     else if(num==2){
         this.sesion.vehiculo = this.carro.value;
-        console.log(this.sesion.vehiculo);
-        console.log(this.sesion.carro);
+        await this.storage.actualizar(this.KEY, this.sesion);
+
+        var actualizado = await this.storage.getDato(this.KEY, this.sesion.rut);
+        console.log(actualizado);
     }
     
   }
