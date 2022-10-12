@@ -21,7 +21,7 @@ export class UsuarioService {
       tipo_usuario: 'administrador'
     },
     {
-      rut: '22222222-2',
+      rut: '17577706-7',
       nombre: 'Carlos',
       apellido: 'Prado',
       correo: 'Carlitosprado@gmail.com',

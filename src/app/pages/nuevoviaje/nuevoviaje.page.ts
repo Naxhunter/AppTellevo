@@ -52,9 +52,9 @@ export class NuevoviajePage implements OnInit {
     this.ubicacionDuoc.lng = geo.coords.longitude;
 
     this.dibujarMapa();
-    //this.agregarMarcador();
+    this.agregarMarcador();
     this.buscarDireccion(this.mapa, this.marker);
-    //this.getInicio(this.mapa, this.marker);
+    this.getInicio(this.mapa, this.marker);
 
   }
 
@@ -63,10 +63,7 @@ export class NuevoviajePage implements OnInit {
   dibujarMapa() {
     var map: HTMLElement = document.getElementById('map');
 
-    this.mapa = new google.maps.Map(map, {
-      center: this.ubicacionDuoc,
-      zoom: 18
-    });
+    this.mapa = new google.maps.Map(map);
 
     this.directionsRenderer.setMap(this.mapa);
     var indicaciones: HTMLElement = document.getElementById('indicaciones');
@@ -143,7 +140,7 @@ export class NuevoviajePage implements OnInit {
   }
 
 
-  getfinal(mapaLocal, marcadorLocal) {
+  /* getfinal(mapaLocal, marcadorLocal) {
     var autocomplete: HTMLElement = document.getElementById('final');
     const search = new google.maps.places.Autocomplete(autocomplete);
     this.search = search;
@@ -160,7 +157,7 @@ export class NuevoviajePage implements OnInit {
 
 
     });
-  }
+  } */
 
   nuevoViaje(){
 
