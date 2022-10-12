@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { NavController } from '@ionic/angular';
+import { StorageService } from 'src/app/services/storage.service';
 
 
 @Component({
@@ -12,12 +13,14 @@ import { NavController } from '@ionic/angular';
 export class HomePage implements OnInit {
   rut: any;
   sesion: any = [];
+  KEY = "usuarios";
   constructor(private router: Router, private route: ActivatedRoute, private usuarioService: UsuarioService,
-    private navCtrl: NavController) { }
+    private navCtrl: NavController, private storage: StorageService) { }
 
-  ngOnInit() {
-    let rut = this.route.snapshot.paramMap.get('rut');
-    this.sesion = this.usuarioService.obtenerUsuario(rut);
+  async ngOnInit() {
+    let rut = await this.route.snapshot.paramMap.get('rut');
+    this.sesion = await this.storage.getDato(this.KEY, rut);
+    /*this.sesion = this.usuarioService.obtenerUsuario(rut);*/
     
   }
   

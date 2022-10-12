@@ -29,7 +29,7 @@ export class StorageService {
 
   async getDato(key, identificador) {
     this.datos = await this.storage.get(key) || [];
-    return this.datos.find(dato => dato.id == identificador);
+    return this.datos.find(dato => dato.rut == identificador);
   }
 
   async getDatos(key) {
@@ -56,6 +56,21 @@ export class StorageService {
     this.datos[index] = dato;
 
     await this.storage.set(key, this.datos);
+  }
+
+  async validarLogin(key, rut, password): Promise<any> {
+    console.log(1);
+    this.datos = await this.storage.get(key) || [];
+    var login = this.datos.find(usu => usu.rut == rut && usu.password == password);
+    if (login != undefined) {
+      console.log(2);
+      this.isAuthenticated.next(true);
+      return login;
+    }
+    else {
+      console.log(3);
+      return undefined;
+    }
   }
 
   getAuth() {

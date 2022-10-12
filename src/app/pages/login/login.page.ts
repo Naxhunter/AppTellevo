@@ -3,6 +3,7 @@ import { ToastController } from '@ionic/angular';
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { NavController } from '@ionic/angular';
+import { StorageService } from 'src/app/services/storage.service';
 
 
 @Component({
@@ -11,25 +12,31 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
+  KEY = "usuarios";
   rut: string;
   password: string;
   nuevorut: string;
   constructor(private toastController: ToastController, private router: Router,
-    private usuarioService: UsuarioService, private route: ActivatedRoute, private navCtrl: NavController) { }
+    private usuarioService: UsuarioService, private route: ActivatedRoute, private navCtrl: NavController,
+    private storage: StorageService) { }
 
   ngOnInit() {
   }
 
-  login() {
-    var usuarioLogin = this.usuarioService.validarLogin(this.rut, this.password);
+  async login() {
+    console.log(0);
+    var usuarioLogin = await this.storage.validarLogin(this.KEY, this.rut, this.password);
+    console.log(usuarioLogin);
     if (usuarioLogin != undefined) {
+      console.log("entre");
       this.nuevorut = this.rut;
       this.password = '';
       this.rut = '';
-      this.navCtrl.navigateForward(['/home', this.nuevorut]);
+      var sesion = await this.storage.getDato(this.KEY, this.nuevorut);
+      console.log(sesion);
+      this.navCtrl.navigateForward(['/home/', this.nuevorut]);
     } else {
-      this.toastError();
+      await this.toastError();
     }
   }
 

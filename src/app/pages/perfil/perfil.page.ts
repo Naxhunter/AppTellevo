@@ -43,7 +43,7 @@ export class PerfilPage implements OnInit {
       anio: new FormControl('')
     }
   );
-  KEY = "personas";
+  KEY = "usuarios";
   async ngOnInit() {
     let rut = this.route.snapshot.paramMap.get('rut');
     this.sesion = this.usuarioService.obtenerUsuario(rut);
