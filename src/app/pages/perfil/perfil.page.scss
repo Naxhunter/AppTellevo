@@ -49,12 +49,12 @@
                 }   
             }
             .contenedor_principal{
-                background: linear-gradient(#dfa474, #9912 );
+                background: linear-gradient(#dfa4748f, rgba(153, 153, 17, 0.479) );
                 color: rgb(65, 45, 9);
                 margin: 0 auto;
                 top: 5vh;
                 height: 87vh;
-                width: 75vw;
+                width: 85vw;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -73,7 +73,7 @@
                 .contenidoActualizar{
                     margin-top: 5vh;
                     ion-card{
-                        --background: linear-gradient(#000000, rgba(121, 121, 121, 0.133) ); 
+                        --background: linear-gradient(#dfa474da, #9912 ); 
                         color: white;
                     }
                 }
@@ -117,7 +117,64 @@
     color: rgba(4, 4, 43, 0.904);
     margin-top: 60px;
     font-family: 'Montserrat';
-    --background: transparentize($color: #1e7065cb, $amount: 0.3);
+    --background: #9e9223ce;
+    --border-style: solid;
+    --border-width: 1px;
+    --border-color: rgba(21, 42, 231, 0.692);
     font-weight: bold;
 }
-  
+
+.fuentes_bonicas{
+    font-family: 'Montserrat';
+    font-size: large;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+
+}
+
+.subtitulos{
+    font-family: 'Lobster';
+    font-size: xx-large;
+    font-weight: bold;
+    color:rgb(41, 41, 37);    
+}
+.subtitulos2{
+    font-family: 'Lobster';
+    font-size: x-large;
+    font-weight: lighter;
+    color:rgb(95, 95, 88);    
+}
+.subtitulos3{
+    font-family: "Montserrat";
+    font-size: medium;
+    color: rgba(4, 4, 43, 0.904);
+    font-weight: lighter;
+}
+.subtitulos4{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: medium;
+    color: rgb(24, 24, 109);
+    font-weight: lighter;
+}
+.subtitulos5{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: large;
+    color: rgb(22, 10, 44);
+    font-weight: lighter;
+}
+
+
+ion-item{
+    --background: none;
+
+        ion-label {
+            font-size: large;
+            font-weight: bold;
+            --color: rgb(65, 45, 9);
+            font-family: 'Lobster';
+        }
+        ion-input{
+            font-family: 'Lobster';
+            color: rgba(4, 4, 43, 0.904);
+        }
+}
