@@ -27,7 +27,7 @@ export class NuevoviajePage implements OnInit {
     pasajeros: new FormControl('sin')
   });
 
-
+  
   //2. VAMOS A CREAR LAS VARIABLES NECESARIAS PARA EL MAPA:
   mapa: any;
   marker: any;
@@ -39,7 +39,7 @@ export class NuevoviajePage implements OnInit {
   KEY: any = "usuarios";
   KEY_VIAJES: any = "viajes";
   ubicacionDuoc = { lat: 0, lng: 0 };
-  ubicacionMcDonald = { lat: -33.600379048832046, lng: -70.57719180496413 };
+  ubicacionDestino = { lat: -33.600379048832046, lng: -70.57719180496413 };
 
   constructor(private router: Router, private route: ActivatedRoute, private usuarioService: UsuarioService, private storage: StorageService) { }
 
@@ -81,7 +81,7 @@ export class NuevoviajePage implements OnInit {
 
   //agregar un nuevo marcador al mapa:
   agregarMarcador() {
-    this.marker.setPosition(this.ubicacionMcDonald);
+    this.marker.setPosition(this.ubicacionDestino);
     this.marker.setMap(this.mapa);
     
   }
@@ -163,9 +163,21 @@ export class NuevoviajePage implements OnInit {
       });
     } */
 
-  /* nuevoViaje(){
+  async nuevoViaje(){
+    var origen: any = this.ubicacionDuoc;
+    var destino: any = this.ubicacionDestino;
+    /*this.sesion.vehiculo = this.carro.value;
+        await this.storage.actualizar(this.KEY, this.sesion);
+        var cambio = this.sesion.rut;
+        this.sesion = await this.storage.getDato(this.KEY, cambio);
+        this.default = 4;*/
+    await this.viaje.controls.origen.setValue(origen);
+    await this.viaje.controls.origen.setValue(destino);
 
-  } */
+    console.log("Estoy dentro de nuevoViaje");
+    console.log(origen);
+    console.log(destino);
+  } 
 }
 
 
