@@ -1,52 +1,69 @@
-.fondo{
-    height: 100vh;
-    width: 100%;
-    background-image: url("../../../assets/img/fondo.jpg");
-    background-size: cover;
-    text-align: center;
-    font-family: 'Montserrat';
+.recuperacion{
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("../../../assets/img/campus-arauco4-960x529.jpg");
+  background-size: cover;
+  text-align: center;
+  font-family: 'Montserrat';
+}
+ion-content.background{
+  --background: url("../../../assets/img/fondo.jpg");
 }
 
-div {
-  background: linear-gradient(rgba(255,165,0,0.6), rgba(223, 164, 116, 0.3) ); 
-  margin: 0 auto;
-  top: 5vh;
-  width: 50vw;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-around;
+ion-list{
+  width: 80vw;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  text-align: center;
+  background-image: url("../../../assets/img/fondo.jpg");
+  height: 100vh;
 }
 
-ion-card {
-  background: linear-gradient(#dfa474, rgba(153, 153, 50, 0.5) );
-  margin: 0 auto;
-  top: 5vh;
-  display: block;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 40vw;
+ion-item{
+  $item-ios-body-text-font-size:	2rem;
+  font-family: 'Lobster';
+  font-weight: bold;
+  color: rgba(4, 4, 43, 0.904);
+  
 }
 
-ion-item {
-  --background: none;
+div{
+  background: linear-gradient(rgba(255,165,0,0.6), rgba(223, 164, 116, 0.3) );
+  
+}
 
-  ion-label {
-      font-size: large;
-      font-weight: bold;
-      --color: rgb(65, 45, 9);
-      font-family: 'Lobster';
-  }
-  b {
-    text-decoration: none;
-    font-size: large;
-    font-family: 'Lobster';
-    font-weight: bold;
-    color: rgba(4, 4, 43, 0.904);
+// div {
+//   background: linear-gradient(rgba(255,165,0,0.6), rgba(223, 164, 116, 0.3) ); 
+//   top: 5vh;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-around;
+
+//   ion-card {
+//     background: linear-gradient(#dfa474, rgba(153, 153, 50, 0.5) );
+//     margin: 0 auto;
+//     top: 5vh;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     justify-self: center;
+//     align-self: center;
+//     width: 70vw;
+//     height: 80vh;
+
+//       ion-item {
+//         --background: none;
     
-  }
-}
+//         b {
+//           text-decoration: none;
+//           font-size: large;
+//           font-family: 'Lobster';
+//           font-weight: bold;
+//           color: rgba(4, 4, 43, 0.904);
+        
+//         }
+//       }
+//     }
+//   }
 
 ion-button{
   color: rgba(4, 4, 43, 0.904);
@@ -59,4 +76,11 @@ ion-button{
 
   font-weight: bold;
   
+}
+
+.grid {
+  display: grid;
+  grid-gap: 50px;
+  grid-column-gap: 50px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
