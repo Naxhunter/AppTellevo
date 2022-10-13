@@ -173,7 +173,7 @@ export class NuevoviajePage implements OnInit {
         this.default = 4;*/
     await this.viaje.controls.origen.setValue(origen);
     await this.viaje.controls.origen.setValue(destino);
-
+    this.calcularRuta();
     console.log("Estoy dentro de nuevoViaje");
     console.log(origen);
     console.log(destino);
