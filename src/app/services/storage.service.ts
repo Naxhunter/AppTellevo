@@ -8,23 +8,7 @@ import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 })
 export class StorageService {
 
-  datos: any[] = [{
-<<<<<<< HEAD
-    id: '29dj3ksknnuf3',
-    rut: '21080544-3',
-    nombre: 'Gemela',
-    apellido: 'Gutierrez',
-    correo: 'GemelaAdmin@duocuc.cl',
-    fecha_nac: '2003-08-05',
-    auto: 'no',
-    vehiculo: 'undefined',
-    password: 'admin',
-    tipo_usuario: 'administrador'
-  },];
-=======
-   
-  }];
->>>>>>> c4bb05003b61e9647ae109b432c693e59dca0168
+  datos: any[] = [];
   isAuthenticated = new BehaviorSubject(false);
 
   constructor(private storage: Storage, private router: Router) {
