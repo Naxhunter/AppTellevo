@@ -142,6 +142,22 @@ export class NuevoviajePage implements OnInit {
 
     });
   }
+  async nuevoViaje(){
+    
+    var origen: any = this.ubicacionDuoc;
+    var destino: any = this.ubicacionDestino;
+    var capacidad: any = this.usuario.vehiculo.pasajeros;
+    console.log(capacidad);
+    await this.calcularRuta();
+    await this.viaje.controls.origen.setValue(origen);
+    await this.viaje.controls.destino.setValue(destino);
+    await this.viaje.controls.capacidad.setValue(capacidad);
+    var guardar = await this.storage.agregarViaje(this.KEY_VIAJES, this.viaje.value);
+    if (guardar == true) {
+      this.viaje.reset();
+      alert('¡VIAJE CREADO!');
+    }
+  } 
 
   /* 
     getfinal(mapaLocal, marcadorLocal) {
@@ -163,13 +179,7 @@ export class NuevoviajePage implements OnInit {
       });
     } */
 
-  async nuevoViaje(){
-    var origen: any = this.ubicacionDuoc;
-    var destino: any = this.ubicacionDestino;
-    
-    await this.viaje.controls.origen.setValue(origen);
-    await this.viaje.controls.origen.setValue(destino);
-  } 
+
 }
 
 
