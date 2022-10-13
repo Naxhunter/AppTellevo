@@ -9,7 +9,7 @@ import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 export class StorageService {
 
   datos: any[] = [{
-    id:'29dj3ksknnuf3',
+    id: '29dj3ksknnuf3',
     rut: '21080544-3',
     nombre: 'Gemela',
     apellido: 'Gutierrez',
@@ -37,7 +37,12 @@ export class StorageService {
     }
     return false;
   }
-
+  async agregarViaje(key, dato) {
+    this.datos = await this.storage.get(key) || [];
+    this.datos.push(dato);
+    await this.storage.set(key, this.datos);
+    return true;
+  }
 
   async getDato(key, identificador) {
     this.datos = await this.storage.get(key) || [];
