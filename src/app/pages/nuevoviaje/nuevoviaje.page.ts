@@ -166,17 +166,9 @@ export class NuevoviajePage implements OnInit {
   async nuevoViaje(){
     var origen: any = this.ubicacionDuoc;
     var destino: any = this.ubicacionDestino;
-    /*this.sesion.vehiculo = this.carro.value;
-        await this.storage.actualizar(this.KEY, this.sesion);
-        var cambio = this.sesion.rut;
-        this.sesion = await this.storage.getDato(this.KEY, cambio);
-        this.default = 4;*/
+    
     await this.viaje.controls.origen.setValue(origen);
     await this.viaje.controls.origen.setValue(destino);
-    this.calcularRuta();
-    console.log("Estoy dentro de nuevoViaje");
-    console.log(origen);
-    console.log(destino);
   } 
 }
 
