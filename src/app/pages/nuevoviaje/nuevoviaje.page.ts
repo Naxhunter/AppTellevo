@@ -63,7 +63,10 @@ export class NuevoviajePage implements OnInit {
   dibujarMapa() {
     var map: HTMLElement = document.getElementById('map');
 
-    this.mapa = new google.maps.Map(map);
+    this.mapa = new google.maps.Map(map, {
+      center: this.ubicacionDuoc,
+      zoom: 18
+    });
 
     this.directionsRenderer.setMap(this.mapa);
     var indicaciones: HTMLElement = document.getElementById('indicaciones');
