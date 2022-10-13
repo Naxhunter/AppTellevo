@@ -1,15 +1,10 @@
 <ion-content>
+
+  
+  
   <div class="fondo">
     <div class="formularioViaje">
       <form [formGroup]="viaje" (ngSubmit)="nuevoViaje()">
-
-        
-        <ion-button expand="block" (click)="calcularRuta()">Ir</ion-button>
-        <!--aca debe ir un ngFor con la información de el localStorage para que el evento click pueda sacar la ruta -->
-        
-        <div id="map"></div>
-        
-        <div id="indicaciones"></div>
 
         <ion-item>
           <ion-label>Conductor :</ion-label>
@@ -41,6 +36,7 @@
         </ion-item>
         <ion-button type="submit" [disabled]="!viaje.valid">CREAR VIAJE</ion-button>
       </form>
+      <div id="map"></div>
     </div>
     <!--
       <h1><a href=""></a></h1>

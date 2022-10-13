@@ -44,9 +44,9 @@ export class NuevoviajePage implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private usuarioService: UsuarioService, private storage: StorageService) { }
 
   async ngOnInit() {
-    let rut = this.route.snapshot.paramMap.get('rut');
+    let rut = await this.route.snapshot.paramMap.get('rut');
     this.usuario = await this.storage.getDato(this.KEY, rut);
-   
+
     var geo = await this.getUbicacionActual();
     this.ubicacionDuoc.lat = geo.coords.latitude;
     this.ubicacionDuoc.lng = geo.coords.longitude;
@@ -54,7 +54,7 @@ export class NuevoviajePage implements OnInit {
     this.dibujarMapa();
     this.agregarMarcador();
     this.buscarDireccion(this.mapa, this.marker);
-    this.getInicio(this.mapa, this.marker);
+     this.getInicio(this.mapa, this.marker);
 
   }
 
@@ -83,6 +83,7 @@ export class NuevoviajePage implements OnInit {
   agregarMarcador() {
     this.marker.setPosition(this.ubicacionMcDonald);
     this.marker.setMap(this.mapa);
+    
   }
 
   //método para que el input me muestre sugerencias de busqueda de dirección:
@@ -142,29 +143,29 @@ export class NuevoviajePage implements OnInit {
     });
   }
 
+  /* 
+    getfinal(mapaLocal, marcadorLocal) {
+      var autocomplete: HTMLElement = document.getElementById('final');
+      const search = new google.maps.places.Autocomplete(autocomplete);
+      this.search = search;
+  
+      search.addListener('place_changed', function () {
+        var place = search.getPlace().geometry.location;
+  
+        console.log(place)
+        mapaLocal.setCenter(place);
+        mapaLocal.setZoom(15);
+  
+        marcadorLocal.setPosition(place);
+  
+  
+  
+      });
+    } */
 
-  /* getfinal(mapaLocal, marcadorLocal) {
-    var autocomplete: HTMLElement = document.getElementById('final');
-    const search = new google.maps.places.Autocomplete(autocomplete);
-    this.search = search;
+  /* nuevoViaje(){
 
-    search.addListener('place_changed', function () {
-      var place = search.getPlace().geometry.location;
-
-      console.log(place)
-      mapaLocal.setCenter(place);
-      mapaLocal.setZoom(15);
-
-      marcadorLocal.setPosition(place);
-
-
-
-    });
   } */
-
-  nuevoViaje(){
-
-  }
 }
 
 
