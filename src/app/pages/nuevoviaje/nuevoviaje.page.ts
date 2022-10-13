@@ -166,9 +166,9 @@ export class NuevoviajePage implements OnInit {
   async nuevoViaje(){
     var origen: any = this.ubicacionDuoc;
     var destino: any = this.ubicacionDestino;
+    
     await this.viaje.controls.origen.setValue(origen);
     await this.viaje.controls.origen.setValue(destino);
-
   } 
 }
 
