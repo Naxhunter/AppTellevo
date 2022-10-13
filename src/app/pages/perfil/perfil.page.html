@@ -17,20 +17,20 @@
                 <div class="cabeceraOpciones">
                   <div class="misDatos" (click)="valorPerfil(0)">
                     <img src="https://cdn-icons-png.flaticon.com/512/3076/3076404.png" alt=""
-                      style="height: 5vh; width: 10vw;">
+                      style="height: 60px; width: 60px;">
                   </div>
                   <div class="modificarDatos" (click)="valorPerfil(1)">
                     <img src="https://cdn-icons-png.flaticon.com/512/5212/5212384.png" alt=""
-                      style="height: 5vh; width: 10vw;">
+                      style="height: 60px; width: 60px;">
                   </div>
                   <div class="agregarAuto" (click)="valorPerfil(2)"
                     *ngIf="sesion.auto=='si' && sesion.vehiculo == 'undefined'">
                     <img src="https://cdn-icons-png.flaticon.com/512/3886/3886667.png" alt=""
-                      style="height: 5vh; width: 10vw;">
+                      style="height: 60px; width: 60px;">
                   </div>
                   <div class="misViajes" (click)="valorPerfil(3)">
                     <img src="https://cdn-icons-png.flaticon.com/512/826/826070.png" alt=""
-                      style="height: 5vh; width: 10vw;">
+                      style="height: 60px; width: 60px;">
                   </div>
                 </div>
                 <div class="contenidoActualizar">
@@ -39,10 +39,10 @@
                     <ion-card>
                       <img src="https://cdn-icons-png.flaticon.com/512/3135/3135810.png" style="height:30vh;">
                       <ion-card-header>
-                        <ion-card-subtitle>{{sesion.nombre}} {{sesion.apellido}}</ion-card-subtitle>
-                        <ion-card-title>Mis datos</ion-card-title>
+                        <ion-card-subtitle class="subtitulos">{{sesion.nombre}} {{sesion.apellido}}</ion-card-subtitle>
+                        <ion-card-title class="subtitulos2">Mis datos</ion-card-title>
                       </ion-card-header>
-                      <ion-card-content>
+                      <ion-card-content class="fuentes_bonicas">
                         <p>Rut: {{sesion.rut}}</p>
                         <p>Email: {{sesion.correo}}</p>
                         <p>Auto: {{sesion.auto}}</p>
@@ -53,8 +53,8 @@
                     <ion-card>
                       <img src="https://cdn-icons-png.flaticon.com/512/3135/3135810.png" style="height:30vh;">
                       <ion-card-header>
-                        <ion-card-subtitle>Formulario</ion-card-subtitle>
-                        <ion-card-title>Tus datos</ion-card-title>
+                        <ion-card-subtitle class="subtitulos3"> Formulario </ion-card-subtitle>
+                        <ion-card-title class="subtitulos">Tus datos</ion-card-title>
                       </ion-card-header>
                       <ion-card-content>
                         <form [formGroup]="alumno" (ngSubmit)="modificar(1)">
@@ -158,12 +158,12 @@
                     <ion-card>
                       <img src="https://cdn-icons-png.flaticon.com/512/3135/3135810.png" style="height:30vh;">
                       <ion-card-header>
-                        <ion-card-subtitle>{{sesion.nombre}} {{sesion.apellido}}</ion-card-subtitle>
-                        <ion-card-title>Cantidad viajes</ion-card-title>
+                        <ion-card-subtitle class="subtitulos">{{sesion.nombre}} {{sesion.apellido}}</ion-card-subtitle>
+                        <ion-card-title class="subtitulos5">Cantidad viajes</ion-card-title>
                       </ion-card-header>
                       <ion-card-content>
-                        <p>Cantidad viajes tomados: 5</p>
-                        <p>Fecha último viaje: 09/09/2009</p>
+                        <p class="subtitulos4">Cantidad viajes tomados: 5</p>
+                        <p class="subtitulos4">Fecha último viaje: 09/09/2009</p>
                       </ion-card-content>
                     </ion-card>
                   </div>
