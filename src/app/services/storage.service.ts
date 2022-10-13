@@ -9,6 +9,7 @@ import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 export class StorageService {
 
   datos: any[] = [{
+<<<<<<< HEAD
     id: '29dj3ksknnuf3',
     rut: '21080544-3',
     nombre: 'Gemela',
@@ -20,6 +21,10 @@ export class StorageService {
     password: 'admin',
     tipo_usuario: 'administrador'
   },];
+=======
+   
+  }];
+>>>>>>> c4bb05003b61e9647ae109b432c693e59dca0168
   isAuthenticated = new BehaviorSubject(false);
 
   constructor(private storage: Storage, private router: Router) {
@@ -99,6 +104,11 @@ export class StorageService {
     this.router.navigate(['/login']);
   }
 
-
+  async getPasajeros(key, conductor ) {
+  this.datos = await this.storage.get(key) || [];
+   var dato = this.datos.find(dato => dato.viaje.rut_conductor == conductor );
+    
+   
+  }
 
 }
