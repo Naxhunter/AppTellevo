@@ -118,5 +118,8 @@ export class StorageService {
     return true;
 
   }
-
+  async getDatoViaje(key, identificador) {
+    this.datos = await this.storage.get(key) || [];
+    return this.datos.find(dato => dato.rut_conductor == identificador);
+  }
 }
