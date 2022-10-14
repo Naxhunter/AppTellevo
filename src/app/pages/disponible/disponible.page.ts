@@ -32,4 +32,7 @@ export class DisponiblePage implements OnInit {
     });
     console.log("Imprimo mis conductores con sus autos:", this.conductor);
   }
+  async irDetalle(rut){
+    
+  }
 }
