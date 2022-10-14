@@ -1,4 +1,49 @@
-.recuperacion{
+.fondo {
+  box-shadow: none;
+  height: 100vh;
+
+  background: transparentize($color: #f0e658bd, $amount: 0.3);
+  background: url("../../../assets/img/fondo.jpg");
+  background-size: cover;
+  text-align: center;
+  align-items: center;
+  justify-content: space-around;
+  font-family: "Montserrat";
+  overflow: scroll;
+  #lista {
+    background: none;
+    background: linear-gradient(#748ddf, rgba(190, 104, 17, 0.133));
+    border-bottom: solid;
+    border-color: white;
+    ion-thumbnail img {
+      width: 70px !important;
+      height: 70px !important;
+    }
+    .item {
+      --background: none;
+      color: rgb(34, 22, 1);
+      font-weight: bold;
+      font-family: Lobster;
+      div {
+        height: 12.5vh;
+        img {
+          width: 75px;
+          height: auto;
+        }
+      }
+    }
+    ion-button {
+      color: rgba(4, 4, 43, 0.904);
+      margin-top: 2vh;
+      margin-bottom: 2vh;
+      font-family: "Montserrat";
+      --background: transparentize($color: #1e7065cb, $amount: 0.3);
+      font-weight: bold;
+    }
+  }
+}
+
+/*.recuperacion{
   height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("../../../assets/img/campus-arauco4-960x529.jpg");
   background-size: cover;
@@ -28,11 +73,13 @@ ion-item{
 
 div{
   background: linear-gradient(rgba(255,165,0,0.6), rgba(223, 164, 116, 0.3) );
+  display: flex;
+  flex-direction: column;
   
-}
+}*/
 
 // div {
-//   background: linear-gradient(rgba(255,165,0,0.6), rgba(223, 164, 116, 0.3) ); 
+//   background: linear-gradient(rgba(255,165,0,0.6), rgba(223, 164, 116, 0.3) );
 //   top: 5vh;
 //   display: flex;
 //   align-items: center;
@@ -52,35 +99,23 @@ div{
 
 //       ion-item {
 //         --background: none;
-    
+
 //         b {
 //           text-decoration: none;
 //           font-size: large;
 //           font-family: 'Lobster';
 //           font-weight: bold;
 //           color: rgba(4, 4, 43, 0.904);
-        
+
 //         }
 //       }
 //     }
 //   }
 
-ion-button{
-  color: rgba(4, 4, 43, 0.904);
-  margin-top: 60px;
-  font-family: 'Montserrat';
-  --background: #9e9223a8;
-  --border-style: solid;
-  --border-width: 1px;
-  --border-color: rgba(21, 42, 231, 0.692);
-
-  font-weight: bold;
-  
-}
-
+/*
 .grid {
   display: grid;
   grid-gap: 50px;
   grid-column-gap: 50px;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-}
+}*/
