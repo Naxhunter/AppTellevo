@@ -20,7 +20,7 @@ export class SolicitudPage implements OnInit {
   nombre: any;
   sesion: any = [];
   listado: any = undefined;
-
+  datos: any;
 
   constructor(private navCtrl: NavController, private route: ActivatedRoute, private usuarioService: UsuarioService, private storage: StorageService
     , private router: Router) { }
@@ -37,10 +37,10 @@ export class SolicitudPage implements OnInit {
 
   async AceptarSolicitud() {
     var rutPasajero: HTMLElement = document.getElementById('rutpasajero');
-    var nombrePasajero : HTMLElement = document.getElementById('nompasajero');
+    var nombrePasajero: HTMLElement = document.getElementById('nompasajero');
     this.rutpasajero = rutPasajero;
     this.nombre = nombrePasajero;
-
+    
 
 
 
