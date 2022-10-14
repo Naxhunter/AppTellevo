@@ -1,31 +1,31 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>solicitud</ion-title>
-     </ion-toolbar>
-</ion-header>
-
-
 <ion-content>
-  
-  <H1> Lista de  solicitudes</H1>
+  <div class="fondo">
+    <h1 class="titulo">
+      Solicitudes de viajes
+    </h1>
 
-  <table id="tabla">
-    <div class="lista"  >
-      <div class="elemento">
-     
-       <ion-card>
-        <div><b>Rut</b>:<!--  {{usuario.rut}} --></div>
-        <div><b>Nombre</b>: <!-- {{usuario.nombre}} {{usuario.apellido}} --></div>
-        <div><b>Dirección:</b><!-- {{usuario.Dirección}} --></div>
-        <div>  <ion-button color="primary"> Aceptar </ion-button> </div>
-        <div>  <ion-button color="danger"> Rechazar </ion-button> </div>
-      </ion-card>
-   
-      </div>
-    
-   
-      </div>
+    <ion-list lines="none" id="lista">
+      <ion-item class="item">
+        <div>
+          <img src="../../../assets/img/Rayo_McQueen.webp" alt="">
+        </div>
+          <div>
+            <b>Rut</b>: SAMPLE TEXT <!--  {{usuario.rut}} -->
+          </div>
+          <div>
+            <b>Nombre</b>: SAMPLE TEXT<!-- {{usuario.nombre}} {{usuario.apellido}} -->
+          </div>
+      </ion-item>
+    </ion-list>
+
+    <div>  
+      <ion-button> 
+        Aceptar 
+      </ion-button> 
+      <ion-button>
+        Rechazar 
+      </ion-button> 
+    </div>
+  </div>
   
-    </table>
-  <ion-card></ion-card>
 </ion-content>
