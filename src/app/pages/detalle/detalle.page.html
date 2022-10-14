@@ -1,19 +1,34 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>detalle</ion-title>
+    <!--
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>-->
   </ion-toolbar>
 </ion-header>
 
 
 <div class="fondo">
   <div class="formularioViaje">
-<div id="map"></div>
-<ion-item>
-<img class="imagen" src="https://i.ytimg.com/vi/Sr3KI13HfpM/maxresdefault.jpg" alt="">
-</ion-item>
-<ion-item><div> NOMBRE: {{datos.rut_conductor}}</div></ion-item>
-<ion-item><div> PASAJEROS:{{datos.pasajeros}}</div></ion-item>
-<ion-item><div> DISPONIBLE : {{datos.iniciado}} </div></ion-item>
-<div> C</div>
-</div>
+    <div id="map"></div>
+    <ion-item>
+      <img class="imagen" src="https://i.ytimg.com/vi/Sr3KI13HfpM/maxresdefault.jpg" alt="">
+    </ion-item>
+    <ion-item>
+      <div> NOMBRE: {{
+        detalle.usuario.rut
+        }}</div>
+    </ion-item>
+    <ion-item>
+      <div> PASAJEROS:{{detalle}}</div>
+    </ion-item>
+    <ion-item>
+      <div> DISPONIBLE : {{detalle}} </div>
+    </ion-item>
+    <div> C</div>
+    <ion-buttons slot="start">
+      <ion-back-button>por favor ponte ya que me pongo de mala ostia</ion-back-button>
+    </ion-buttons>
+  </div>
 </div>

@@ -10,18 +10,29 @@ declare var google;
 })
 export class DetallePage implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private usuarioService: UsuarioService, private storage: StorageService) { }
-  usuario: any = [];
+  detalle: any = [];
 
   async ngOnInit() {
     /*  this.usuario = this.router.getCurrentNavigation().extras.state.usuario; */
-    var geo = await this.getUbicacionActual();
-    this.ubicacionDuoc.lat = geo.coords.latitude;
-    this.ubicacionDuoc.lng = geo.coords.longitude;
-    this.buscarViaje() 
-    this.dibujarMapa();
+    try {
+
+      this.detalle = await this.router.getCurrentNavigation().extras.state;
+      if (this.detalle !== undefined) {
+        console.log("este es el detalle: ", this.detalle);
+        var geo = await this.getUbicacionActual();
+        this.ubicacionDuoc.lat = geo.coords.latitude;
+        this.ubicacionDuoc.lng = geo.coords.longitude;
+        this.buscarViaje();
+        this.dibujarMapa();
+      }
+
+    } catch (e) {
+      console.log(e);
+    }
+
     //this.agregarMarcador();
     /*  this.buscarDireccion(this.mapa, this.marker); */
-   
+
   }
 
 
@@ -38,7 +49,7 @@ export class DetallePage implements OnInit {
   ubicacionDuoc = { lat: 0, lng: 0 };
   ubicacionDos = { lat: -33.600379048832046, lng: -70.57719180496413 };
   KEY: any = "viajes";
-  id:any="20334957-2";
+  id: any = "20334957-2";
 
 
 
@@ -119,11 +130,11 @@ export class DetallePage implements OnInit {
 
 
   async buscarViaje() {
-    this.datos = await this.storage.getDatoViaje(this.KEY,this.id);
+    this.datos = await this.storage.getDatoViaje(this.KEY, this.id);
 
     console.log(this.datos)
     return this.datos;
-    
+
   }
 
 

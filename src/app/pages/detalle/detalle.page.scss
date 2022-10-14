@@ -20,8 +20,8 @@
     //if datetime
     height: 130vh;
     */
-    background: transparentize($color: #f0e658bd, $amount: 0.3);
-    background: url("../../../assets/img/fondo.jpg");
+    background: rgb(238, 174, 202);
+    background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
     background-size: cover;
     text-align: center;
     align-items: center;
@@ -29,17 +29,18 @@
     font-family: "Montserrat";
     .formularioViaje {
         text-align: center;
-        
+
         height: 80vh;
-        background: linear-gradient(#dfa474, #9912);
+        background: rgb(238, 174, 202);
+        background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
         border-radius: 5px;
         ion-item {
             width: 85vw;
             --background: none;
             color: rgb(2, 2, 2);
         }
-        #imagen{
-            width:85vw;
+        #imagen {
+            width: 85vw;
             height: 85vw;
         }
         #inicio {
@@ -68,9 +69,9 @@
         }
     }
 }
- .caja1 {
+.caja1 {
     background-color: #1e7065cb;
     width: 300px;
-    height:300px;
+    height: 300px;
     float: left;
- }
+}

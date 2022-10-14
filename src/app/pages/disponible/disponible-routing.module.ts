@@ -6,7 +6,13 @@ import { DisponiblePage } from './disponible.page';
 const routes: Routes = [
   {
     path: '',
-    component: DisponiblePage
+    component: DisponiblePage,
+   /* children: [
+      {
+        path: 'detalle',
+        loadChildren: () => import('../detalle/detalle.module').then( m => m.DetallePageModule)
+      },
+    ]*/
   }
 ];
 
