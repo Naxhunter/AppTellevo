@@ -60,11 +60,11 @@
         <ion-icon name="airplane-outline"></ion-icon>
         <ion-label>Buscar</ion-label>
       </ion-tab-button>
-      <ion-tab-button tab="nuevoviaje/{{sesion.rut}}" *ngIf="sesion.auto == 'si'">
+      <ion-tab-button tab="nuevoviaje/{{sesion.rut}}" *ngIf="sesion.auto == 'si' && sesion.tipo_usuario != 'administrador'">
         <ion-icon name="location-outline"></ion-icon>
         <ion-label>Crear Viaje</ion-label>
       </ion-tab-button>
-      <ion-tab-button tab="solicitud/{{sesion.rut}}" *ngIf="sesion.auto == 'si'">
+      <ion-tab-button tab="solicitud/{{sesion.rut}}" *ngIf="sesion.auto == 'si' && sesion.tipo_usuario != 'administrador'">
         <ion-icon name="notifications-outline"></ion-icon>
         <ion-label>Solicitudes</ion-label>
         <!-- <ion-badge>6</ion-badge> -->

@@ -13,7 +13,6 @@ export class DisponiblePage implements OnInit {
   usuario: any = [];
   rut: any
   ngOnInit() {
-    /*this.usuario = this.router.getCurrentNavigation().extras.state.usuario;*/
     let rut = this.route.snapshot.paramMap.get('rut');
     this.usuario = this.usuarioService.obtenerUsuario(rut);
   }

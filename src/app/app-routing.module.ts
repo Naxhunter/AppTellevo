@@ -27,10 +27,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/recuperar/recuperar.module').then(m => m.RecuperarPageModule)
   },
   {
-    path: 'disponible',
-    loadChildren: () => import('./pages/disponible/disponible.module').then( m => m.DisponiblePageModule)
-  },
-  {
     path: 'detalle',
     loadChildren: () => import('./pages/detalle/detalle.module').then( m => m.DetallePageModule)
   },
