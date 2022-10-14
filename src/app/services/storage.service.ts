@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 import { BehaviorSubject } from 'rxjs';
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
+import { JsonPipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +11,14 @@ export class StorageService {
 
   datos: any[] = [];
   isAuthenticated = new BehaviorSubject(false);
-
+  userAdmin: any[] = [];
   constructor(private storage: Storage, private router: Router) {
     storage.create();
   }
 
   //MÉTODOS DEL CRUD DEL STORAGE:
   async agregar(key, dato) {
+    await this.existeAdmin();
     this.datos = await this.storage.get(key) || [];
     var existe = this.datos.find(usuario => usuario.rut == dato.rut);
     if (existe == undefined) {
@@ -88,11 +90,33 @@ export class StorageService {
     this.router.navigate(['/login']);
   }
 
-  async getPasajeros(key, conductor ) {
+  async getPasajeros(key, conductor) {
   this.datos = await this.storage.get(key) || [];
    var dato = this.datos.find(dato => dato.viaje.rut_conductor == conductor );
-    
-   
+  }
+  async existeAdmin() {
+    var id = '0';
+    this.datos = await this.storage.get("usuarios") || [];
+    var existe = this.datos.find(admin => admin.id == id);
+    if (existe == undefined) {
+      console.log("crealo");
+      this.datos = [{
+        id: '0',
+        rut: '20763231-7',
+        nombre: 'Jose',
+        apellido: 'Contreras',
+        correo: 'rolando.hernandezv@duocuc.cl',
+        fecha_nac: '01/04/2002',
+        auto: 'no',
+        vehiculo: 'undefined',
+        password: '12341234',
+        tipo_usuario: 'administrador' 
+      }];
+      await this.storage.set("usuarios", this.datos);
+      return false;
+    }
+    return true;
+
   }
 
 }
