@@ -4,7 +4,7 @@
     <ion-list lines="none" id="lista" *ngFor="let aux of total">
       <ion-item class="item">
         <div>
-          <img alt="Silhouette of mountains" src="{{aux.dato.vehiculo.imagen}}"/>
+          <img alt="Silhouette of mountains" src="{{aux.dato.vehiculo.imagen}}" />
         </div>
         <ion-button slot="end" size="default" (click)="irDetalle(aux.dato.rut)">
           ir Detalle
@@ -25,19 +25,40 @@
   <div class="fondo-detalle" *ngIf="template == 2">
     <div class="formularioViaje">
       <div id="map"></div>
-      <ion-item>
-        <img class="imagen" src="" alt="">
+      <ion-item class="imagen">
+        <img class="image" src="{{detalle.dato.vehiculo.imagen}}" alt="">
       </ion-item>
       <ion-item>
-        <div> NOMBRE: </div>
+        <div>CONDUCTOR: {{detalle.dato.nombre}} {{detalle.dato.apellido}}</div>
       </ion-item>
       <ion-item>
-        <div> PASAJEROS:</div>
+        <div>CORREO: {{detalle.dato.correo}}</div>
       </ion-item>
       <ion-item>
-        <div> DISPONIBLE: </div>
+        <div>PASAJEROS: {{detalle.dato.vehiculo.pasajeros}}</div>
       </ion-item>
-      <div></div>
+      <ion-item *ngIf="detalle.precios.capacidad != 0">
+        <div>DISPONIBLE: {{detalle.precios.capacidad}} pasajeros restantes</div>
+      </ion-item>
+      <ion-item *ngIf="detalle.precios.capacidad == 0">
+        <div>DISPONIBLE: Sin cupo</div>
+      </ion-item>
+      <ion-item>
+        <div>PRECIO: $ {{detalle.precios.precio}} pesos</div>
+      </ion-item>
+      <ion-item>
+        <div>HORA SALIDA: {{detalle.precios.salida}} horas</div>
+      </ion-item>
+      <div>
+          <ion-button slot="end" size="default" (click)="irSolicitar()">
+            Solicitar
+            <ion-icon name="enter-outline" slot="end"></ion-icon>
+          </ion-button>
+          <ion-button slot="end" size="default" (click)="irViajes()">
+            Volver
+            <ion-icon name="play-back-outline" slot="end"></ion-icon>
+          </ion-button>
+      </div>
     </div>
   </div>
 </ion-content>

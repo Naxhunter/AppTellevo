@@ -11,7 +11,7 @@
   font-family: "Montserrat";
   overflow: scroll;
 
-  .titulo{
+  .titulo {
     margin-top: 12.5vh;
     font-family: Lobster;
     color: rgb(34, 22, 1);
@@ -51,12 +51,14 @@
   }
 }
 #map {
+  margin-top: 10vh;
   width: 100%;
-  height: 60.15%;
+  height: 40%;
   display: block;
   border-radius: 5px;
-  border-top: solid;
-  border-color: white;
+  border-bottom: solid;
+  border-color: #9634c1;
+  border-radius: 5px;
 }
 #indicaciones {
   width: 100%;
@@ -75,53 +77,47 @@
   align-items: center;
   justify-content: space-around;
   font-family: "Montserrat";
+  overflow: scroll;
   .formularioViaje {
-      text-align: center;
+    text-align: center;
+    height: 80vh;
+    border-radius: 5px;
+    ion-item {
+      width: 85vw;
+      --background: none;
+      color: rgb(2, 2, 2);
+    }
+    .imagen {
+      margin-top: 3vh;
+      width: 100vw;
+      .image {
+        width: 100vw;
+        height: auto;
+        border-radius: 15px;
+        border: solid;
+        border-color: white;
+      }
+    }
+    #inicio {
+      color: rgb(5, 5, 5);
+      background: none;
+      border: none;
+    }
+    #autocomplete {
+      color: rgb(65, 45, 9);
+      background: none;
+      border: none;
+    }
 
-      height: 80vh;
-      background: rgb(238, 174, 202);
-      background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
-      border-radius: 5px;
-      ion-item {
-          width: 85vw;
-          --background: none;
-          color: rgb(2, 2, 2);
-      }
-      #imagen {
-          width: 85vw;
-          height: 85vw;
-      }
-      #inicio {
-          color: rgb(5, 5, 5);
-          background: none;
-          border: none;
-      }
-      #autocomplete {
-          color: rgb(65, 45, 9);
-          background: none;
-          border: none;
-      }
-      .datetime {
-          width: 60vw;
-          height: 50vh;
-          --background: none;
-      }
-
-      ion-button {
-          color: rgba(4, 4, 43, 0.904);
-          margin-top: 2vh;
-          margin-bottom: 2vh;
-          font-family: "Montserrat";
-          --background: transparentize($color: #1e7065cb, $amount: 0.3);
-          font-weight: bold;
-      }
+    ion-button {
+      color: rgba(4, 4, 43, 0.904);
+      margin-top: 2vh;
+      margin-bottom: 2vh;
+      font-family: "Montserrat";
+      --background: transparentize($color: #1e7065cb, $amount: 0.3);
+      font-weight: bold;
+    }
   }
-}
-.caja1 {
-  background-color: #1e7065cb;
-  width: 300px;
-  height: 300px;
-  float: left;
 }
 
 /*.recuperacion{
@@ -130,6 +126,13 @@
   background-size: cover;
   text-align: center;
   font-family: 'Montserrat';
+}
+
+.caja1 {
+  background-color: #1e7065cb;
+  width: 300px;
+  height: 300px;
+  float: left;
 }
 ion-content.background{
   --background: url("../../../assets/img/fondo.jpg");

@@ -33,7 +33,6 @@ export class DisponiblePage implements OnInit {
   ubicacionDuoc = { lat: 0, lng: 0 };
   ubicacionDos = { lat: -33.600379048832046, lng: -70.57719180496413 };
   KEY: any = "viajes";
-  id: any = "20334957-2";
 
   /* métodos disponible */
   async ngOnInit() {
@@ -74,11 +73,17 @@ export class DisponiblePage implements OnInit {
   }
 
   /* métodos detalle */
+  async irViajes(){
+    this.template = 1;
+  }
+  async irSolicitar(){
+
+  }
   async dibujarMapa() {
     var map: HTMLElement = document.getElementById('map');
     this.mapa = await new google.maps.Map(map, {
       center: this.ubicacionDuoc,
-      zoom: 18
+      zoom: 13
     });
     await this.directionsRenderer.setMap(this.mapa);
     var indicaciones: HTMLElement = await document.getElementById('indicaciones');
