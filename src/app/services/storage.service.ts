@@ -91,8 +91,8 @@ export class StorageService {
   }
 
   async getPasajeros(key, conductor) {
-  this.datos = await this.storage.get(key) || [];
-   var dato = this.datos.find(dato => dato.viaje.rut_conductor == conductor );
+    this.datos = await this.storage.get(key) || [];
+    var dato = this.datos.find(dato => dato.viaje.rut_conductor == conductor);
   }
   async existeAdmin() {
     var id = '0';
@@ -110,7 +110,7 @@ export class StorageService {
         auto: 'no',
         vehiculo: 'undefined',
         password: '12341234',
-        tipo_usuario: 'administrador' 
+        tipo_usuario: 'administrador'
       }];
       await this.storage.set("usuarios", this.datos);
       return false;
