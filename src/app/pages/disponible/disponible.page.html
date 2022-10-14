@@ -1,25 +1,25 @@
 <ion-content>
   <div class="fondo">
     <h1 class="titulo">Viajes Disponibles</h1>
-    <ion-list lines="none" id="lista" *ngFor="let viaje of conductor">
+    <ion-list lines="none" id="lista" *ngFor="let aux of total">
       <ion-item class="item">
         
         <div>
-          <img alt="Silhouette of mountains" src="{{viaje.vehiculo.imagen}}"/>
+          <img alt="Silhouette of mountains" src="{{aux.dato.vehiculo.imagen}}"/>
         </div>
-        <ion-button slot="end" size="default" (click)="irDetalle(viaje.rut)">
+        <ion-button slot="end" size="default" (click)="irDetalle(aux.dato.rut)">
           ir Detalle
           <ion-icon name="information-circle" slot="end"></ion-icon>
         </ion-button>
       </ion-item>
       <ion-item class="item">
-        <h1>{{viaje.nombre}}</h1>
+        <h1>{{aux.dato.nombre}} {{aux.dato.apellido}}</h1>
       </ion-item>
       <ion-item class="item">
-        <h3>{{viaje.vehiculo.marca}}</h3>
+        <h3>Marca: {{aux.dato.vehiculo.marca}} {{aux.dato.vehiculo.modelo}}</h3>
       </ion-item>
       <ion-item class="item">
-        <h5>precio</h5>
+        <h5>Precio: $ {{aux.precios}}</h5>
       </ion-item>
     </ion-list>
   </div>
