@@ -77,7 +77,7 @@ export class DisponiblePage implements OnInit {
     this.template = 1;
   }
   async irSolicitar(){
-
+        
   }
   async dibujarMapa() {
     var map: HTMLElement = document.getElementById('map');
