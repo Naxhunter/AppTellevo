@@ -56,13 +56,15 @@
 // }
 
 
-ion-button {
-    color: rgba(4, 4, 43, 0.904);
-    margin-top: 2vh;
-    margin-bottom: 2vh;
-    font-family: "Montserrat";
-    --background: transparentize($color: #1e7065cb, $amount: 0.3);
-    font-weight: bold;
+ion-button{
+  margin-top: 4vh;
+  color: rgba(4, 4, 43, 0.904);
+  font-family: 'Montserrat';
+  --background: rgb(255, 255, 255);
+  --border-style: solid;
+  --border-width: 1px;
+  --border-color: rgba(21, 42, 231, 0.692);
+  font-weight: bold;
   }
 
 .fondo{
@@ -92,7 +94,7 @@ ion-button {
     border-bottom: solid;
     border-top: solid;
     border-color: white;
-       
+    height: 30vh;
     }
 
 .item {
@@ -104,10 +106,22 @@ ion-button {
             font-family: "Montserrat"
         }
         div {
-          height: 25vh;
+          height: 10vh;
         img {
-          width: 150px;
-          height: 150px;
+          width: 100px;
+          height: 100px;
+          position: static;
+          border-radius: 50%;
+          border-color: #355ddf;
+          border-style: solid;
+          border-width: 4px;
         }
     }
+  }
+  .chato{
+    height: 15vh;
+  }
+
+  .Fuentes{
+    font-size: 2vh;
   }
