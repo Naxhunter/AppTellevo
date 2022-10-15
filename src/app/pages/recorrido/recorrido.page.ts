@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 declare var google;
 
@@ -19,18 +20,18 @@ interface WayPoint {
 })
 export class RecorridoPage implements OnInit {
 
-  constructor(private router: Router, private route: ActivatedRoute, private usuarioService: UsuarioService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private usuarioService: UsuarioService, private storage: StorageService) { }
   usuario: any = [];
 
   async ngOnInit() {
-    this.usuario = this.router.getCurrentNavigation().extras.state.usuario;
-    var geo = await this.getUbicacionActual();
-    this.ubicacionDuoc.lat = geo.coords.latitude;
-    this.ubicacionDuoc.lng = geo.coords.longitude;
+    // this.usuario = this.router.getCurrentNavigation().extras.state.usuario;
+    // var geo = await this.getUbicacionActual();
+    // this.ubicacionDuoc.lat = geo.coords.latitude;
+    // this.ubicacionDuoc.lng = geo.coords.longitude;
  
-    this.dibujarMapa();
-    //this.agregarMarcador();
-    this.buscarDireccion(this.mapa, this.marker);
+    // this.dibujarMapa();
+    // //this.agregarMarcador();
+    // this.buscarDireccion(this.mapa, this.marker);
   
   }
 
@@ -100,14 +101,20 @@ export class RecorridoPage implements OnInit {
 
  //MÉTODO PARA ENCONTRAR LA RUTA ENTRE 2 DIRECCIONES:
  calcularRuta(){
-   var place = this.search.getPlace().geometry.location;
+  //  var place = this.search.getPlace().geometry.location;
 
-   var request = {
-     origin: this.ubicacionDuoc,
-     destination: place,
-     travelMode: google.maps.TravelMode.DRIVING
+  //  var request = {
+  //    origin: this.ubicacionDuoc,
+  //    destination: place,
+  //    travelMode: google.maps.TravelMode.DRIVING
      /* waypoints: this.wayPoints,
   optimizeWaypoints: true,  DESCOMENTAR  CUANDO SE OCUPE LOCAL STORAGE*/
+    var place = this.search.getPlace().geometry.location;
+
+    var request = {
+      origin: this.ubicacionDuoc,
+      destination: place,
+      travelMode: google.maps.TravelMode.DRIVING
    };
 
    this.directionsService.route(request, (respuesta, status)=> {
