@@ -10,6 +10,7 @@ import { JsonPipe } from '@angular/common';
 export class StorageService {
 
   datos: any[] = [];
+  nvoDato: any[] = [];
   isAuthenticated = new BehaviorSubject(false);
   userAdmin: any[] = [];
   constructor(private storage: Storage, private router: Router) {
@@ -33,6 +34,16 @@ export class StorageService {
     this.datos.push(dato);
     await this.storage.set(key, this.datos);
     return true;
+  }
+  
+  async agregarSolicitudes(key, dato) {
+    this.datos = await this.storage.get(key) || [];
+    this.datos.push(dato);
+    await this.storage.set(key, this.datos);
+  }
+  async getDatoSolicitud(key, identificador) {
+    this.datos = await this.storage.get(key) || [];
+    return this.datos.find(dato => dato.id == identificador);
   }
 
   async getDato(key, identificador) {
@@ -65,6 +76,29 @@ export class StorageService {
 
     await this.storage.set(key, this.datos);
   }
+  async guardarNuevoPasajero(rutConductor) {
+    this.datos = await this.storage.get("viajes") || [];
+    var existe = this.datos.find(viaje => viaje.rut_conductor == rutConductor);
+    if (existe.pasajeros == "sin") {
+      var creacion: any = {
+        id: existe.id,
+        origen: existe.origen,
+        destino: existe.destino,
+        precio: existe.precio,
+        salida: existe.salida,
+        iniciado: existe.iniciado,
+        rut_conductor: existe.rut_conductor,
+        capacidad: existe.capacidad,
+        pasajeros: [],
+      };
+      var index = this.datos.findIndex(value => value.rut_conductor == rutConductor);
+      this.datos[index] = creacion;
+      await this.storage.set("viajes", this.datos);
+      return true;
+    }
+    return false;
+  }
+
 
   async validarLogin(key, rut, password): Promise<any> {
     console.log(1);
