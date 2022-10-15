@@ -1,6 +1,6 @@
 <ion-content>
   <div class="fondo" *ngIf="template == 1">
-    <h1 class="titulo">Viajes Disponibles</h1>
+    <h1 class="titulo">{{titulo}}</h1>
     <ion-list lines="none" id="lista" *ngFor="let aux of total">
       <ion-item class="item">
         <div>
@@ -55,7 +55,7 @@
             Volver
             <ion-icon name="play-back-outline" slot="end"></ion-icon>
           </ion-button>
-          <ion-button slot="end" size="default" (click)="irSolicitar(detalle.precios.rut_conductor)">
+          <ion-button *ngIf="detalle.precios.capacidad != 0" slot="end" size="default" (click)="irSolicitar(detalle.precios.rut_conductor)">
             Solicitar
             <ion-icon name="enter-outline" slot="end"></ion-icon>
           </ion-button>

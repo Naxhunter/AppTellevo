@@ -22,6 +22,8 @@ export class DisponiblePage implements OnInit {
   rut: any
   KEY_VIAJE = "viajes";
   KEY_USUARIO = "usuarios";
+  message: any = 0;
+  titulo = "Viajes Disponibles";
   //Variables detalle
   mapa: any;
   marker: any;
@@ -101,6 +103,8 @@ export class DisponiblePage implements OnInit {
         };
         console.log("creacion: ", creacion);
         await this.storage.actualizar(this.KEY_VIAJE, creacion);
+        this.template = 1;
+        this.titulo = "Viaje Solicitado";
       }
     });
 
