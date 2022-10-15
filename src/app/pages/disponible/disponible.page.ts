@@ -84,8 +84,8 @@ export class DisponiblePage implements OnInit {
     this.idPasaje = await this.storage.getDatos(this.KEY_VIAJE);
     this.idPasaje.forEach(async (value, index) => {
       if (rut == value.rut_conductor) {
-        console.log("pasajeros", value.pasajeros.user);
         /*value.pasajeros = {...value.pasajeros, user };*/
+        var nuevaCapacidad = value.capacidad-1;
         this.solicitud = [...value.pasajeros];
         this.solicitud.push(user);
         var creacion: any = {
@@ -96,7 +96,7 @@ export class DisponiblePage implements OnInit {
           salida: value.salida,
           iniciado: value.iniciado,
           rut_conductor: value.rut_conductor,
-          capacidad: value.capacidad,
+          capacidad: nuevaCapacidad,
           pasajeros: this.solicitud,
         };
         console.log("creacion: ", creacion);
