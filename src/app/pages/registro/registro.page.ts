@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { StorageService } from 'src/app/services/storage.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { v4 } from 'uuid';
@@ -31,7 +32,8 @@ export class RegistroPage implements OnInit {
   KEY: any = "usuarios";
   validar_correo: any
   verificar_password: string;
-  constructor(private usuarioService: UsuarioService, private router: Router, private storage: StorageService) { }
+  alert:any;
+  constructor(private usuarioService: UsuarioService, private router: Router, private storage: StorageService, private toastcontroller: ToastController) { }
 
   ngOnInit() {
   }
@@ -44,15 +46,18 @@ export class RegistroPage implements OnInit {
     let resta = anioActual - edadUsuario;
     /*alert(anioActual);*/
     if (!this.usuarioService.validarRut(this.alumno.controls.rut.value)) {
-      alert('¡RUT INCORRECTO!');
+      this.alert='¡RUT INCORRECTO!';
+      this.toastError(this.alert);
       return;
     }
     if (resta < 17) {
-      alert('¡MAYOR DE 17 AÑOS!');
+      this.alert='¡MAYOR DE 17 AÑOS!';
+      this.toastError(this.alert);
       return;
     }
     if (this.alumno.controls.password.value != this.verificar_password) {
-      alert('¡CONTRASEÑAS NO COINCIDEN!');
+      this.alert='¡CONTRASEÑAS NO COINCIDEN!';
+      this.toastError(this.alert);
       return;
 
     }
@@ -62,17 +67,25 @@ export class RegistroPage implements OnInit {
       /*correo = this.usuarioService.obtenerUsuario(this.alumno.controls.rut.value); Para otra version */
       this.alumno.reset();
       /* this.verificar_password ='' ; */
-      alert('¡USUARIO REGISTRADO!');
+      this.alert='¡USUARIO REGISTRADO!';
+      this.toastError(this.alert);
       this.router.navigate(['/login']);
 
     }
     else {
-      alert('¡USUARIO YA EXISTE!');
+      this.alert='¡USUARIO YA EXISTE!'
+      this.toastError(this.alert);
       this.router.navigate(['/registro']);
     }
 
   }
-
+  async toastError(alerta) {
+    const toast = await this.toastcontroller.create({
+      message: alerta,
+      duration: 3000
+    });
+    toast.present();
+  }
 
 }
 
