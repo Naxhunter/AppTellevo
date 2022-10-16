@@ -67,6 +67,15 @@ export class StorageService {
 
     await this.storage.set(key, this.datos);
   }
+  async eliminarViaje(key, identificador) {
+    this.datos = await this.storage.get(key) || [];
+    this.datos.forEach((value, index) => {
+      if (value.rut_conductor == identificador) {
+        this.datos.splice(index, 1);
+      }
+    });
+    await this.storage.set(key, this.datos);
+  }
 
   async actualizar(key, dato) {
     this.datos = await this.storage.get(key) || [];
