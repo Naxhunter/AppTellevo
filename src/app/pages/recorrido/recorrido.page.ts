@@ -25,13 +25,13 @@ export class RecorridoPage implements OnInit {
 
   async ngOnInit() {
     // this.usuario = this.router.getCurrentNavigation().extras.state.usuario;
-    // var geo = await this.getUbicacionActual();
-    // this.ubicacionDuoc.lat = geo.coords.latitude;
-    // this.ubicacionDuoc.lng = geo.coords.longitude;
- 
-    // this.dibujarMapa();
-    // //this.agregarMarcador();
-    // this.buscarDireccion(this.mapa, this.marker);
+    var geo = await this.getUbicacionActual();
+    this.ubicacionDuoc.lat = geo.coords.latitude;
+    this.ubicacionDuoc.lng = geo.coords.longitude;
+
+    this.dibujarMapa();
+    this.agregarMarcador();
+    this.buscarDireccion(this.mapa, this.marker);
   
   }
 
@@ -109,6 +109,7 @@ export class RecorridoPage implements OnInit {
   //    travelMode: google.maps.TravelMode.DRIVING
      /* waypoints: this.wayPoints,
   optimizeWaypoints: true,  DESCOMENTAR  CUANDO SE OCUPE LOCAL STORAGE*/
+  
     var place = this.search.getPlace().geometry.location;
 
     var request = {
