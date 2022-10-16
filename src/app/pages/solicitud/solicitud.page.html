@@ -1,5 +1,5 @@
 <ion-content>
-  <div class="fondo">
+  <div class="fondo" *ngIf="template == 1">
     <h1 class="titulo">
       Solicitudes de viajes
     </h1>
@@ -29,7 +29,7 @@
     </ion-list>
 
     <div>
-      <ion-button>
+      <ion-button (click)="iniciarViaje()">
         Iniciar
         <ion-icon name="car" slot="end"></ion-icon>
       </ion-button>
@@ -39,5 +39,14 @@
       </ion-button>
     </div>
   </div>
- 
+  <div class="fondo-recorrido" *ngIf="template == 2">
+    <div id="map">
+    </div>
+    <ion-button (click)="finalizarViaje()">
+      Finalizar
+    </ion-button>
+  </div>
+  <div class="fondo-finalizado" *ngIf="template == 3">
+    <img src="https://thumbs.dreamstime.com/b/marca-finalizada-signo-de-redondeo-finalizado-etiqueta-198277036.jpg" alt="">
+  </div>
 </ion-content>
