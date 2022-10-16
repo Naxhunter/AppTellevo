@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { v4 } from 'uuid';
+import { ToastController } from '@ionic/angular';
 
 declare var google;
 @Component({
@@ -41,7 +42,8 @@ export class NuevoviajePage implements OnInit {
   ubicacionDuoc = { lat: 0, lng: 0 };
   ubicacionDestino = { lat: -33.600379048832046, lng: -70.57719180496413 };
 
-  constructor(private router: Router, private route: ActivatedRoute, private usuarioService: UsuarioService, private storage: StorageService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private usuarioService: UsuarioService, private storage: StorageService,
+    private toastController: ToastController) { }
 
   async ngOnInit() {
     let rut = await this.route.snapshot.paramMap.get('rut');
@@ -154,7 +156,8 @@ export class NuevoviajePage implements OnInit {
     var guardar = await this.storage.agregarViaje(this.KEY_VIAJES, this.viaje.value);
     if (guardar == true) {
       this.viaje.reset();
-      alert('¡VIAJE CREADO!');
+      var alert ='¡VIAJE CREADO!';
+      await this.toastError(alert);
     }
   } 
 
@@ -178,6 +181,14 @@ export class NuevoviajePage implements OnInit {
       });
     } */
 
+    async toastError(alerta) {
+      const toast = await this.toastController.create({
+        message: alerta,
+        duration: 3000
+      });
+      toast.present();
+    }
+  
 
 }
 

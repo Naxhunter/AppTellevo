@@ -3,8 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { StorageService } from 'src/app/services/storage.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
-
-
+import { ToastController } from '@ionic/angular';
 
 declare var google;
 
@@ -28,7 +27,7 @@ export class SolicitudPage implements OnInit {
   detalleViaje: any = [];
 
   constructor(private navCtrl: NavController, private route: ActivatedRoute, private usuarioService: UsuarioService, private storage: StorageService
-    , private router: Router) { }
+    , private router: Router, private toastController: ToastController) { }
 
   async ngOnInit() {
     let rut = this.route.snapshot.paramMap.get('rut');
@@ -52,6 +51,8 @@ export class SolicitudPage implements OnInit {
   async eliminarPasajeros(rutpasajero, rutSesion) {
     await this.storage.eliminarPasajero(this.KEY_VIAJES, this.usuario.rut, rutpasajero);
     await this.getListado(rutSesion);
+    var alerta = "Pasajero eliminado";
+    await this.toastError(alerta);
   }
 
   async iniciarViaje() {
@@ -65,11 +66,15 @@ export class SolicitudPage implements OnInit {
     await this.dibujarMapa();
     await this.agregarMarcador();
     await this.buscarDireccion(this.mapa, this.marker);
+    var alerta = "Viaje iniciado";
+    await this.toastError(alerta);
   }
   async finalizarViaje(num){
     var rut = this.usuario.rut;
     await this.storage.eliminarViaje(this.KEY_VIAJES,rut);
     this.template = num;
+    var alerta = "Viaje eliminado";
+    await this.toastError(alerta);
   }
 
 
@@ -128,6 +133,13 @@ export class SolicitudPage implements OnInit {
         navigator.geolocation.getCurrentPosition(resolve, reject);
       }
     );
+  }
+  async toastError(alerta) {
+    const toast = await this.toastController.create({
+      message: alerta,
+      duration: 3000
+    });
+    toast.present();
   }
 
 }

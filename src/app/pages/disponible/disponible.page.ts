@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 import { StorageService } from 'src/app/services/storage.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { ToastController } from '@ionic/angular';
 declare var google;
 @Component({
   selector: 'app-disponible',
@@ -10,7 +11,7 @@ declare var google;
 })
 export class DisponiblePage implements OnInit {
 
-  constructor(private router: Router, private route: ActivatedRoute, private usuarioService: UsuarioService, private storage: StorageService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private usuarioService: UsuarioService, private storage: StorageService, private toastController: ToastController) { }
   //Variables disponible
   template = 1;
   idPasaje: any = [];
@@ -139,6 +140,8 @@ export class DisponiblePage implements OnInit {
         await this.storage.actualizar(this.KEY_VIAJE, creacion);
         this.template = 1;
         this.titulo = "Viaje Solicitado";
+        var alerta = "Viaje Solicitado";
+        await this.toastError(alerta);
       }
     });
 
@@ -190,6 +193,13 @@ export class DisponiblePage implements OnInit {
     this.datos = await this.storage.getDatoViaje(this.KEY, identificador);
     console.log(this.datos)
     return this.datos;
+  }
+  async toastError(alerta) {
+    const toast = await this.toastController.create({
+      message: alerta,
+      duration: 5000
+    });
+    toast.present();
   }
 
 }

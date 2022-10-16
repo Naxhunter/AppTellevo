@@ -4,6 +4,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { StorageService } from 'src/app/services/storage.service';
 import { v4 } from 'uuid';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-perfil',
@@ -12,7 +13,8 @@ import { v4 } from 'uuid';
 })
 export class PerfilPage implements OnInit {
 
-  constructor(private route: ActivatedRoute, private usuarioService:UsuarioService, private storage: StorageService) { }
+  constructor(private route: ActivatedRoute, private usuarioService:UsuarioService, private storage: StorageService,
+    private toastController: ToastController) { }
   rut: any;
   sesion: any = [];
   default: any = undefined;
@@ -67,6 +69,8 @@ export class PerfilPage implements OnInit {
   }
   async modificar(num){
     if(num==1){
+      var alerta = "Perfil modificado";
+      await this.toastError(alerta);
       return true;
     }
     else if(num==2){
@@ -75,7 +79,16 @@ export class PerfilPage implements OnInit {
         var cambio = this.sesion.rut;
         this.sesion = await this.storage.getDato(this.KEY, cambio);
         this.default = 4;
+        var alerta = "Auto agregado";
+        await this.toastError(alerta);
     }
     
+  }
+  async toastError(alerta) {
+    const toast = await this.toastController.create({
+      message: alerta,
+      duration: 3000
+    });
+    toast.present();
   }
 }
