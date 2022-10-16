@@ -14,25 +14,33 @@ declare var google;
   styleUrls: ['./solicitud.page.scss'],
 })
 export class SolicitudPage implements OnInit {
-  KEY: any = "pasajeros";
+  KEY_VIAJES: any = "viajes";
+  KEY_USUARIO = "usuarios";
   rut: any;
   rutpasajero: any;
   nombre: any;
   sesion: any = [];
-  listado: any = undefined;
+  listado: any = [];
   datos: any;
-
+  solicitud: any;
+  usuario : any = [];
+    
   constructor(private navCtrl: NavController, private route: ActivatedRoute, private usuarioService: UsuarioService, private storage: StorageService
     , private router: Router) { }
 
   async ngOnInit() {
     let rut = this.route.snapshot.paramMap.get('rut');
+    this.usuario = await this.storage.getDato(this.KEY_USUARIO, rut);
+    await this.getListado(rut);
+    
   }
 
 
-  async getListado() {
-
-    this.listado = await this.storage.getDato(this.KEY, this.rut);
+  async getListado(rut) {
+    this.listado = await this.storage.getDatos(this.KEY_VIAJES);
+    this.listado.forEach(async (value, index) => {
+      if (rut == value.rut_conductor) {
+        this.solicitud = [...value.pasajeros];}});
   }
 
   async AceptarSolicitud() {
@@ -40,18 +48,31 @@ export class SolicitudPage implements OnInit {
     var nombrePasajero: HTMLElement = document.getElementById('nompasajero');
     this.rutpasajero = rutPasajero;
     this.nombre = nombrePasajero;
-    
-
 
 
   }
 
 
-
-
-
-
-
-
+async eliminarPasajeros(rutpasajero){
+  await this.storage.eliminarPasajero(this.KEY_VIAJES,this.usuario.rut,rutpasajero);
+ }
 
 }
+/* async eliminar(key, identificador) {
+  this.datos = await this.storage.get(key) || [];
+
+  this.datos.forEach((value, index) => {
+    if (value.rut == identificador) {
+      this.datos.splice(index, 1);
+    }
+  });
+
+  await this.storage.set(key, this.datos);
+} */
+
+
+
+
+
+
+

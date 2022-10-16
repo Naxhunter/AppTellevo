@@ -8,7 +8,7 @@ import { JsonPipe } from '@angular/common';
   providedIn: 'root'
 })
 export class StorageService {
-
+  dato: any[] = [];
   datos: any[] = [];
   nvoDato: any[] = [];
   isAuthenticated = new BehaviorSubject(false);
@@ -35,7 +35,7 @@ export class StorageService {
     await this.storage.set(key, this.datos);
     return true;
   }
-  
+
   async agregarSolicitudes(key, dato) {
     this.datos = await this.storage.get(key) || [];
     this.datos.push(dato);
@@ -157,7 +157,41 @@ export class StorageService {
     return this.datos.find(dato => dato.rut_conductor == identificador);
   }
 
-  async getListaPasajeros(key,identificador){
-    
+   async getListaSolicitudes(key,identificador,){
+       this.datos = await this.storage.get(key) || [];
+  return this.datos.find(dato=> dato.id ==identificador )
+   }
+ 
+
+   
+  async eliminarPasajero(key, identificador, rutPasajero) {
+    this.datos = await this.storage.get(key) || []
+
+    this.datos.forEach((value, index) => {
+      if(value.rut_conductor == identificador){
+        this.nvoDato = value.pasajeros;
+
+        this.nvoDato.forEach((pasaje, indice)=>{
+        if (pasaje == rutPasajero) {
+            this.nvoDato.splice(indice,1);
+            value.pasajeros = this.nvoDato;
+        }});
+        
+      }
+      
+    }
+    );
+    await this.storage.set(key, this.datos);
   }
+  /*  async eliminar(key, identificador) {
+     this.datos = await this.storage.get(key) || [];
+ 
+     this.datos.forEach((value, index) => {
+       if (value.rut == identificador) {
+         this.datos.splice(index, 1);
+       }
+     });
+ 
+     await this.storage.set(key, this.datos);
+   } */
 }
