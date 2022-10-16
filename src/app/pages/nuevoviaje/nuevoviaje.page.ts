@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { v4 } from 'uuid';
+import { ToastController } from '@ionic/angular';
 
 declare var google;
 @Component({
@@ -38,23 +39,23 @@ export class NuevoviajePage implements OnInit {
   rut: any
   KEY: any = "usuarios";
   KEY_VIAJES: any = "viajes";
-  ubicacionDuoc = { lat: 0, lng: 0 };
-  ubicacionDestino = { lat: -33.600379048832046, lng: -70.57719180496413 };
-
-  constructor(private router: Router, private route: ActivatedRoute, private usuarioService: UsuarioService, private storage: StorageService) { }
+  ubicacionDuoc :any;
+  ubicacionDestino :any;
+  local1 : any;
+  searches:any ;
+  place:any;
+  alert
+  constructor(private router: Router, private route: ActivatedRoute, private usuarioService: UsuarioService, private storage: StorageService, private toastcontroller:ToastController) { }
 
   async ngOnInit() {
     let rut = await this.route.snapshot.paramMap.get('rut');
     this.usuario = await this.storage.getDato(this.KEY, rut);
 
-    var geo = await this.getUbicacionActual();
-    this.ubicacionDuoc.lat = geo.coords.latitude;
-    this.ubicacionDuoc.lng = geo.coords.longitude;
-
     this.dibujarMapa();
     this.agregarMarcador();
-    this.buscarDireccion(this.mapa, this.marker);
-     this.getInicio(this.mapa, this.marker);
+    this.getInicio(this.mapa, this.marker);
+    this.buscarDestino(this.mapa, this.marker);
+    
 
   }
 
@@ -62,16 +63,11 @@ export class NuevoviajePage implements OnInit {
   //método que dibuja el mapa en el div map:
   dibujarMapa() {
     var map: HTMLElement = document.getElementById('map');
-
     this.mapa = new google.maps.Map(map, {
       center: this.ubicacionDuoc,
       zoom: 18
     });
-
     this.directionsRenderer.setMap(this.mapa);
-    var indicaciones: HTMLElement = document.getElementById('indicaciones');
-    this.directionsRenderer.setPanel(indicaciones);
-
     this.marker = new google.maps.Marker({
       position: this.ubicacionDuoc,
       map: this.mapa
@@ -81,34 +77,66 @@ export class NuevoviajePage implements OnInit {
 
   //agregar un nuevo marcador al mapa:
   agregarMarcador() {
-    this.marker.setPosition(this.ubicacionDestino);
+    this.marker.setPosition(this.ubicacionDuoc);
     this.marker.setMap(this.mapa);
-    
   }
 
   //método para que el input me muestre sugerencias de busqueda de dirección:
-  buscarDireccion(mapaLocal, marcadorLocal) {
+  async buscarDestino(mapaLocal, marcadorLocal) {
     var autocomplete: HTMLElement = document.getElementById('autocomplete');
     const search = new google.maps.places.Autocomplete(autocomplete);
-    this.search = search;
+    this.searches = search;
+  
+    search.addListener('place_changed', function () {
+      var places = search.getPlace().geometry.location;
 
+      console.log('Destino: '+ typeof places);
+      var variable = JSON.stringify(places);
+      console.log("soy la varibale",variable);
+     /*  this.ubicacionDestino.lat = place;
+      this.ubicacionDestino.lng = place; */
+      this.ubicacionDestino = variable
+      console.log("ver ubi destino: ",this.ubicacionDestino);
+
+      mapaLocal.setCenter(places);
+      mapaLocal.setZoom(15);
+      marcadorLocal.setPosition(places);
+    });
+    
+   
+  }
+
+ 
+  async getInicio(mapaLocal, marcadorLocal) {
+    var autocomplete: HTMLElement = document.getElementById('inicio');
+    const search = new google.maps.places.Autocomplete(autocomplete);
+
+    this.search = search;
     search.addListener('place_changed', function () {
       var place = search.getPlace().geometry.location;
+      
+      console.log('Inicio: '+place)
 
+      var places = JSON.stringify(place);
+
+       var cordenadas = JSON.parse(places)
+    
       mapaLocal.setCenter(place);
       mapaLocal.setZoom(15);
-
       marcadorLocal.setPosition(place);
+      this.ubicacionDuoc = cordenadas;
+      console.log(this.ubicacionDuoc)
     });
   }
 
-  //MÉTODO PARA ENCONTRAR LA RUTA ENTRE 2 DIRECCIONES:
-  calcularRuta() {
-    var place = this.search.getPlace().geometry.location;
 
+   calcularRuta() {
+    var place = this.search.getPlace().geometry.location;
+    var places= this.searches.getPlace().geometry.location;
     var request = {
-      origin: this.ubicacionDuoc,
-      destination: place,
+      
+      origin: place,
+      destination: places,
       travelMode: google.maps.TravelMode.DRIVING
     };
 
@@ -117,6 +145,9 @@ export class NuevoviajePage implements OnInit {
     });
 
     this.marker.setPosition(null);
+
+    this.ubicacionDuoc = JSON.parse(JSON.stringify(place))
+    this.ubicacionDestino =JSON.parse(JSON.stringify(places))
   }
 
   //mi ubicacion actual:
@@ -127,58 +158,31 @@ export class NuevoviajePage implements OnInit {
       }
     );
   }
-  getInicio(mapaLocal, marcadorLocal) {
-    var autocomplete: HTMLElement = document.getElementById('inicio');
-    const search = new google.maps.places.Autocomplete(autocomplete);
-    this.search = search;
-
-    search.addListener('place_changed', function () {
-      var place = search.getPlace().geometry.location;
-      console.log(place)
-      mapaLocal.setCenter(place);
-      mapaLocal.setZoom(15);
-
-      marcadorLocal.setPosition(place);
-
-    });
-  }
   async nuevoViaje(){
-    
+    var capacidad: any = this.usuario.vehiculo.pasajeros;
+    await this.calcularRuta();
     var origen: any = this.ubicacionDuoc;
     var destino: any = this.ubicacionDestino;
-    var capacidad: any = this.usuario.vehiculo.pasajeros;
-    console.log(capacidad);
-    await this.calcularRuta();
+    console.log(origen)
+    console.log(destino)
     await this.viaje.controls.origen.setValue(origen);
     await this.viaje.controls.destino.setValue(destino);
     await this.viaje.controls.capacidad.setValue(capacidad);
     var guardar = await this.storage.agregarViaje(this.KEY_VIAJES, this.viaje.value);
     if (guardar == true) {
       this.viaje.reset();
-      alert('¡VIAJE CREADO!');
+      this.alert='¡VIAJE CREADO!'
+      this.toastError(this.alert);
+      
     }
   } 
-
-  /* 
-    getfinal(mapaLocal, marcadorLocal) {
-      var autocomplete: HTMLElement = document.getElementById('final');
-      const search = new google.maps.places.Autocomplete(autocomplete);
-      this.search = search;
-  
-      search.addListener('place_changed', function () {
-        var place = search.getPlace().geometry.location;
-  
-        console.log(place)
-        mapaLocal.setCenter(place);
-        mapaLocal.setZoom(15);
-  
-        marcadorLocal.setPosition(place);
-  
-  
-  
-      });
-    } */
-
+  async toastError(alerta) {
+    const toast = await this.toastcontroller.create({
+      message: alerta,
+      duration: 3000
+    });
+    toast.present();
+  }
 
 }
 
