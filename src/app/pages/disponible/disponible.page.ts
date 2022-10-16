@@ -58,7 +58,7 @@ export class DisponiblePage implements OnInit {
     });
     console.log("Total", this.total);
   }
-  async irDetalle(rut) {
+  /*async irDetalle(rut) {
     console.log("entro al método");
     await this.total.forEach(async (value, index) => {
       if (value.dato.rut == rut) {
@@ -74,6 +74,39 @@ export class DisponiblePage implements OnInit {
         console.log("arreglo detalle: ", this.detalle);
       };
     });
+  } */
+  async irDetalle(rut) {
+    console.log("entro al método");
+    await this.total.forEach(async (value, index) => {
+      if (value.dato.rut == rut) {
+        console.log("entro al detalle");
+        this.template = 2;
+        var detalleViaje = value;
+        this.detalle = detalleViaje;
+        var nuevoOrigen = value.precios.origen;
+        var nuevoDestino = value.precios.destino;
+        await this.buscarViaje(value.precios.rut_conductor);
+        var map: HTMLElement = document.getElementById('map');
+        this.mapa = await new google.maps.Map(map, {
+          center: this.ubicacionDuoc,
+          zoom: 13
+        });
+        await this.directionsRenderer.setMap(this.mapa);
+        this.marker = await new google.maps.Marker({
+          position: this.ubicacionDuoc,
+          map: this.mapa
+        });
+        var request = {
+          origin: nuevoOrigen,
+          destination: nuevoDestino,
+          travelMode: google.maps.TravelMode.DRIVING
+        };
+        await this.directionsService.route(request, async (respuesta, status) => {
+          await this.directionsRenderer.setDirections(respuesta);
+        });
+        this.marker.setPosition(null);
+      };
+    });
   }
 
   /* métodos detalle */
@@ -82,6 +115,7 @@ export class DisponiblePage implements OnInit {
   }
   async irSolicitar(rut) {
     var user = this.usuario.rut;
+    
     await this.storage.guardarNuevoPasajero(rut);
     this.idPasaje = await this.storage.getDatos(this.KEY_VIAJE);
     this.idPasaje.forEach(async (value, index) => {
@@ -109,49 +143,6 @@ export class DisponiblePage implements OnInit {
     });
 
   }
-  /*var arreglo = {
-        precios: value,
-        dato: interna
-        };*/
-  /*this.idPasaje.push(this.solicitud);*/
-  /*console.log("0)",this.idPasaje);
-  this.solicitud = this.idPasaje.pasajeros;
-  console.log("1)",this.solicitud);
-  this.solicitud.push(user);
-  console.log("Nuevo pasajero", this.solicitud);
-  this.idPasaje.pasajeros = this.solicitud;
-  console.log("Objeto completo: ", this.idPasaje);
-  await this.storage.actualizar(this.KEY_VIAJE, this.idPasaje);*/
-  /*
- async irSolicitar(rut){
-    console.log("Entro en solicitar. Rut parametro:",rut);
-    var user = this.usuario.rut;
-    console.log("rut user sesión: ", user);
-    this.solicitud = await this.storage.getDatos(this.KEY_VIAJE);
-    this.solicitud.forEach(async (value, index) => {
-      console.log("Entro en el foreach");
-      console.log("value rut conductor 1:", value.rut_conductor);
-      if(value.rut_conductor == rut){
-        console.log("rut igual al parametro, entro");
-        console.log("value pasajeros 1: ", value.pasajeros);
-         if(value.pasajeros == 'sin'){
-           console.log("Si es sin, entro.")
-           value.pasajeros.split(index, 1);
-           console.log("elimino con split, intento mostrar: ",value.pasajeros);
-           value.pasajeros = {user};
-           console.log("value pasajero reasignado: ", value.pasajero);
-           await this.storage.actualizar(this.KEY_VIAJE,this.solicitud);
-           return;
-         } else {
-           value.pasajeros.push(this.usuario.rut);
-           console.log("supuestamente no tiene sin, se pushea un rut: ", value.pasajaeros);
-           await this.storage.actualizar(this.KEY_VIAJE,this.solicitud);
-         }
-         return console.log("no encontre nada.");
-      }
-    });
-  }
-*/
   async dibujarMapa() {
     var map: HTMLElement = document.getElementById('map');
     this.mapa = await new google.maps.Map(map, {
