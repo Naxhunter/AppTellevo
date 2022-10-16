@@ -5,6 +5,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { StorageService } from 'src/app/services/storage.service';
 import { v4 } from 'uuid';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-administrar',
@@ -38,7 +39,7 @@ export class AdministrarPage implements OnInit {
   usuario_buscado: any = [];
   identificable: any;
   constructor(private navCtrl:NavController, private route: ActivatedRoute, private usuarioService: UsuarioService, private storage: StorageService
-    ,private router: Router) { }
+    ,private router: Router, private toastController: ToastController) { }
 
   async ngOnInit() {
     let rut = this.route.snapshot.paramMap.get('rut');
@@ -80,32 +81,38 @@ export class AdministrarPage implements OnInit {
     let edadUsuario = nacUsuario.getFullYear();
     let resta = anioActual-edadUsuario;
     if (!this.usuarioService.validarRut(this.alumno.controls.rut.value)) {
-      alert('¡RUT INCORRECTO!');
+      var alerta ='¡RUT INCORRECTO!';
+      await this.toastError(alerta);
       return;
     }
     if(resta<17){
-      alert('¡MAYOR DE 17 AÑOS!');
+      var alerta ='¡MAYOR DE 17 AÑOS!';
+      await this.toastError(alerta);
       return;
     } 
     if (this.alumno.controls.password.value != this.verificar_password) {
-      alert('¡CONTRASEÑAS NO COINCIDEN!');
+      var alerta ='¡CONTRASEÑAS NO COINCIDEN!';
+      await this.toastError(alerta);
       return;
     }
     this.alumno.controls.id.setValue(v4());
     var guardar = await this.storage.agregar(this.KEY, this.alumno.value);
     if (guardar == true) {
       this.alumno.reset();
-      alert('¡USUARIO REGISTRADO!');
+      var alerta ='¡USUARIO REGISTRADO!';
+      await this.toastError(alerta);
 
     }
   }
   async eliminarAdmin(){
     if(this.sesion.rut == this.alumno.controls.rut.value){
-      alert('¡NO TE PUEDES ELIMINAR A TI MISMO!')
+      var alerta ='¡NO TE PUEDES ELIMINAR A TI MISMO!';
+      await this.toastError(alerta);
     }
     else{
       await this.storage.eliminar(this.KEY,this.alumno.controls.rut.value);
-      alert('¡USUARIO ELIMINADO!');
+      var alerta ='¡USUARIO ELIMINADO!';
+      await this.toastError(alerta);
     }
     
   }
@@ -124,30 +131,27 @@ export class AdministrarPage implements OnInit {
     let resta = anioActual-edadUsuario;
     
     if(resta<17){
-      alert('¡MAYOR DE 17 AÑOS!');
+      var alerta ='¡MAYOR DE 17 AÑOS!';
+      await this.toastError(alerta);
       return;
     } 
     if (this.alumno.controls.password.value != this.verificar_password) {
-      alert('¡CONTRASEÑAS NO COINCIDEN!');
+      var alerta ='¡CONTRASEÑAS NO COINCIDEN!';
+      await this.toastError(alerta);
       return;
     }
     this.alumno.controls.id.setValue(this.identificable);
     this.alumno.controls.vehiculo.setValue('undefined');
     await this.storage.actualizar(this.KEY,this.alumno.value);
     this.alumno.reset();
-    alert('¡USUARIO ACTUALIZADO!');
+    var alerta ='¡USUARIO ACTUALIZADO!';
+    await this.toastError(alerta);
   }
-  
-  /*perfil(rut){
-    this.navCtrl.navigateForward(['/perfil',rut]);
+  async toastError(alerta) {
+    const toast = await this.toastController.create({
+      message: alerta,
+      duration: 3000
+    });
+    toast.present();
   }
-  cerrarSesion(){
-    this.navCtrl.navigateForward(['/login']);
-  }
-  irCrearViaje(){
-    this.navCtrl.navigateForward(['/nuevoviaje']);
-  }
-  irSolicitudViaje(){
-    this.navCtrl.navigateForward(['/solicitud']);
-  }*/
 }

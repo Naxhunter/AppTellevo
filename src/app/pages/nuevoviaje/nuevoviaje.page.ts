@@ -39,6 +39,7 @@ export class NuevoviajePage implements OnInit {
   rut: any
   KEY: any = "usuarios";
   KEY_VIAJES: any = "viajes";
+
   ubicacionDuoc :any;
   ubicacionDestino :any;
   local1 : any;
@@ -46,6 +47,10 @@ export class NuevoviajePage implements OnInit {
   place:any;
   alert
   constructor(private router: Router, private route: ActivatedRoute, private usuarioService: UsuarioService, private storage: StorageService, private toastcontroller:ToastController) { }
+
+
+
+
 
   async ngOnInit() {
     let rut = await this.route.snapshot.paramMap.get('rut');
@@ -130,6 +135,7 @@ export class NuevoviajePage implements OnInit {
   }
 
 
+
    calcularRuta() {
     var place = this.search.getPlace().geometry.location;
     var places= this.searches.getPlace().geometry.location;
@@ -173,9 +179,9 @@ export class NuevoviajePage implements OnInit {
       this.viaje.reset();
       this.alert='¡VIAJE CREADO!'
       this.toastError(this.alert);
-      
     }
   } 
+
   async toastError(alerta) {
     const toast = await this.toastcontroller.create({
       message: alerta,
@@ -183,6 +189,8 @@ export class NuevoviajePage implements OnInit {
     });
     toast.present();
   }
+
+
 
 }
 

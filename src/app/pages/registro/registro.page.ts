@@ -47,17 +47,17 @@ export class RegistroPage implements OnInit {
     /*alert(anioActual);*/
     if (!this.usuarioService.validarRut(this.alumno.controls.rut.value)) {
       this.alert='¡RUT INCORRECTO!';
-      this.toastError(this.alert);
+      await this.toastError(this.alert);
       return;
     }
     if (resta < 17) {
       this.alert='¡MAYOR DE 17 AÑOS!';
-      this.toastError(this.alert);
+      await this.toastError(this.alert);
       return;
     }
     if (this.alumno.controls.password.value != this.verificar_password) {
       this.alert='¡CONTRASEÑAS NO COINCIDEN!';
-      this.toastError(this.alert);
+      await this.toastError(this.alert);
       return;
 
     }
@@ -67,14 +67,14 @@ export class RegistroPage implements OnInit {
       /*correo = this.usuarioService.obtenerUsuario(this.alumno.controls.rut.value); Para otra version */
       this.alumno.reset();
       /* this.verificar_password ='' ; */
-      this.alert='¡USUARIO REGISTRADO!';
-      this.toastError(this.alert);
+      this.alert ='¡USUARIO REGISTRADO!';
+      await this.toastError(this.alert);
       this.router.navigate(['/login']);
 
     }
     else {
       this.alert='¡USUARIO YA EXISTE!'
-      this.toastError(this.alert);
+      await this.toastError(this.alert);
       this.router.navigate(['/registro']);
     }
 
