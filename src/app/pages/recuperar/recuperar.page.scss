@@ -1,6 +1,7 @@
 
 .recuperacion{
   height: 100vh;
+  width: 100vw;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("../../../assets/img/campus-arauco4-960x529.jpg");
   background-size: cover;
   text-align: center;
@@ -11,25 +12,22 @@ ion-card {
   background: linear-gradient(rgba(255,165,0,0.6), rgba(223, 164, 116, 0.4) ); 
   margin: 0 auto;
   top: 5vh;
-  height: 60vh;
-  width: 50vw;
+  height: 90vh;
+  width: 90vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
 
-  h1{
-    color: rgba(4, 4, 43, 0.904);
-    font-family: 'Lobster';
-    font-size: 50px;
-  }
+ 
 }
 
 ion-item {
   --background: none;
 
   ion-input{
-    font-size:xx-large;
+    
+  font-size: 3.5vh;
       font-family: 'Lobster';
       color: orange;
       text-align: center;
@@ -69,11 +67,16 @@ a {
   margin: 0 auto;
   top: 5vh;
   height: 90vh;
-  width: 50vw;
+  width: 88vw;
   display: flex;
   flex-direction: column;
  
   justify-content: space-around;
+}
+.titulo{
+  font-size: 5vh;
+  color: rgba(4, 4, 43, 0.904);
+    font-family: 'Lobster';
 }
 
 ion-toolbar{

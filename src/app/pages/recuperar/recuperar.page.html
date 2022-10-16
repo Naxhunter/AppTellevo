@@ -1,41 +1,40 @@
-
 <ion-content>
 
 
-<div class="recuperacion">
-  
- <ion-card color="">
-  <h1 class="titulo" >Recuperación de contraseña</h1> 
+  <div class="recuperacion">
 
-    <div class="formulario">
-    <ion-item class="color"> 
-  
-      <ion-input type="text" [(ngModel)]="rut" Placeholder="Ingrese rut" ></ion-input>
-    </ion-item>
+    <ion-card color="">
+      <h1 class="titulo">Recuperación de contraseña</h1>
 
-    <ion-item> 
-   
-      <ion-input type="email" [(ngModel)]="correo" Placeholder="Ingrese correo" ></ion-input>
-    </ion-item>
-    </div>
-    
+      <div class="formulario">
+        <ion-item class="color">
+
+          <ion-input type="text" [(ngModel)]="rut" Placeholder="Ingrese rut"></ion-input>
+        </ion-item>
+
+        <ion-item>
+
+          <ion-input type="email" [(ngModel)]="correo" Placeholder="Ingrese correo"></ion-input>
+        </ion-item>
+      </div>
 
 
-    <section>
-<!-- a -->
-      <ion-button (click)="usuarioRecuperar()">RECUPERAR CONTRASEÑA</ion-button>
-    </section>
-   
 
-    <div class="enlace">
-      <a routerLink='/login'>¿Volver a login?</a>
-      <br>
-      <br>
-      <a routerLink='/registro'>¿No tienes cuenta?</a>
-    </div>
+      <section>
+        <!-- a -->
+        <ion-button (click)="usuarioRecuperar()">RECUPERAR CONTRASEÑA</ion-button>
+      </section>
 
-</ion-card>
 
-</div>
+      <div class="enlace">
+        <a routerLink='/login'>¿Volver a login?</a>
+        <br>
+        <br>
+        <a routerLink='/registro'>¿No tienes cuenta?</a>
+      </div>
+
+    </ion-card>
+
+  </div>
 
 </ion-content>
