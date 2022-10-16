@@ -156,4 +156,8 @@ export class StorageService {
     this.datos = await this.storage.get(key) || [];
     return this.datos.find(dato => dato.rut_conductor == identificador);
   }
+
+  async getListaPasajeros(key,identificador){
+    
+  }
 }
