@@ -60,18 +60,34 @@ export class SolicitudPage implements OnInit {
     await this.storage.inicioViaje(rut);
     this.detalleViaje = await this.storage.getDatoViaje(this.KEY_VIAJES, rut);
     this.template = 2;
-    var geo = await this.getUbicacionActual();
-    this.ubicacionDuoc.lat = geo.coords.latitude;
-    this.ubicacionDuoc.lng = geo.coords.longitude;
-    await this.dibujarMapa();
-    await this.agregarMarcador();
-    await this.buscarDireccion(this.mapa, this.marker);
+    var nuevoOrigen = this.detalleViaje.origen;
+    var nuevoDestino = this.detalleViaje.destino;
+    await this.buscarViaje(this.detalleViaje.rut_conductor);
+    var map: HTMLElement = document.getElementById('map');
+    this.mapa = await new google.maps.Map(map, {
+      center: this.ubicacionDuoc,
+      zoom: 13
+    });
+    await this.directionsRenderer.setMap(this.mapa);
+    this.marker = await new google.maps.Marker({
+      position: this.ubicacionDuoc,
+      map: this.mapa
+    });
+    var request = {
+      origin: nuevoOrigen,
+      destination: nuevoDestino,
+      travelMode: google.maps.TravelMode.DRIVING
+    };
+    await this.directionsService.route(request, async (respuesta, status) => {
+      await this.directionsRenderer.setDirections(respuesta);
+    });
+    this.marker.setPosition(null);
     var alerta = "Viaje iniciado";
     await this.toastError(alerta);
   }
-  async finalizarViaje(num){
+  async finalizarViaje(num) {
     var rut = this.usuario.rut;
-    await this.storage.eliminarViaje(this.KEY_VIAJES,rut);
+    await this.storage.eliminarViaje(this.KEY_VIAJES, rut);
     this.template = num;
     var alerta = "Viaje eliminado";
     await this.toastError(alerta);
@@ -133,6 +149,11 @@ export class SolicitudPage implements OnInit {
         navigator.geolocation.getCurrentPosition(resolve, reject);
       }
     );
+  }
+  async buscarViaje(identificador) {
+    this.datos = await this.storage.getDatoViaje(this.KEY_VIAJES, identificador);
+    console.log(this.datos)
+    return this.datos;
   }
   async toastError(alerta) {
     const toast = await this.toastController.create({
