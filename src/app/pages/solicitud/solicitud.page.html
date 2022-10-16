@@ -18,7 +18,7 @@
             <ion-col size="6" class="Fuentes">
               <div>
                 <b>Rut</b>: {{solicitud[i]}}
-                <ion-button (click)="eliminarPasajeros(solicitud[i])">
+                <ion-button (click)="eliminarPasajeros(solicitud[i],usuario.rut)">
                   <ion-icon  name="trash"></ion-icon>
                 </ion-button>
               </div>
@@ -39,5 +39,5 @@
       </ion-button>
     </div>
   </div>
-
+ 
 </ion-content>

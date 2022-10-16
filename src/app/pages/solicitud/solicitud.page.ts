@@ -53,8 +53,9 @@ export class SolicitudPage implements OnInit {
   }
 
 
-async eliminarPasajeros(rutpasajero){
+async eliminarPasajeros(rutpasajero, rutSesion){
   await this.storage.eliminarPasajero(this.KEY_VIAJES,this.usuario.rut,rutpasajero);
+  await this.getListado(rutSesion);
  }
 
 }
