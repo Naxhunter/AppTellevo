@@ -16,7 +16,6 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
-
   },
   {
     path: 'registro',
@@ -28,11 +27,13 @@ const routes: Routes = [
   },
   {
     path: 'nuevoauto',
-    loadChildren: () => import('./pages/nuevoauto/nuevoauto.module').then( m => m.NuevoautoPageModule)
+    loadChildren: () => import('./pages/nuevoauto/nuevoauto.module').then( m => m.NuevoautoPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'recorrido',
-    loadChildren: () => import('./pages/recorrido/recorrido.module').then( m => m.RecorridoPageModule)
+    loadChildren: () => import('./pages/recorrido/recorrido.module').then( m => m.RecorridoPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'detalle',

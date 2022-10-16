@@ -1,5 +1,5 @@
 <ion-content>
-  <div class="fondo">
+  <div class="fondo" *ngIf="template == 1">
     <h1 class="titulo">
       Solicitudes de viajes
     </h1>
@@ -29,7 +29,7 @@
     </ion-list>
 
     <div>
-      <ion-button>
+      <ion-button (click)="iniciarViaje()">
         Iniciar
         <ion-icon name="car" slot="end"></ion-icon>
       </ion-button>
@@ -38,6 +38,13 @@
         <ion-icon name="nuclear" slot="end"></ion-icon>
       </ion-button>
     </div>
+  </div>
+  <div class="fondo-recorrido" *ngIf="template == 2">
+    <div id="map">
+    </div>
+    <ion-button>
+      Finalizar
+    </ion-button>
   </div>
  
 </ion-content>

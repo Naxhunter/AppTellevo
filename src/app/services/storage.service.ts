@@ -98,7 +98,28 @@ export class StorageService {
     }
     return false;
   }
-
+  async inicioViaje(rutConductor) {
+    this.datos = await this.storage.get("viajes") || [];
+    var existe = this.datos.find(viaje => viaje.rut_conductor == rutConductor);
+    if (existe.iniciado == '0') {
+      var creacion: any = {
+        id: existe.id,
+        origen: existe.origen,
+        destino: existe.destino,
+        precio: existe.precio,
+        salida: existe.salida,
+        iniciado: '1',
+        rut_conductor: existe.rut_conductor,
+        capacidad: existe.capacidad,
+        pasajeros: existe.pasajeros,
+      };
+      var index = this.datos.findIndex(value => value.rut_conductor == rutConductor);
+      this.datos[index] = creacion;
+      await this.storage.set("viajes", this.datos);
+      return true;
+    }
+    return false;
+  }
 
   async validarLogin(key, rut, password): Promise<any> {
     console.log(1);
