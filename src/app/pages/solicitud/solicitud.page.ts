@@ -43,14 +43,6 @@ export class SolicitudPage implements OnInit {
         this.solicitud = [...value.pasajeros];}});
   }
 
-  async AceptarSolicitud() {
-    var rutPasajero: HTMLElement = document.getElementById('rutpasajero');
-    var nombrePasajero: HTMLElement = document.getElementById('nompasajero');
-    this.rutpasajero = rutPasajero;
-    this.nombre = nombrePasajero;
-
-
-  }
 
 
 async eliminarPasajeros(rutpasajero, rutSesion){
