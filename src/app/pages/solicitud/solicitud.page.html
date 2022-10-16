@@ -33,7 +33,7 @@
         Iniciar
         <ion-icon name="car" slot="end"></ion-icon>
       </ion-button>
-      <ion-button>
+      <ion-button (click)="finalizarViaje(4)">
         Cancelar
         <ion-icon name="nuclear" slot="end"></ion-icon>
       </ion-button>
@@ -42,11 +42,14 @@
   <div class="fondo-recorrido" *ngIf="template == 2">
     <div id="map">
     </div>
-    <ion-button (click)="finalizarViaje()">
+    <ion-button (click)="finalizarViaje(3)">
       Finalizar
     </ion-button>
   </div>
   <div class="fondo-finalizado" *ngIf="template == 3">
     <img src="https://thumbs.dreamstime.com/b/marca-finalizada-signo-de-redondeo-finalizado-etiqueta-198277036.jpg" alt="">
+  </div>
+  <div class="fondo-finalizado" *ngIf="template == 4">
+    <img src="https://img.freepik.com/vector-premium/banner-sello-cancelado-rojo-sobre-fondo-transparente-diseno-eps-textura-grunge-diseno-vectorial_123447-3282.jpg" alt="">
   </div>
 </ion-content>

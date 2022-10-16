@@ -66,10 +66,10 @@ export class SolicitudPage implements OnInit {
     await this.agregarMarcador();
     await this.buscarDireccion(this.mapa, this.marker);
   }
-  async finalizarViaje(){
+  async finalizarViaje(num){
     var rut = this.usuario.rut;
     await this.storage.eliminarViaje(this.KEY_VIAJES,rut);
-    this.template = 3;
+    this.template = num;
   }
 
 

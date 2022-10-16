@@ -105,7 +105,6 @@ export class NuevoviajePage implements OnInit {
   //MÉTODO PARA ENCONTRAR LA RUTA ENTRE 2 DIRECCIONES:
   calcularRuta() {
     var place = this.search.getPlace().geometry.location;
-
     var request = {
       origin: this.ubicacionDuoc,
       destination: place,
