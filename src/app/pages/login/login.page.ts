@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { NavController } from '@ionic/angular';
@@ -18,7 +18,7 @@ export class LoginPage implements OnInit {
   nuevorut: string;
   constructor(private toastController: ToastController, private router: Router,
     private usuarioService: UsuarioService, private route: ActivatedRoute, private navCtrl: NavController,
-    private storage: StorageService) { }
+    private storage: StorageService, private loading: LoadingController) { }
 
   ngOnInit() {
   }
@@ -28,7 +28,7 @@ export class LoginPage implements OnInit {
     var usuarioLogin = await this.storage.validarLogin(this.KEY, this.rut, this.password);
     console.log(usuarioLogin);
     if (usuarioLogin != undefined) {
-      console.log("entre");
+      await this.cargarPantalla();
       this.nuevorut = this.rut;
       this.password = '';
       this.rut = '';
@@ -50,4 +50,13 @@ export class LoginPage implements OnInit {
     toast.present();
   }
 
+  async cargarPantalla(){
+    const cargando = await this.loading.create(
+      {
+        message: 'Ingresando...',
+        duration: 1000
+      }
+    );
+    cargando.present();
+  }
 }
