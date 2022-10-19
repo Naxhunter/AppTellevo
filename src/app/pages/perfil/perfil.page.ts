@@ -5,6 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { StorageService } from 'src/app/services/storage.service';
 import { v4 } from 'uuid';
 import { ToastController } from '@ionic/angular';
+import { HomePage } from '../home/home.page';
 
 @Component({
   selector: 'app-perfil',
@@ -14,7 +15,7 @@ import { ToastController } from '@ionic/angular';
 export class PerfilPage implements OnInit {
 
   constructor(private route: ActivatedRoute, private usuarioService: UsuarioService, private storage: StorageService,
-    private toastController: ToastController) { }
+    private toastController: ToastController, private home : HomePage) { }
   rut: any;
   sesion: any = [];
   default: any = undefined;
@@ -101,7 +102,8 @@ export class PerfilPage implements OnInit {
       var cambio = this.sesion.rut;
       this.sesion = await this.storage.getDato(this.KEY, cambio);
       this.default = 4;
-      var alerta = "Auto agregado";
+      await this.home.recargar(this.sesion.rut);
+      var alerta = "Auto agregado.";
       await this.toastError(alerta);
     }
 
@@ -112,5 +114,6 @@ export class PerfilPage implements OnInit {
       duration: 3000
     });
     toast.present();
+    
   }
 }

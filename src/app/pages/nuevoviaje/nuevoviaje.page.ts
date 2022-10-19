@@ -177,7 +177,7 @@ export class NuevoviajePage implements OnInit {
     var guardar = await this.storage.agregarViaje(this.KEY_VIAJES, this.viaje.value);
     if (guardar == true) {
       this.viaje.reset();
-      this.alert='¡VIAJE CREADO!'
+      this.alert='¡VIAJE CREADO! Espera a que te lleguen solicitudes';
       this.toastError(this.alert);
     }
   } 

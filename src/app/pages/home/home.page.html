@@ -17,8 +17,9 @@
           <span style="margin-right: 5px;">
             Cerrar Sesión
           </span>
-          <img src="https://cdn.icon-icons.com/icons2/74/PNG/256/logout_off_exit_14655.png" alt="" height="20px" width="20px">
-          
+          <img src="https://cdn.icon-icons.com/icons2/74/PNG/256/logout_off_exit_14655.png" alt="" height="20px"
+            width="20px">
+
         </div>
 
       </div>
@@ -29,12 +30,23 @@
           <span class="color_azul"><b>Te llevo</b> <b class="color_naranja">APP</b></span>
         </div>
         <span class="parrafo">
-          <b class="color_azul">TeLlevo<span class="color_naranja">App</span></b> es una aplicación pensada por
-          estudiantes y para estudiantes de la institución <b>DUOC UC</b>
-          con el fin de reducir los problemas de viaje de los estudiantes
-          de nuestra querida institución.
-          ¡ESPERAMOS DISFRUTES TU VIAJE!
-          
+          <div *ngIf="sesion.vehiculo == 'undefined' && sesion.auto=='no'">
+            <b class="color_azul">TeLlevo<span class="color_naranja">App</span></b> es una aplicación pensada por
+            estudiantes y para estudiantes de la institución <b>DUOC UC</b>
+            con el fin de reducir los problemas de viaje de los estudiantes
+            de nuestra querida institución.
+            ¡ESPERAMOS DISFRUTES TU VIAJE!
+          </div>
+          <div *ngIf="sesion.vehiculo == 'undefined' && sesion.auto=='si'">
+            ¡QUERIDO ESTUDIANTE, NO OLVIDES REGISTRAR UN VEHICULO PARA COMENZAR A CREAR VIAJES Y TRANSPORTAR OTROS USUARIOS!
+          </div>
+          <div *ngIf="sesion.vehiculo != 'undefined' && sesion.auto=='si'">
+            <b class="color_azul">TeLlevo<span class="color_naranja">App</span></b> es una aplicación pensada por
+            estudiantes y para estudiantes de la institución <b>DUOC UC.</b>
+
+            ¡CREA UN VIAJE!
+          </div>
+
         </span>
       </ion-card-content>
     </ion-card>
@@ -56,18 +68,21 @@
         <ion-icon name="person-circle-outline"></ion-icon>
         <ion-label>Perfil</ion-label>
       </ion-tab-button>
-      <ion-tab-button tab="disponible/{{sesion.rut}}" *ngIf="sesion.auto == 'no' && sesion.tipo_usuario != 'administrador'">
+      <ion-tab-button tab="disponible/{{sesion.rut}}"
+        *ngIf="sesion.auto == 'no' && sesion.tipo_usuario != 'administrador'">
         <ion-icon name="airplane-outline"></ion-icon>
         <ion-label>Buscar</ion-label>
       </ion-tab-button>
-      <ion-tab-button tab="nuevoviaje/{{sesion.rut}}" *ngIf="sesion.auto == 'si' && sesion.tipo_usuario != 'administrador'">
+      <ion-tab-button tab="nuevoviaje/{{sesion.rut}}"
+        *ngIf="sesion.auto == 'si' && sesion.tipo_usuario != 'administrador' && sesion.vehiculo != 'undefined'">
         <ion-icon name="location-outline"></ion-icon>
         <ion-label>Crear Viaje</ion-label>
       </ion-tab-button>
-      <ion-tab-button tab="solicitud/{{sesion.rut}}" *ngIf="sesion.auto == 'si' && sesion.tipo_usuario != 'administrador'">
+      <ion-tab-button tab="solicitud/{{sesion.rut}}"
+        *ngIf="sesion.auto == 'si' && sesion.tipo_usuario != 'administrador' && sesion.vehiculo != 'undefined' &&  tiene_viaje != undefined && tiene_viaje.pasajeros!='sin'">
         <ion-icon name="notifications-outline"></ion-icon>
         <ion-label>Solicitudes</ion-label>
-        <!-- <ion-badge>6</ion-badge> -->
+        <ion-badge>{{tiene_viaje.pasajeros.length}}</ion-badge>
       </ion-tab-button>
 
     </ion-tab-bar>

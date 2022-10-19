@@ -13,13 +13,16 @@ import { StorageService } from 'src/app/services/storage.service';
 export class HomePage implements OnInit {
   rut: any;
   sesion: any = [];
+  tiene_viaje: any = [];
   KEY = "usuarios";
+  KEY_VIAJE = "viajes";
   constructor(private router: Router, private route: ActivatedRoute, private usuarioService: UsuarioService,
     private navCtrl: NavController, private storage: StorageService) { }
 
   async ngOnInit() {
     let rut = await this.route.snapshot.paramMap.get('rut');
     this.sesion = await this.storage.getDato(this.KEY, rut);
+    this.tiene_viaje = await this.storage.getDatoViaje(this.KEY_VIAJE,rut);
     /*this.sesion = this.usuarioService.obtenerUsuario(rut);*/
     
   }
@@ -32,6 +35,9 @@ export class HomePage implements OnInit {
   }
   async cerrarSesion(){
     await this.storage.logout();
+  }
+  async recargar(rut){
+    this.sesion = await this.storage.getDato(this.KEY, rut);
   }
 
   irCrearViaje(){
