@@ -21,6 +21,10 @@
         <h5>Precio: $ {{aux.precios.precio}}</h5>
       </ion-item>
     </ion-list>
+    <ion-button size="default" (click)="irQr()">
+      Leer Qr
+      <ion-icon name="qr-code-outline"></ion-icon>
+    </ion-button>
   </div>
   <div class="fondo-detalle" *ngIf="template == 2">
     <div class="formularioViaje">
@@ -50,16 +54,33 @@
         <div>HORA SALIDA: {{detalle.precios.salida}} horas</div>
       </ion-item>
       <div>
-          
-          <ion-button slot="end" size="default" (click)="irViajes()">
-            Volver
-            <ion-icon name="play-back-outline" slot="end"></ion-icon>
-          </ion-button>
-          <ion-button *ngIf="detalle.precios.capacidad != 0" slot="end" size="default" (click)="irSolicitar(detalle.precios.rut_conductor)">
-            Solicitar
-            <ion-icon name="enter-outline" slot="end"></ion-icon>
-          </ion-button>
+
+        <ion-button slot="end" size="default" (click)="irViajes()">
+          Volver
+          <ion-icon name="play-back-outline" slot="end"></ion-icon>
+        </ion-button>
+        <ion-button *ngIf="detalle.precios.capacidad != 0" slot="end" size="default"
+          (click)="irSolicitar(detalle.precios.rut_conductor)">
+          Solicitar
+          <ion-icon name="enter-outline" slot="end"></ion-icon>
+        </ion-button>
       </div>
+    </div>
+  </div>
+  <div class="fondo-leer" *ngIf="template == 3">
+    <ion-item>
+      <ion-input [(ngModel)]="idViajes" placeholder="Inserte identificador pasaje."></ion-input>
+    </ion-item>
+    
+    <div class="botones-qr">
+      <ion-button size="default" (click)="leerQr()">
+        Leer
+        <ion-icon name="book-outline"></ion-icon>
+      </ion-button>
+      <ion-button slot="end" size="default" (click)="irViajes()">
+        Volver
+        <ion-icon name="play-back-outline" slot="end"></ion-icon>
+      </ion-button>
     </div>
   </div>
 </ion-content>

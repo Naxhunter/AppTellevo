@@ -25,6 +25,7 @@ export class DisponiblePage implements OnInit {
   KEY_USUARIO = "usuarios";
   message: any = 0;
   titulo = "Viajes Disponibles";
+  idViajes :any;
   //Variables detalle
   mapa: any;
   marker: any;
@@ -109,7 +110,39 @@ export class DisponiblePage implements OnInit {
       };
     });
   }
-
+  async irQr(){
+    this.template = 3;
+  }
+  async leerQr(){
+    var user = this.usuario.rut;
+    await this.storage.guardarPasajeroQr(this.idViajes);
+    this.idPasaje = await this.storage.getDatos(this.KEY_VIAJE);
+    this.idPasaje.forEach(async (value, index) => {
+      if (this.idViajes == value.id) {
+        /*value.pasajeros = {...value.pasajeros, user };*/
+        var nuevaCapacidad = value.capacidad-1;
+        this.solicitud = [...value.pasajeros];
+        this.solicitud.push(user);
+        var creacion: any = {
+          id: value.id,
+          origen: value.origen,
+          destino: value.destino,
+          precio: value.precio,
+          salida: value.salida,
+          iniciado: value.iniciado,
+          rut_conductor: value.rut_conductor,
+          capacidad: nuevaCapacidad,
+          pasajeros: this.solicitud,
+        };
+        console.log("creacion: ", creacion);
+        await this.storage.actualizar(this.KEY_VIAJE, creacion);
+        this.template = 1;
+        this.titulo = "Viaje Solicitado";
+        var alerta = "Viaje Solicitado";
+        await this.toastError(alerta);
+      }
+    });
+  }
   /* métodos detalle */
   async irViajes() {
     this.template = 1;

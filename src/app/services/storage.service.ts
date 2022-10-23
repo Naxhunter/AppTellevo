@@ -107,6 +107,28 @@ export class StorageService {
     }
     return false;
   }
+  async guardarPasajeroQr(idViaje) {
+    this.datos = await this.storage.get("viajes") || [];
+    var existe = this.datos.find(viaje => viaje.id == idViaje);
+    if (existe.pasajeros == "sin") {
+      var creacion: any = {
+        id: existe.id,
+        origen: existe.origen,
+        destino: existe.destino,
+        precio: existe.precio,
+        salida: existe.salida,
+        iniciado: existe.iniciado,
+        rut_conductor: existe.rut_conductor,
+        capacidad: existe.capacidad,
+        pasajeros: [],
+      };
+      var index = this.datos.findIndex(value => value.id == idViaje);
+      this.datos[index] = creacion;
+      await this.storage.set("viajes", this.datos);
+      return true;
+    }
+    return false;
+  }
   async inicioViaje(rutConductor) {
     this.datos = await this.storage.get("viajes") || [];
     var existe = this.datos.find(viaje => viaje.rut_conductor == rutConductor);

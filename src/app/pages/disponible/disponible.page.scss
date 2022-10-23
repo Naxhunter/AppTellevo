@@ -1,3 +1,36 @@
+.fondo-leer{
+  box-shadow: none;
+  height: 100vh;
+  background: transparentize($color: #f0e658bd, $amount: 0.3);
+  background: url("../../../assets/img/fondo.jpg");
+  background-size: cover;
+  text-align: center;
+  align-items: center;
+  justify-content: space-around;
+  font-family: "Montserrat";
+  overflow: scroll;
+  ion-item {
+    margin-top: 12.5vh;
+    --background: none;
+    ion-input{
+        font-family: 'Lobster';
+        color: rgba(4, 4, 43, 0.904);
+    }
+    
+}
+  .botones-qr{
+    margin-top: 10vh;
+    ion-button {
+      color: rgba(4, 4, 43, 0.904);
+      margin-top: 2vh;
+      margin-bottom: 2vh;
+      font-family: "Montserrat";
+      --background: transparentize($color: #1e7065cb, $amount: 0.3);
+      font-weight: bold;
+    }
+  }
+
+}
 .fondo {
   box-shadow: none;
   height: 100vh;

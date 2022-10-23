@@ -4,6 +4,7 @@ import { NavController } from '@ionic/angular';
 import { StorageService } from 'src/app/services/storage.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { ToastController } from '@ionic/angular';
+import {v4} from 'uuid';
 
 declare var google;
 
@@ -26,6 +27,10 @@ export class SolicitudPage implements OnInit {
   template = 1;
   detalleViaje: any = [];
 
+  elementType = 'canvas';
+  value_qr = 'www.google.cl';
+  mostrar_qr: any;
+
   constructor(private navCtrl: NavController, private route: ActivatedRoute, private usuarioService: UsuarioService, private storage: StorageService
     , private router: Router, private toastController: ToastController) { }
 
@@ -46,7 +51,12 @@ export class SolicitudPage implements OnInit {
     });
   }
 
-
+  async generarQr(){
+    var nuevoQr = await this.storage.getDatoViaje(this.KEY_VIAJES,this.usuario.rut);
+    this.value_qr = nuevoQr.id;
+    this.mostrar_qr = nuevoQr.id;
+    this.template = 5;
+  }
 
   async eliminarPasajeros(rutpasajero, rutSesion) {
     await this.storage.eliminarPasajero(this.KEY_VIAJES, this.usuario.rut, rutpasajero);
@@ -161,6 +171,9 @@ export class SolicitudPage implements OnInit {
       duration: 3000
     });
     toast.present();
+  }
+  async volverMenu(){
+    this.template = 1;
   }
 
 }

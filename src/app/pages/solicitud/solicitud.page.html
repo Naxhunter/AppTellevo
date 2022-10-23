@@ -19,7 +19,7 @@
               <div>
                 <b>Rut</b>: {{solicitud[i]}}
                 <ion-button (click)="eliminarPasajeros(solicitud[i],usuario.rut)">
-                  <ion-icon  name="trash"></ion-icon>
+                  <ion-icon name="trash"></ion-icon>
                 </ion-button>
               </div>
             </ion-col>
@@ -37,6 +37,10 @@
         Cancelar
         <ion-icon name="nuclear" slot="end"></ion-icon>
       </ion-button>
+      <ion-button (click)="generarQr()">
+        Mostrar QR
+        <ion-icon name="qr-code-outline"></ion-icon>
+      </ion-button>
     </div>
   </div>
   <div class="fondo-recorrido" *ngIf="template == 2">
@@ -47,9 +51,25 @@
     </ion-button>
   </div>
   <div class="fondo-finalizado" *ngIf="template == 3">
-    <img src="https://thumbs.dreamstime.com/b/marca-finalizada-signo-de-redondeo-finalizado-etiqueta-198277036.jpg" alt="">
+    <img src="https://thumbs.dreamstime.com/b/marca-finalizada-signo-de-redondeo-finalizado-etiqueta-198277036.jpg"
+      alt="">
   </div>
   <div class="fondo-finalizado" *ngIf="template == 4">
-    <img src="https://img.freepik.com/vector-premium/banner-sello-cancelado-rojo-sobre-fondo-transparente-diseno-eps-textura-grunge-diseno-vectorial_123447-3282.jpg" alt="">
+    <img
+      src="https://img.freepik.com/vector-premium/banner-sello-cancelado-rojo-sobre-fondo-transparente-diseno-eps-textura-grunge-diseno-vectorial_123447-3282.jpg"
+      alt="">
+  </div>
+  <div class="fondo-qr" *ngIf="template ==5">
+    <div class="qr">
+      <ngx-qrcode [elementType]="elementType" [value]="value_qr">
+      </ngx-qrcode>
+    </div>
+    <div class="volver">
+      <p>{{mostrar_qr}}</p>
+      <ion-button (click)="volverMenu()">
+        Volver
+      </ion-button>
+    </div>
+
   </div>
 </ion-content>
